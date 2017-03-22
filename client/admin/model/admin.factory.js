@@ -73,10 +73,21 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
-	obj.getDroupStudents =function(){
+	obj.getAdmissionCancelStudents =function(){
 
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/getListAdmissionCancel.php")
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
+	obj.moveInAdmission = function(){
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/changeInquireStatus?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -107,6 +118,19 @@ angular.module('collegeAdmin')
 		});
 		return defer.promise;
 	}
+
+	obj.getInquiresGotAdmission =function(){
+
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php")
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
 	obj.getStudentByName =function(name){
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/getStudentByName.php?name="+name)
