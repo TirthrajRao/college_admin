@@ -39,18 +39,13 @@ $urlRouterProvider.otherwise('/admin/login');
 }])
 .run(['$rootScope','$localStorage','$state','$stateParams',function($rootScope,$localStorage,$state,$stateParams){
   $rootScope.serverUrl = 'http://132.140.160.109/college/collegeAdminNew/server/admin/';
-
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
   $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){  
-    if(toState.name.localeCompare("admin.login") == 0 )
+    if(toState.name.substr(0,7).localeCompare('account') == 0 || toState.name.substr(0,5).localeCompare('admin')==0)
     {
-    console.log(toState.name);
-      console.log("if 1");
-      if(toState.name.substr(0,7).localeCompare('account') == 0 || toState.name.substr(0,5).localeCompare('admin')==0)
+      if(toState.name.localeCompare("admin.login") == 0 )
       {
-        console.log(toState);
-        console.log(fromState);
       }       
       else{
         console.log($localStorage.adminId);
@@ -58,8 +53,9 @@ $urlRouterProvider.otherwise('/admin/login');
           console.log(typeof($localStorage.adminId));
           $state.go('admin.login');
         }
-      }
+       }
     }
+    console.log(toState.name);
   });
 
 

@@ -61,6 +61,52 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
+	obj.cancelAdmission = function(student){
+		console.log(student);
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/cancelAdmission.php",student)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
+	obj.getDroupStudents =function(){
+
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/getListAdmissionCancel.php")
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
+	obj.AddInquire = function(student){
+		console.log(student);
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/AddInquire.php",student)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+	obj.getAllInquires =function(){
+
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/getStudentFromInquire.php")
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
 	obj.getStudentByName =function(name){
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/getStudentByName.php?name="+name)

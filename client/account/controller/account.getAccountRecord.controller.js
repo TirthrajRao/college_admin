@@ -3,7 +3,7 @@ angular.module('account')
 
   activate();
   getLocal();
-
+  console.log($scope.student);
   function activate(){
     accountFactory.getCourses()
     .then(function(response){
@@ -37,7 +37,7 @@ $scope.getAccountRecord = function(){
     event.preventDefault()
     $timeout(function(){
   $localStorage.student=$scope.student;
-
+  $scope.student = $localStorage.student;
       $scope.$apply();
       accountFactory.getAccountRecord($scope.student)
       .then(function(response){

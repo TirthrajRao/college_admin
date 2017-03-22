@@ -82,5 +82,10 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
     url : '/generateIdCard',
     templateUrl : 'admin/view/generateIdCard.html',
     controller : 'admingenerateIdCardCtrl'
-  })
+  	})
+  	.state('admin.cancelAdmission',{
+		url : '/cancelAdmission',
+		templateUrl : 'admin/view/cancelAdmission.html',
+		controller : 'cancleAdmissionCtrl'
+	})
 }])
