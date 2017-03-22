@@ -11,51 +11,54 @@
 		
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<form>
+				<form ng-submit="addInquiry(x)">
 					<div class="well well-lg">
 						<div class="col-sm-4 form-group">
 							<label class="control-label">First Name : </label>
-							<input type="text" class="form-control" placeholder="Enter your First Name">
+							<input type="text" class="form-control" ng-model="x.fname" placeholder="Enter your First Name" required>
 						</div>
 
 						<div class="col-sm-4 form-group">
 							<label class="control-label">Middle Name : </label>
-							<input type="text" class="form-control" placeholder="Enter your Middle Name">
+							<input type="text" class="form-control" ng-model="x.mname" placeholder="Enter your Middle Name" required>
 						</div>
 
 						<div class="col-sm-4 form-group">
 							<label class="control-label">Last Name : </label>
-							<input type="text" class="form-control" placeholder="Enter your Last Name">
+							<input type="text" class="form-control" ng-model="x.lname" placeholder="Enter your Last Name" required>
 						</div>
 
 						<div class="col-sm-12 form-group">
 							<label class="control-label">Course : </label>
-							<input type="text" class="form-control" placeholder="Enter Course">
+							<select class="form-control" ng-model="x['courseid']" required ng-change="getStudentsByCourse(x['courseid'])">
+                  				<option value="" selected disabled> Select Course </option>
+                  				<option ng-repeat="y in courses track by $index" ng-value="y.courseid">{{y.courseid}}</option>
+                			</select>
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> City : </label>
-							<input type="text" class="form-control" placeholder="Enter your City">
+							<input type="text" class="form-control" ng-model="x.city" placeholder="Enter your City" required>
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> Phone : </label>
-							<input type="text" class="form-control" placeholder="Enter your Phone Number">
+							<input type="number" class="form-control" ng-model="x.phone" placeholder="Enter your Phone Number" required>
 						</div>
 
 						<div class="col-sm-12 form-group">
 							<label class="control-label"> School/College :  </label>
-							<input type="text" class="form-control" placeholder="Enter your previous School/College">
+							<input type="text" class="form-control" ng-model="x.school" placeholder="Enter your previous School/College" required>
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> Result (%) :  </label>
-							<input type="text" class="form-control" placeholder="Enter your Result (in percentage)">
+							<input type="number" class="form-control" ng-model="x.result" placeholder="Enter your Result (in percentage)" required>
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> Category : </label>
-							<select class="form-control">
+							<select class="form-control" ng-model="x.category" required>
 								<option value="" disabled>Select Category</option>
 								<option value="open">OPEN</option>
 								<option value="obc">O.B.C</option>

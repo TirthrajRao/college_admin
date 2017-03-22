@@ -85,7 +85,7 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
-	obj.AddInquire = function(student){
+	obj.AddInquiry = function(student){
 		console.log(student);
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/AddInquire.php",student)
