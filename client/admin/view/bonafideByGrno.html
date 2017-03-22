@@ -1,0 +1,97 @@
+<div class="row full-height">
+  <div class="col-md-12 col-xs-12">
+    <div class="margin-top-10"></div>
+    <div class="w3-padding-16 w3-container w3-light-grey print_hide">
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma">Generate Bonafide</h2>
+
+      <div class="col-md-6 col-md-offset-3">
+        <form ng-submit="getStudentByGrno(grno)" id="bonafiteForm">
+          <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(x['course'])">
+            <option value="" selected disabled>Select Course</option>
+          </select>
+
+          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple>
+
+          <datalist id="students" >
+            <option  value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}}</option>
+          </datalist>
+          <div class="w3-center margin-top-10 ">
+            <button class="btn btn-success" type="submit"><i class="fa fa-file-text-o"></i> Generate Bonafide</button>
+          </div>
+        </form>
+        <div class="alert alert-print w3-custom-red w3-text-white fade in">
+          <span><strong>Error!</strong> Please click on Print Bonafide button below.</span>
+          <a class="close-red-alert w3-right" aria-label="close">&times;</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <div class="container margin-top-bottom-20" ng-show="student" >
+        <div class="w3-center">
+          <span class="round_border">Bonafide Certificate</span>
+        </div>
+
+        <div class="margin-top-bottom-20"></div>
+
+        <div class="w3-center" style="margin-left:800px;">
+          <div class="student_image" >
+            <img src="../server/{{student.path}}" alt="{{student.name}}" style="height:300px; width:250px;">
+          </div>
+        </div>
+        <div class="font-size-22">
+          <form class="form-inline" >
+            <div class="form-group">
+             <label >Purpose : </label>
+             <input type="text" required class="form-control" ng-model="purpose" placeholder="Enter purpose">
+
+           </div>
+         </form>
+       </div>
+       <div class="margin-top-bottom-40"></div>
+
+       <div class="font-size-22">
+        <span class="w3-text-black">This is to certify that {{student.hello}} <label class="bold-Label">{{student.name}}</label> is a bonafide student of our college. {{student.hello1}} is the student of <label class="bold-Label"> {{student.courseid}}</label> this academic year <label class="bold-Label">{{pyear}} <span ng-hide="nyear">-</span> {{year}} <span ng-hide="pyear">-</span> {{nyear}} </label>. {{student.hello2}}  G.R.No. is <label class="bold-Label"> {{student.grno}}</label></br> To the best of my knowledge {{student.hello3}} bears a good moral character.</span>
+
+      </div>
+
+      <div class="margin-top-bottom-40"></div>
+
+      <div class="font-size-22">
+        <span class="w3-left w3-text-black">Date : {{date | date:'yyyy-MM-dd'}}</span>
+        <span class="w3-right w3-text-black">Principal</span>
+      </div>
+
+    </div>
+    <div class="w3-center margin-top-bottom-40 print_hide" ng-show ="purpose && student">
+      <button onclick="printBonafide()" ng-click="generateCertificate(student.sid)" type="submit" class="btn btn-primary btn-lg" > Print bonafide of {{student.name}}</button>
+    </div>
+
+  </div>
+
+</div>
+<script>
+$(document).on("keyup keydown", function(e){
+  if(e.ctrlKey && e.keyCode == 80){
+    $('.alert-print').show();
+    return false;
+  }
+});
+function printBonafide(){
+  window.print();
+}
+
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+});
+</script>

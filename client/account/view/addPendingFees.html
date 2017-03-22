@@ -1,0 +1,135 @@
+<div class="row full-height">
+  <div class="col-md-12">
+    <div class="w3-container w3-padding-16 w3-light-grey">
+      <h2 class="w3-center text-primary tahoma letter-spacing-2"><u> Pay Pending Fees of {{student.name}}</u></h2>
+    
+
+    
+     
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="alert alert-successful w3-custom-blue w3-text-white fade in">
+            <span><strong>Successful!</strong> Fees paid.</span>
+            <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+          </div>
+          <form ng-init = "x = {}" ng-submit = "addPendingFees(x)">
+            <fieldset>
+              <legend class="font-monospace">{{student.name}}</legend>
+
+              <h3>Total Fees of {{student.courseid | uppercase}} - Sem {{student.pending_fees['sem']}} : <i class="fa fa-inr"></i> {{student.total_fees['total_fees']}} </h3>
+
+              <h3>Fees Paid : <i class="fa fa-inr"></i> {{student.paid_fees['paid_fees']}}</h3>
+
+              <h3> Student Discount : <i class="fa fa-inr"></i> {{student.discount.discount + x.discount_}}</h3>
+
+              <h3>Pending Fees :  <i class="fa fa-inr"></i> {{student.pending_fees['pending_fees']}}</h3>
+              <div class="w3-center">
+              <button class="w3-btn w3-center w3-border w3-blue" ng-show="receipt" ng-click="printReceipt(receipt.id)" >Print Fee printReceipteceipt</button>
+            </div>
+              <div class="col-md-12">
+                <div ng-show="student.pending_fees.tution_fees > '0'">
+                  <span class=" margin-bottom-10">Tution Fees : <i class="fa fa-inr"></i> {{student.pending_fees.tution_fees}} (<i class="fa fa-inr"></i> {{student.pending_fees.tution_fees - x.tution_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.tution_fees=0" ng-model="x.tution_fees"  placeholder="Tution Fees" ng-value="{{zero}}" />
+                </div>
+                <div ng-show="student.pending_fees.su_exam_fees > '0'">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Exam Fees:{{student.pending_fees.su_exam_fees}} ({{student.pending_fees.su_exam_fees - x.su_exam_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_exam_fees = 0" ng-model="x.su_exam_fees"  placeholder="Saurashtra University Exam Fees"/>
+                </div>
+
+                <div ng-show ="student.pending_fees.su_sports_fees > '0'">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Sports Fees:{{student.pending_fees.su_sports_fees}} ({{student.pending_fees.su_sports_fees - x.su_sports_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_sports_fees=0" ng-model="x.su_sports_fees"   placeholder="Saurashtra University Sports Fees"/>
+                </div>
+
+                <div ng-show ="student.pending_fees.su_enlistment_fees > '0'">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Enlistment Fee: {{student.pending_fees.su_enlistment_fees}} ({{student.pending_fees.su_enlistment_fees - x.su_enlistment_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_enlistment_fees=0" ng-model="x.su_enlistment_fees"  placeholder="Saurashtra University Enlistment Fee"/>
+                </div>
+                <div ng-show ="student.pending_fees.su_enrollment_fees > '0' ">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Enrollment Fee: {{student.pending_fees.su_enrollment_fees}} ({{student.pending_fees.su_enrollment_fees - x.su_enrollment_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_enrollment_fees= 0" ng-model="x.su_enrollment_fees"  placeholder="Saurashtra University Enrollment Fee"/>
+                </div>
+
+                <div ng-show="student.pending_fees.su_exam_project_fees > '0' ">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Exam And Project Practical Fee: {{student.pending_fees.su_exam_project_fees}} ({{student.pending_fees.su_exam_project_fees - x.su_exam_project_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_exam_project_fees= 0" ng-model="x.su_exam_project_fees"  placeholder="Saurashtra University Exam And Project practical Fees"/>
+                </div>
+
+                <div ng-show="student.pending_fees.viva_project_fees > '0' ">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Project Viva Fee: {{student.pending_fees.viva_project_fees}} ({{student.pending_fees.viva_project_fees - x.viva_project_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.viva_project_fees= 0" ng-model="x.viva_project_fees"  placeholder="Saurashtra University Project Viva Fees"/>
+                </div>
+
+                <div ng-show="student.pending_fees.su_degree_fees > '0' ">
+                  <span  class=" margin-bottom-10 ">Saurashtra University Degree Fee: {{student.pending_fees.su_degree_fees}} ({{student.pending_fees.su_degree_fees - x.su_degree_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.su_degree_fees= 0" ng-model="x.su_degree_fees"  placeholder="Saurashtra University Degree Fee"/>
+                </div>
+
+                <div ng-show="student.pending_fees.misc_fees > '0'">
+                  <span  class=" margin-bottom-10 ">Miscellaneous Charges: {{student.pending_fees.misc_fees}} ({{student.pending_fees.misc_fees - x.misc_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.misc_fees=0" ng-model="x.misc_fees"  placeholder="Miscellaneous Charges"/>
+                </div>
+
+                <div ng-show="student.pending_fees.lib_fees > '0'">
+                  <span  class=" margin-bottom-10 ">Library Charges: {{student.pending_fees.lib_fees}} ({{student.pending_fees.lib_fees - x.lib_fees}})</span>
+                  <input type="number" class="form-control inputField"  required  ng-init="x.lib_fees=0" ng-model="x.lib_fees"  placeholder="Library Charges"/>
+                </div>
+
+                <label class="  checkbox-inline"><input type="checkbox"  ng-model="selectDiscount" value="" class="margin-top-10"> Discount</label>
+                <span class="" ng-show="selectDiscount">Total Discount Amount: {{student.discount.discount + x.discount_}} </span>
+                <input id= "discount" type="number" ng-show="selectDiscount" required class="form-control margin-top-10" ng-init="x.discount_=0" ng-model="x.discount_" placeholder="Enter 0 if no discount allocated to this student"  >
+                <span class="">Mode of Payment:</span>
+
+                <div class="border-square">
+              <!-- <label class="radio-inline">
+              <input type="radio" name="payment" ng-model="x.payMode" value="cash">Cash
+            </label> -->
+            <label class="radio-inline">
+              <input type="radio"name="payment" ng-model="x.payMode" value="cash">Cash
+            </label>
+            <label class="radio-inline">
+              <input type="radio"name="payment" ng-model="x.payMode" value="dd">Demand draft
+            </label>
+            <label class="radio-inline">
+              <input type="radio"name="payment" ng-model="x.payMode" value="cheque">Cheque
+            </label>
+          </div>
+          <span class="" ng-show ="x.payMode != 'cash'">Enter Cheque or D.D serial Num:</span>
+
+          <input type="text" class="form-control inputField" ng-show="x.payMode != 'cash'"  ng-model="x.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
+          <span class="" ng-show ="x.payMode != 'cash'">Enter Name of the bank:</span>
+
+          <input type="text" class="form-control inputField" ng-show="x.payMode != 'cash'"  ng-model="x.bankName" placeholder="Must be in full letters ">
+          <div class="w3-center margin-top-10" ng-hide="receipt">
+            <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+});
+</script>

@@ -1,0 +1,124 @@
+<div class="row full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-padding-16 w3-container w3-light-grey print_hide">
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Course Fee Structure</u></h2>
+
+      <div class="col-md-6 col-md-offset-3">
+        <form ng-submit="getStudentByGrno(grno)" id="bonafiteForm">
+          <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(x['course'])">
+            <option value="" selected disabled>Select Course</option>
+          </select>
+
+          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple>
+
+          <datalist id="students" >
+            <option  value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}} </option>
+          </datalist>
+          <div class="w3-center margin-top-10 ">
+            <button class="btn btn-success" type="submit"><i class="fa fa-file-text-o"></i> Generate Fee Structure</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <div class="container" contenteditable="true">
+
+        <div class="w3-center">
+          <p class="header w3-text-deep-orange">T. N. Rao College - Rajkot</p>
+        </div>
+
+        <div class="w3-center">
+          <p class="sub_header w3-text-indigo">Managed by : Savyasachi Education Trust</p>
+        </div>
+
+        <div class="margin-top-bottom-20"></div>
+
+        <div class="w3-right font-size-18">
+
+          <p>Date: {{date | date:'yyyy-MM-dd'}}</p>
+
+        </div>
+
+        <div class="margin-top-bottom-20"></div>
+
+        <div class="font-size-18">
+
+          <p>To,</br> The Manager </br>______________________</br>______________________</p>
+
+        </div>
+
+        <div class="margin-top-bottom-20"></div>
+
+        <div class="font-size-18">
+          <p>Dear Sir,</br>
+            <p class="text-indent-100">It is to certify that <label class="bold-Label"> {{student.name}} </label> is the student of T.N.Rao College - Rajkot. He/She is studying in the <label class="bold-Label"> {{student.courseid}} </label> course for thr academic year <label class="bold-Label">{{pyear}} <span ng-hide="nyear">-</span> {{year}} <span ng-hide="pyear">-</span> {{nyear}} </label> as follows ,</p>
+          </p>
+        </div>
+
+        <div class="margin-top-bottom-20"></div>
+        <div>
+          <div class="margin-left-100 table-respnsive table_feestrucutre font-size-18">
+            <table class="table-condensed">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>1st Year Tuition Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2nd Year Tuition Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3rd Year Tuition Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University Exam Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University Degree Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University Development Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University Enrollment Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University PG Registration Fee</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>University Sports Complex Fee</td>
+                <td></td>
+              </tr>
+              <tr class="font-weight">
+                <td>Total</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="margin-top-bottom-40"></div>
+        <div class="font-size-18">
+          <span class="w3-left"> In Words ______________________ </br> __________________</span>
+          <span class="w3-right"> Principal </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

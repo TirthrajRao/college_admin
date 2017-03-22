@@ -1,0 +1,47 @@
+<div class="row margin-bottom-35 full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-container w3-padding-16 w3-light-grey">
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Fees Details</u></h2>
+
+      <div class="w3-responsive margin-top-20">
+        <table  class="w3-table w3-bordered sortable w3-centered" ng-init="olfy = 'courseid'" >
+
+          <tr class = "w3-theme-l4 ">
+            <th>Seq. No</th>
+
+            <th ng-click="olfy = 'courseid'">Course </th>
+
+            <th>Semester</th>
+            <th>Term Start</th>
+            <th>Term Ends</th>
+            <th>Fees</th>
+            <th>Update/Delete</th>
+
+          </tr>
+
+          <tbody>
+            <tr>
+              <td colspan="7" class="bg-primary" ng-hide="fees">
+                <h1 class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </td>
+              </tr>
+              <tr ng-repeat='x in fees | orderBy : olfy' ng-show="fees" >
+                <td>{{$index+1}} </td>
+
+                <td>{{x.courseid}} </td>
+
+                <td>{{x.sem}}</td>
+                <td>{{x.sdate}}</td>
+                <td>{{x.edate}}</td>
+                <td><i class="fa fa-inr"></i> {{x.total_fees}}</td>
+                <td ><button Class="btn btn-success" ng-click="editFees(x.id)"> <i class="fa fa-wrench" aria-hidden="true"></i> Edit </button>
+                  <button Class="btn btn-danger" ng-click="deleteFees(x.id)"> <i class="fa fa-trash" aria-hidden="true"></i> Delete </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

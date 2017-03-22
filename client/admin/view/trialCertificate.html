@@ -1,0 +1,63 @@
+
+<div class="row full-height margin-bottom-35">
+	<div class="col-md-12 col-xs-12">
+<div class="margin-top-10"></div>
+		<div class="w3-padding-16 w3-container w3-light-grey img-rounded">
+			<h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Trial Certificate<u></h2>
+
+			<div class="row course_selector">
+				<div class="col-md-6 col-md-offset-3 margin-top-10" >
+					<select class="form-control" ng-model="course" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(course.courseid)">
+						<option value="" selected disabled>Select course</option>
+					</select>
+					<auto-complete-textbox ng-show="students" 
+					placeholdertext="Search by Grno/Name"
+					array='students'
+					output="student"
+					search = "searchArray"
+					display = "showArray"
+					callback="generateTransfer()" >
+				</auto-complete-textbox>
+
+			</div>
+		</div>
+	</div>
+
+		<div class="container" ng-show ="student">
+
+			<div class="margin-top-bottom-20"></div>
+
+			<div class="w3-center">
+				<span class="round_border w3-text-black">Trial Certificate</span>
+			</div>
+
+			<div class="margin-top-bottom-40"></div>
+
+			<div class="w3-center" style="margin-left:730px;">
+				<div class="student_image" >
+					<img src="" style="height:300px; width:250px;">
+				</div>
+			</div>
+
+			<div class="margin-top-bottom-40"></div>
+
+			<div class="font-size-22">
+				<span class="w3-text-black">This is to certify that <b> {{student.name}} </b> was a bonafide student of our college from <input type="text" class="w3-text-black"> to <input type="text" class="w3-text-black">. <select><option>He</option><option>She</option></select> has appeared as a regular candidate at the <input type="text" class="w3-text-black"> examination held in <input type="text" class="w3-text-black"> month <input type="text" class="w3-text-black"> year.<br></br> <select><option>He</option><option>She</option></select> has passed the <input type="text" class="w3-text-black"> examination at <select><option>His</option><option>her</option></select> <input type="text" class="w3-text-black"> attempt.</span>
+			</div>
+
+			<div class="margin-top-bottom-60"></div>
+			<div>
+				<span class="w3-text-black font-size-22">Place : Rajkot</span><br>
+				<span class="w3-text-black font-size-22">Date  : {{date | date:'yyyy-MM-dd'}}</span>
+			</div>
+
+			<div>
+				<span class="w3-text-black w3-right font-bold font-size-22">Principal</span>
+			</div>
+
+		</div>
+		<div class="col-md-4 col-md-offset-4 w3-center print_hide margin-top-bottom-20" ng-show="student">
+			<button class="btn btn-primary btn-lg" onclick="printRecord()">Print Trial certificate of {{name}}</button>
+		</div>
+	</div>
+</div>

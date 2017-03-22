@@ -1,0 +1,141 @@
+
+<html>
+<head>
+  <title>Administration </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+  <link rel="icon" href="assets/images/logo-favicon.png" type="image/png" sizes="20x20">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+
+  <script src="assets/scripts/webcam.min.js"></script>
+  <script src="assets/scripts/base64js.min.js"></script>
+  <script src="assets/scripts/canvas2image.js"></script>
+  <script src="assets/scripts/html2canvas.js"></script>
+
+  <link href="bower_components/angular-auto-complete-textbox-tirthraj/dist/css/style.css">
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-auto-complete-textbox-tirthraj/dist/js/directive.js"></script>
+  <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/style/w3.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <link rel="stylesheet" href="assets/style/theme.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/print.css" media="print">
+  <script src="app/app.module.js"></script>
+  <script src="admin/admin.route.js"></script>
+  <script src="account/account.route.js"></script>
+  <script src="app/app.config.js"></script>
+  <script src="admin/model/admin.factory.js"></script>
+  <script src="account/model/account.factory.js"></script>
+  <script src="admin/controller/admin.login.controller.js"></script>
+  <script src="admin/controller/admin.certificates.controller.js"></script>
+  <script src="admin/controller/admin.addStudent.controller.js"></script>
+  <script src="admin/controller/admin.students.controller.js"></script>
+  <script src="admin/controller/admin.bonafide.controller.js"></script>
+  <script src="admin/controller/admin.editStudent.controller.js"></script>
+  <script src="admin/controller/admin.studentContactInfo.controller.js"></script>
+  <script src="admin/controller/admin.trialCertificate.controller.js"></script>
+  <script src="admin/controller/admin.enterEnrollment.controller.js"></script>
+  <script src="admin/controller/admin.categoryChart.controller.js"></script>
+  <script src="admin/controller/admin.characterCertificate.controller.js"></script>
+  <script src="admin/controller/admin.generateIdCard.controller.js"></script>
+  <script src="admin/controller/admin.masterTable.controller.js"></script>
+  <script src="account/controller/account.home.controller.js"></script>
+  <script src="account/controller/account.logout.controller.js"></script>
+  <script src="account/controller/account.addFeesDetails.controller.js"></script>
+  <script src="account/controller/account.feesDetails.controller.js"></script>
+  <script src="account/controller/account.editFees.controller.js"></script>
+  <script src="account/controller/account.addFeesByName.controller.js"></script>
+  <script src="account/controller/account.printReceipt.controller.js"></script>
+  <script src="account/controller/account.addPendingFees.controller.js"></script>
+  <script src="account/controller/account.dateWiseAdmission.controller.js"></script>
+  <script src="account/controller/account.pendingStudents.controller.js"></script>
+  <script src="account/controller/account.getPaymentDetails.controller.js"></script>
+  <script src="account/controller/account.paymentDetailsByYear.controller.js"></script>
+  <script src="account/controller/account.getAccountRecord.controller.js"></script>
+  <script src="account/controller/account.searchReceipt.controller.js"></script>
+  <script src="account/controller/account.dateWiseRecord.controller.js"></script>
+  <script src="account/controller/account.getFeesRecordFromTo.controller.js"></script>
+  <script src="account/controller/account.semWiseDetails.controller.js"></script>
+  <script src="account/controller/account.promoteStudent.controller.js"></script>
+
+</head>
+
+<body ng-app="collegeAdmin" class="w3-theme-l4" >
+
+  <div style="overflow:hidden">
+    <div class="row w3-padding-top w3-theme-d4" style="margin:auto" >
+
+      <div class="col-xs-6 col-xs-offset-3 visible-xs">
+        <a ui-sref="home"><img src="assets/images/logo.png" class="img-responsive margin-auto"></a>
+      </div>
+
+      <div class="col-md-12 hidden-xs hidden-sm">
+        <div class="row row-eq-height">
+          <div class="col-md-offset-3 col-md-2">
+            <a ui-sref="home"><img src="assets/images/logo.png" class="img-responsive w3-right" style="height:100px;"></a>
+          </div>
+          <span class="hidden-xs hidden-sm w3-text-white col-md-4 font-size-36" style="margin-top:auto; margin-bottom:auto;">T.N.Rao College</span>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xs-12">
+        <br>
+        <h2 class="text-center hidden-md visible-xs visible-sm w3-text-white no-margin">T.N.Rao College</h2>
+      </div>
+    </div>
+
+
+    <div class="row hidden-xs hidden-sm no-padding">
+      <div class="col-sm-12">
+        <div ui-view="top">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row hidden-xs hidden-sm no-padding">
+      <div class="col-sm-12">
+        <div ui-view="bottom">
+
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <footer class="myfooter w3-padding col-md-12 text-center w3-theme-d4 hidden-xs visible-md">
+        <p>Copyright © 2017 - All Rights Reserved  -
+          <strong>
+            <a href="http://raoinfotech.net/">Rao Infotech PVT LTD.</a>
+          </strong>
+        </p>
+      </footer>
+
+
+      <footer class="mbnav hidden-md col-md-12  text-center w3-theme-d4">
+        <p>Copyright © 2017 - All Rights Reserved  -
+          <strong>
+            <a href="http://raoinfotech.net/">Rao Infotech PVT LTD.</a>
+          </strong>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+
+<script>
+function printRecord(){
+  window.print();
+}
+</script>

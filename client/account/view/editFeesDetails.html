@@ -1,0 +1,120 @@
+<div class="row full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-padding-16 w3-container w3-light-grey">
+      <h2 class="w3-center text-primary letter-spacing-2"><u>Update Fees and Term Dates Details</u></h2>
+    </div>
+    <div class="row">
+      <div class="margin-top-20"></div>    
+      <div class="col-md-10 col-md-offset-1">
+        <form id="addStudent" ng-submit="updateFees(fee)">
+
+         <div class="well well-lg">
+
+          <div class="form-group col-sm-6">
+            <label class="control-label">Starting date of term:</label>
+            <input type="text" class="form-control " ng-model="fee.sdate">
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="control-label">Ending date of term:</label>
+            <input type="text" class="form-control " ng-model="fee.edate">
+          </div>
+
+
+          <fieldset>
+
+            <legend class="font-monospace">Fees Structure</legend>
+            
+            <div class="form-group">
+              <label class="control-label">Tution Fees:</label>
+              <input type="number" required  class="form-control " ng-model="fee.tution_fees" placeholder="Tution Fees">
+
+
+              <div class="form-group">
+                <label class="control-label">Saurastra University Development and Sports Fees:</label>
+                <input type="number" required  class="form-control " ng-model="fee.su_sports_fees" placeholder="Saurastra University Dev. and Sports Fees">
+              </div>
+
+
+              <div class="form-group">
+                <label class="control-label">Saurastra University Enrollment Fees:</label>
+                <input type="number" required  class="form-control "  ng-model="fee.su_enrollment_fees" placeholder="Saurastra University Enlistment Fees">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Saurastra University Enlistment Fees:</label>
+                <input type="number" required  class="form-control " ng-model="fee.su_enlistment_fees" placeholder="Saurastra University Enlistment Fees">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Saurastra University Exam Fees:</label>
+                <input type="number" required  class="form-control " ng-model="fee.su_exam_fees" placeholder="Saurastra University Exam Fees">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Saurashtra UNiversity Exam and project Fee: </label>
+                <input type="number" required  class="form-control " ng-model="fee.su_exam_project_fees" placeholder="Saurashtra UNiversity Exam and project Fee ">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Project Viva Fees: </label>
+                <input type="number" required  class="form-control " ng-model="fee.viva_project_fees" placeholder="Project Viva charges: ">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Saurashtra University Degree Fee: </label>
+                <input type="number" required  class="form-control " ng-model="fee.su_degree_fees" placeholder="Saurashtra University Degree Fee ">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Library, Computer And Infrastructure maintenance charges: </label>
+                <input type="number" required  class="form-control " ng-model="fee.lib_fees" placeholder="Lib. Com. And Infrastructure maintenance ">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">I-card And Miscellaneous Fees:</label>
+                <input type="number" required  class="form-control " ng-model="fee.misc_fees" placeholder="I-card And Misc. Fees">
+              </div>
+            </fieldset>
+
+
+          </div>
+
+
+         
+       <div class="alert alert-error w3-custom-red w3-text-white fade in">
+            <span><strong>Error!</strong> Please try again!</span>
+            <a class="close-red-alert w3-right" aria-label="close">&times;</a>
+          </div>
+
+          <div class="alert alert-successful w3-custom-blue w3-text-white fade in">
+            <span><strong>Success!</strong> Fees are Updated!</span>
+            <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+          </div>
+
+          <div class="col-md-12 text-center margin-bottom-20">
+           <button class="btn btn-success btn-md" type="submit"><i class="fa fa-wrench" aria-hidden="true"></i> Update</button>
+
+         </div>
+       </form>
+
+     </div>
+   </div>
+ </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+});
+</script>

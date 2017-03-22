@@ -1,0 +1,47 @@
+<div class="row full-height">
+	<div class="col-md-12 col-xs-12">
+
+		<div class="w3-padding-16 w3-container w3-light-grey img-rounded">
+			<h2 class="text-center text-primary letter-spacing-1"><u>Student Contact Details  {{courseid | uppercase}} <span ng-show="selectedSem">sem - </span>{{selectedSem | uppercase}}<u></h2>
+
+			<div class="col-md-offset-3 col-md-6 print_hide">
+
+				<select class="form-control margin-top-10" ng-model="course" ng-options="courses.courseid for courses in courses" ng-change="getSem(course)">
+					<option value="" selected disabled> Select course</option>
+				</select>
+
+				<select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change="getContactInfo(selectedSem)">
+					<option value="" selected disabled> Select Semester</option>
+					<option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+				</select>
+
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-12">
+					<div class="w3-responsive margin-top-20 " ng-show="students">					
+						<table class="w3-table w3-bordered w3-centered">
+							<tr class="w3-theme-l4">
+								<th>Seq. No.</th>
+								<th ng-click="orderByField='name'; reverseSort = !reverseSort">Name</th>
+								<th ng-click="orderByField='grno'; reverseSort = !reverseSort" >Grno</th>
+								<th>Student Phone</th>
+								<th>Parent's Phone</th>
+								<th>Residence Phone</th>
+							</tr>
+							<tr ng-repeat="x in students | orderBy:orderByField:reverseSort ">
+								<td>{{$index+1}}</td>
+								<td>{{x.name}}</td>
+								<td>{{x.grno}}</td>
+								<td>{{x.sphone}}</td>
+								<td>{{x.fphone}}</td>
+								<td>{{x.rphone}}</td>
+							</tr>
+						</table>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

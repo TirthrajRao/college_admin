@@ -1,0 +1,15 @@
+//bank name
+//ifsc code
+//a/c nub
+//enrollment nub ------------
+//course wise receipt id
+//course wise receipt search
+//search record not paid warning
+//category wise chart ...course wise
+//student contact details semester wise
+date wise admission chart...
+character cert
+fee receipt details
+transfer certificate
+
+dd/mm/yyyy

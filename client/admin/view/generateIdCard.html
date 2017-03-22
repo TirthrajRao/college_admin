@@ -1,0 +1,50 @@
+<div class="row full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-light-grey w3-padding-16 w3-container">
+      <h2 class="w3-center letterspacing-2 text-primary tahoma"><u>Generate ID-Card <span ng-show="selectedSem">of {{courseid| uppercase}} Sem - {{selectedSem}} </span></u></h2>
+
+      <div class="col-md-6 col-md-offset-3 margin-top-10" ng-hide="receipt">
+        <select class="form-control" ng-model="x.course" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x.course)">
+          <option value="" selected disabled>Select Course</option>
+        </select>
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change="getStudentsBySem(selectedSem)">
+          <option value="" selected disabled>Select Semester</option>
+          <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 col-md-offset-3">
+        <auto-complete-textbox ng-show="students" class="col-md-12  col-xs-12 no-padding"
+        placeholdertext="Search By Grno/Name"
+        array='students'
+        output="student"
+        search = "searchArray"
+        display = "showArray"
+        callback="getStudents()" >
+      </auto-complete-textbox>
+    </div>
+  </div>
+  <div class="margin-top-20"></div>
+
+  <div id="my-card"  ng-show="student" style="width:15cm;height:10cm; font-family:verdana;padding-top:2.95cm; padding-left:1.50cm; background-size:contain; background-repeat:no-repeat;">
+   <img src="assets/images/college_icard.jpg" style="width:15cm;margin-top:-3cm; margin-left:-1.50cm; position:absolute; z-index:-5">
+   <div class="row row-eq-height">
+    <div>
+      <p style="margin-top:0.8cm;">GR : <span style="font-weight:bold">{{student.grno}}</span></p>
+      <img src="../server/{{student.path}}" style="width:3.5cm; height:4cm;  top:12cm; left:2cm; border-style:solid; border-color:maroon;">
+    </div>
+    <div style="margin-left:1cm; width:8.5cm; margin-top:0.75cm">
+     <p style="color:rgb(150,80,80); font-weight:bold; text-transform:uppercase; text-indent:0.5cm;">{{student.name}} </p>
+     <p style="margin-bottom:0;margin-top:0.3cm;color:rgb(100,150,200); width:100%; text-transform:uppercase;">Address:{{student.address}} </p>
+     <p style="color:tomato; margin-top:0.3cm"> Phone: {{student.sphone}}</p>
+     <p style="color:rgb(100,150,200); margin-bottom:0"><span style="font-weight:100">DOB :</span>{{student.dob}} </p>
+     <p style="margin-top:0;"> {{student.courseid|uppercase}} </p>
+   </div>
+ </div>
+</div>
+<div class="w3-center margin-top-10" ng-show="student" >
+  <button class="btn btn-success" id="btnSave" ng-click="generateIdPng()" ><i class="fa fa-print"></i> Generate ID Card of {{student.name}}</button>
+</div>
+</div>
+</div>

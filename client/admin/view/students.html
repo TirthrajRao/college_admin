@@ -1,0 +1,56 @@
+<div class="row margin-bottom-35 full-height">
+
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-padding-16 w3-container w3-light-grey img-rounded">
+      <h2 class="text-center text-primary letter-spacing-1"><u>Students Details</u></h2>
+      
+      <div class="col-md-offset-3 col-md-6 ">
+        <select class="form-control margin-top-10" ng-model="course" ng-options="courses.courseid for courses in courses" ng-change="getSem(course)">
+          <option value="" selected disabled>Select Course</option>
+        </select>
+        
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change="getStudents(selectedSem)">
+          <option value="" selected disabled>Select Semester</option>
+          <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <div class="w3-responsive margin-top-20">
+            <table class="w3-table w3-bordered sortable w3-centered" ng-init="olfy = 'name'" ng-show="students">
+
+              <tr class="w3-theme-l4">
+                <th>Seq. No</th>
+                <th ng-click="olfy = 'name'">Name </th>
+                <th ng-click="olfy = 'course'">Course</th>
+                <th>Semester</th>
+                <th>G.R.No</th>
+                <th>Phone</th>
+              </tr>
+
+              <tbody>
+                <tr>
+                  <td colspan="9" class="bg-primary" ng-hide="students">
+                    <h1 class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                    </td>
+                  </tr>
+                  <tr ng-repeat='x in students | orderBy : olfy' ng-show="students" ng-click = "editStudent(x.sid)" >
+                    <td>{{$index+1}} </td>
+
+                    <td>{{x.name}} </td>
+                    <td>{{x.courseid}}</td>
+                    <td>{{x.sem}}</td>
+                    <td>{{x.grno}}</td>
+                    <td>{{x.fphone}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

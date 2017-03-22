@@ -1,0 +1,185 @@
+<div class="row full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-container w3-padding-16 w3-light-grey margin-top-10">
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Add Fees <span ng-show="selectedSem">of {{courseid| uppercase}} Sem - {{selectedSem}} </u></span></h2>
+
+      <div class="col-md-6 col-md-offset-3" ng-hide="receipt">
+        <select class="form-control margin-top-10" ng-model="x.course" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x.course)">
+          <option value="" selected disabled>Select Course</option>
+        </select>
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-click="getStudentsAccountRecord(selectedSem)">
+          <option value="" selected disabled>Select Semester</option>
+          <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+        </select>
+        <div ng-show = "selectedSem">
+          <form ng-submit="getStudentByName(name)" >
+            <input class="form-control margin-top-10" list="record" placeholder="Search with NAME of student" ng-model="name" >
+
+            <datalist id="record">
+              <option value="{{x.name}}"  ng-repeat="x in record">{{x.grno}}</option>
+            </datalist>
+            <div class="w3-center margin-top-10" >
+              <button class="btn btn-success" type="submit">Add Fees</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- pay fees Form -->
+    <div class="margin-top-bottom-30"></div>
+    <div class="well well-lg" ng-show="student">
+      <div class="row margin-top-10"  >
+        <div class="col-md-10 col-md-offset-1 ">
+          <form ng-submit="addFees(y)" ng-init="y = {} " id="addFees">
+            <fieldset>
+              <legend class=""><b>{{student.name}} </b>(G.R. No: {{student.grno}})</legend>
+              <div >
+                <div class="col-md-12">
+                  <h3 class="">{{student.courseid | uppercase}} Sem-{{student.sem}}
+                    <button type="button" class="btn btn-primary w3-right" data-toggle="modal" data-target="#myModal" ng-show="selectedSem" >Fees Structure for {{student.courseid | uppercase}} Sem- {{student.sem}} </button> 
+                  </h3>
+                  <h3>  Payable Amount : <i class="fa fa-inr"></i> {{totalFees.total_fees}}</h3>
+
+
+                  <h3>  Total Paid : <i class="fa fa-inr"></i> {{y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees}}</h3>
+                  <h3>  Total Pending : <i class="fa fa-inr"></i> {{totalFees.total_fees - (y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees + y.su_enrollment_fees + y.su_degree_fees + y.su_exam_project_fees + y.su_enrollment_fees + y.viva_project_fees  + y.discount)}}</h3>
+                </div>
+
+
+                <div class="col-md-12">
+
+                  <div ng-hide="totalFees.tution_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Tution Fees: <i class="fa fa-inr"></i> {{totalFees.tution_fees}}  (<i class="fa fa-inr"></i> {{totalFees.tution_fees - y.tution_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-model="y.tution_fees"  placeholder="Tution Fees" ng-init="y.tution_fees = 0" />
+                  </div>
+
+                  <div ng-hide="totalFees.su_exam_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Exam Fees : <i class="fa fa-inr"></i> {{totalFees.su_exam_fees}} ( <i class="fa fa-inr"></i> {{totalFees.su_exam_fees - y.su_exam_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_exam_fees= 0" ng-model="y.su_exam_fees"  placeholder="Saurashtra University Exam Fees"/>
+                  </div>
+
+                  <div ng-hide="totalFees.su_sports_fees == '0' ">
+                    <span class=" margin-bottom-10 "> Saurashtra University Sports Fees : <i class="fa fa-inr"></i> {{totalFees.su_sports_fees}} (<i class="fa fa-inr"></i>  {{totalFees.su_sports_fees - y.su_sports_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_sports_fees= 0" ng-model="y.su_sports_fees"   placeholder="Saurashtra University Sports Fees"/>
+                  </div>
+
+                  <div ng-hide ="totalFees.su_enlistment_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Enlistment Fee: <i class="fa fa-inr"></i> {{totalFees.su_enlistment_fees}} (<i class="fa fa-inr"></i> {{totalFees.su_enlistment_fees - y.su_enlistment_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_enlistment_fees= 0" ng-model="y.su_enlistment_fees"  placeholder="Saurashtra University Enlistment Fee"/>
+                  </div>
+
+                  <div ng-hide ="totalFees.su_enrollment_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Enrollment Fee: <i class="fa fa-inr"></i> {{totalFees.su_enrollment_fees}} ( <i class="fa fa-inr"></i> {{totalFees.su_enrollment_fees - y.su_enrollment_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_enrollment_fees= 0" ng-model="y.su_enrollment_fees"  placeholder="Saurashtra University Enrollment Fee"/>
+                  </div>
+
+                  <div ng-hide="totalFees.su_exam_project_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Exam And Project Practical Fee: <i class="fa fa-inr"></i> {{totalFees.su_exam_project_fees}} (<i class="fa fa-inr"></i> {{totalFees.su_exam_project_fees - y.su_exam_project_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_exam_project_fees= 0" ng-model="y.su_exam_project_fees"  placeholder="Saurashtra University Exam And Project practical Fees"/>
+                  </div>
+
+                  <div ng-hide="totalFees.viva_project_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Project Viva Fee : <i class="fa fa-inr"></i> {{totalFees.viva_project_fees}} (<i class="fa fa-inr"></i> {{totalFees.viva_project_fees - y.viva_project_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.viva_project_fees= 0" ng-model="y.viva_project_fees"  placeholder="Saurashtra University Project Viva Fees"/>
+                  </div>
+                  <div ng-hide="totalFees.su_degree_fees = '0' ">
+                    <span class=" margin-bottom-10 ">Saurashtra University Degree Fee: <i class="fa fa-inr"></i> {{totalFees.su_degree_fees}} (<i class="fa fa-inr"></i> {{totalFees.su_degree_fees - y.su_degree_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.su_degree_fees= 0" ng-model="y.su_degree_fees"  placeholder="Saurashtra University Degree Fee"/>
+                  </div>
+
+                  <div ng-hide="totalFees.misc_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Miscellaneous Charges: <i class="fa fa-inr"></i> {{totalFees.misc_fees}} (<i class="fa fa-inr"></i> {{totalFees.misc_fees - y.misc_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.misc_fees= 0" ng-model="y.misc_fees"  placeholder="Miscellaneous Charges"/>
+                  </div>
+
+                  <div ng-hide="totalFees.lib_fees == '0' ">
+                    <span class=" margin-bottom-10 ">Library Charges: <i class="fa fa-inr"></i> {{totalFees.lib_fees}} (<i class="fa fa-inr"></i> {{totalFees.lib_fees - y.lib_fees}})</span>
+                    <input type="number" class="form-control inputField"  required  ng-init="y.lib_fees= 0" ng-model="y.lib_fees" ng-value="0" placeholder="Library Charges"/>
+                  </div>
+
+                  <label class="  checkbox-inline"><input type="checkbox"  ng-model="selectDiscount" value="" margin-top-10>Discount</label>
+                  <span class="" ng-show="selectDiscount">Discount Amount:</span>
+
+                  <input id= "discount" type="number" ng-show="selectDiscount" required class="form-control margin-top-10" ng-init="y.discount= 0" ng-model="y.discount" placeholder="Enter 0 if no discount allocated to this student"  >
+                  <span class="">Mode of Payment:</span>
+
+                  <div class="border-square">
+                    <label class="radio-inline">
+                      <input type="radio"name="payment" ng-model="y.payMode" value="cash">Cash
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"name="payment" ng-model="y.payMode" value="dd">Demand draft
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"name="payment" ng-model="y.payMode" value="cheque">Cheque
+                    </label>
+                  </div>
+                  <span class="" ng-show ="y.payMode != 'cash'">Enter Cheque or D.D serial Num:</span>
+
+                  <input type="text" class="form-control inputField" ng-show="y.payMode != 'cash' "  ng-model="y.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
+                  <span class="" ng-show ="y.payMode != 'cash' ">Enter Name of the bank:</span>
+
+                  <input type="text" class="form-control inputField" ng-show="y.payMode != 'cash'"  ng-model="y.bankName" placeholder="Must be in full letters ">
+                  <div class="w3-center margin-top-10" ng-hide="receipt">
+                    <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
+
+
+                    <button class="w3-btn w3-border w3-blue" ng-show="y.sem" ng-click="printReceipt(receipt.id)">Print fee receipt of {{student.name}}</button>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+
+
+<!-- modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title w3-center text-primary">{{courseid | uppercase}} Semester-{{selectedSem}}</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item">Tution Fees :- <b> <i class="fa fa-inr"></i> {{totalFees.tution_fees}}</b></li>
+          <li class="list-group-item">Saurashtra University exam Fee :- <b> <i class="fa fa-inr"></i> {{totalFees.su_exam_fees}}</b> </li>
+          <li class="list-group-item">Saurashtra University sports Fee :- <b> <i class="fa fa-inr"></i> {{totalFees.su_sports_fees}}</b></li>
+          <li class="list-group-item">Saurashtra University Enlistment Fee :- <b> <i class="fa fa-inr"></i> {{totalFees.su_enlistment_fees}}</b></li>
+          <li class="list-group-item">Miscellaneous Charges :- <b> <i class="fa fa-inr"></i> {{totalFees.misc_fees}}</b></li>
+          <li class="list-group-item">Library Charges :- <b> <i class="fa fa-inr"></i> {{totalFees.lib_fees}}</b></li>
+          <li class="list-group-item">Saurashtra University Enrollment Fee :- <b> <i class="fa fa-inr"></i> {{totalFees.su_enrollment_fees}}</b></li>
+          <li class="list-group-item">Saurashtra University Degree Fee :- <b> <i class="fa fa-inr"></i> {{totalFees.su_degree_fees}}</b></li>
+          <li class="list-group-item">Project Viva Fees :- <b> <i class="fa fa-inr"></i> {{totalFees.viva_project_fees}}</b></li>
+          <li class="list-group-item">Saurashtra University Exam And Project Practical Fee  :- <b> <i class="fa fa-inr"></i> {{totalFees.su_exam_project_fees}}</b></li><hr>
+
+          <h3><li class="list-group-item text-primary">Total Fees = <b> <i class="fa fa-inr"></i> {{totalFees.total_fees}}</b></li></h3>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->

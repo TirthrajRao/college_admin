@@ -1,0 +1,53 @@
+<div class="row margin-bottom-35 full-height">
+	<div class="col-md-12 col-xs-12">
+		<div class="w3-container w3-padding-16 w3-light-grey">
+			<h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Fees Record</u></h2>
+			<form ng-submit = "getFeesRecordFromTo(x,y)" class="print_hide">
+				<div class="col-md-5 col-xs-12">
+					<kbd>From Date:</kbd><input id="datefield" class= "form-control" type="date" ng-model = "x" >
+					<br>
+
+				</div>
+				<div class="col-md-5 col-xs-12">
+					<kbd>To Date:</kbd><input id="datefield1" class= "form-control" type="date" ng-model = "y">
+				</div>
+
+				<div class="col-md-2 ">
+					<br>
+					<input type="submit" class="btn btn-success myElement pull-down">
+
+				</form>
+			</div>
+			<br>
+			<div class="col-md-12 col-xs-12 col-sm-12">
+
+
+				<br>
+				<kbd ng-show="record">Account report from Date : {{fromDate}} to Date : {{toDate}}</kbd>
+				<div class="w3-responsive">
+					<table  class="w3-table w3-centered w3-bordered" ng-show="record">
+						<thead>
+							<tr class="w3-theme-l4">
+								<th>Seq. No</th>
+								<th>Course-Sem</th>
+								<th>Amount </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="3" class="bg-primary" ng-hide="record">
+									<h1 class="text-center"><i class="fa fa-refresh fa-spin"></i></h1>
+								</td>
+							</tr>
+							<tr ng-repeat="(key,value) in record" ng-show="record" ng-click="getAccountBySem(key)" ng-disabled="$last">
+								<td>{{$index+1}} </td>
+								<td> {{key}}</td>
+								<td>{{value}} </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

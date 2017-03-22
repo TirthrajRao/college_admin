@@ -1,0 +1,57 @@
+thead td {
+...
+line-height: 3.4em;
+height: 3.4em;
+...
+}
+table { page-break-inside:auto; }
+
+tr    { page-break-inside:auto; }
+.nav{
+  display: none;
+}
+.bonafide-Label{
+  text-decoration: underline;
+  color:blue;
+}
+#bonafiteForm{
+  display: none;
+}
+button {
+    display: none !important;
+  }
+  input,
+  textarea {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+@page{size:auto; margin-bottom:5mm; margin-top: 5mm}
+.bonafide{
+  margin-top: 10%;
+}
+
+.trial{
+	font-size: 20px;
+}
+input{
+	border :none;
+	border-bottom: 1px solid #000000;
+}
+select{
+	border:none;
+
+}
+.course_selector{
+  display: none;
+}
+.pay_fees{
+  display :none;
+}
+.main_header{
+  display:none;
+}
+.print_hide{
+  display :none;
+}

@@ -1,0 +1,48 @@
+<div class="row margin-bottom-35 full-height">
+  <div class="col-md-12 col-xs-12">
+
+    <div class="w3-padding-16 w3-container w3-light-grey img-rounded">
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Enter Enrollment Details<u></h2>
+
+      <div class="col-md-offset-3 col-md-6">
+        <select class="form-control margin-top-10" ng-model="course" ng-options="courses.courseid for courses in courses" ng-change="getSem(course)">
+          <option value="" selected disabled>Select Course</option>
+        </select>
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change="getStudents(selectedSem)">
+          <option value="" selected disabled>Select Semester</option>
+          <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <div class="w3-responsive margin-top-20">
+            <table class="w3-table w3-bordered w3-centered">
+              <tr class="w3-theme-l4">
+                <th>Seq. No.</th>
+                <th>Name (G.R.No.)</th>
+                <th>Enrollment</th>
+                <th>Submit</th>
+              </tr>
+              <tr ng-show="students" ng-repeat="x in students">
+                <td>{{$index + 1}}</td>
+                <td>{{x.name}}(grno - {{x.grno}})</td>
+                <td ng-hide="x.enrollment.length"><input type="text" class="form-control" ng-model="enrollment" placeholder="Enter Enrollment Number"></td>
+                <td ng-show="x.enrollment.length" class="text-danger">{{x.enrollment}}</td>
+                <td ><button class="btn btn-success" ng-hide="x.enrollment" ng-click="submitEntrollment(x.sid,enrollment)"> Submit </button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

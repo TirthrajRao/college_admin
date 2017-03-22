@@ -1,0 +1,76 @@
+<div class="row full-height">
+  <div class="col-md-12">
+
+    <div class="w3-container w3-padding-16 w3-light-grey">
+      <h2 class="text-primary w3-center tahoma letter-spacing-2"><span class="underline">Promote Student </span> <span ng-show="courseid"> <span class="underline"> of </span> </span> <span class="w3-text-black">{{courseid | uppercase}} </span>  <span ng-show="selectedSem" class="w3-text-black">Sem - </span> <span class="w3-text-black">{{selectedSem}} </span></h2>
+
+      <div class="col-md-6 col-md-offset-3 margin-top-10" >
+        <select class="form-control" ng-model="x['course']" ng-options="courses.courseid for courses in courses" ng-change="getSem(x['course'])">
+          <option value="" selected disabled>Select course</option>
+        </select>
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem">
+          <option value="" selected disabled>Select Semester</option>
+          <option ng-repeat="x in semester track by $index" value="{{x}}">{{x}}</option>
+        </select>
+
+      </div>
+      
+      
+
+      <div class=" col-md-6 col-md-offset-3 margin-top-bottom-20 w3-center" style="margin-top:50px" ng-show="selectedSem == semester.length">
+        <div ng-show="courseid">
+          <button class="btn btn-danger btn-lg" ng-click="insertIntoPassout(selectedSem)">Move Passout Students <span ng-show="courseid">of</span> {{courseid | uppercase}}  <span ng-show="selectedSem">Sem - </span>{{selectedSem}} </button>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class=" col-md-6 col-md-offset-3 margin-top-bottom-20 w3-center" style="margin-top:50px" ng-show="selectedSem < semester.length ">
+        <div ng-show="courseid">
+          <button class="btn btn-success btn-lg" ng-click="promoteToNextSem(selectedSem)">Promote Student of  Sem-{{selectedSem|number }}  {{courseid | uppercase}} to Next Sem  </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2 margin-top-bottom-20">
+      <div class="w3-container">
+        <div class="alert alert-successful-passout w3-custom-blue w3-text-white fade in">
+          <span><strong>Success!</strong> Students are promoted to Passout Student Records!</span>
+          <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+        </div>
+
+        <div class="alert alert-successful-nextsem w3-custom-blue w3-text-white fade in" >
+          <span><strong>Success!</strong> Students are promoted to Next Semester!</span>
+          <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+        </div>
+
+        <div class="alert alert-error w3-custom-red w3-text-white fade in" >
+          <span><strong>Error!</strong> Please contact Rao Infotech Private Ltd for further assistance!</span>
+          <a class="close-red-alert w3-right" aria-label="close">&times;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+  
+});
+</script>

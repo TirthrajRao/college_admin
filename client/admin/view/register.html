@@ -1,0 +1,269 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12">
+
+    <div class="w3-container w3-padding-16 w3-light-grey">
+      <h2 class="w3-center text-primary letter-spacing-2" ><u>Student Registration</u></h2>
+    </div>
+    <div class="margin-top-bottom-30"></div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <form id="addStudent" ng-init="x = {}" ng-submit="addStudent(x)">
+
+          <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace">Student Information </legend>
+              <div class="col-sm-6 form-group">
+                <label class="control-label"> Select Course : </label>
+                <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change = " getSem(x['course']) ">
+                  <option value="" selected disabled> Select Course </option>
+                </select>
+              </div>              
+              <div class="col-sm-6 form-group">
+                <label class="control-label"> Select Semester : </label>
+                <select class="form-control " required ng-model="x['sem']">
+                  <option value="" selected disabled>Select Semester</option>
+                  <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+                </select>
+              </div>
+              
+              <div class="col-sm-12 form-group">
+                <label ng-show = "x['course']" class="control-label"> G.R.NO  : </label>
+                <input class="form-control" type="number" required ng-model="x['grno']" ng-show ="x['course']" type="text" value="{{lastGr.grno}}" placeholder="G.R.NO">
+              </div>
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Student's Surname : </label>
+                <input class="form-control" ng-model ="x['lname']" required type="text" placeholder="Enter Student's Surname">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Student's Name : </label>
+                <input class="form-control" required ng-model ="x['fname']" type="text" placeholder="Enter Student's Name">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Father's Name : </label>
+                <input class="form-control" required ng-model ="x['mname']" type="text" placeholder="Enter Father's Name">
+              </div>
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Mother's Name :</label>
+                <input class="form-control" required ng-modal="x['motherName']" type="text" placeholder="Enter Mother's Name">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label"> Select Gender : </label>
+                <select class="form-control" required ng-model="x['gender']" >
+                  <option value="" disabled>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Date Of Birth :</label>
+                <input class="form-control"  ng-model ="x['fdate']" type="date" placeholder="Date of Birth">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Aadhar Card Number : </label>
+                <input class="form-control" required ng-model="x['adharCard']" type="text" placeholder="Enter Adhar Card Number" min="12" max="12">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Student's Address : </label>
+                <textarea rows="4" class="form-control" required ng-model ="x['address']" type="text" placeholder="Enter Student's Address"></textarea>
+              </div>
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">City : </label>
+                <input class="form-control" ng-model ="x['city']" type="text" placeholder="Enter City">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Taluka : </label>
+                <input class="form-control" ng-model ="x['taluka']" type="text" placeholder="Enter Taluka">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">District : </label>
+                <input class="form-control" ng-model ="x['dist']" type="text" placeholder="Enter District">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Pincode : </label>
+                <input class="form-control" ng-model ="x['pincode']" type="number" placeholder="Enter Pincode">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Select Category : </label>
+                <select class="form-control" ng-model="x['category']" >
+                  <option value="" disabled>Select Category</option>
+                  <option value="sc">S.C</option>
+                  <option value="st">S.T</option>
+                  <option value="sebc">S.E.B.C</option>
+                  <option value="open">OPEN</option>
+                </select>
+              </div>
+
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Name of Bank :</label>
+                <input class="form-control" ng-modal="x['bankName']" type="text" placeholder="Enter Name of Bank">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Bank Account Number :</label>
+                <input class="form-control" ng-modal="x['accountNub']" type="text" placeholder="Enter Bank Account Number">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">IFSC Code : </label>
+                <input class="form-control" ng-modal="x['ifscCode']" type="text" placeholder="IFSC code of Branch">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Mobile Number : </label>
+                <input class="form-control" ng-model ="x['sphone']" type="text" placeholder="Enter Mobile Number" pattern="^([0|\+[0-9]{1,5})?([1-9][0-9]{9})$">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Residence Number : </label>
+                <input class="form-control" ng-model ="x['rphone']" type="number" placeholder="Enter Residence Number">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Father's Mobile Number :</label>
+                <input class="form-control" ng-model ="x['fphone']" type="text" placeholder="Enter Father's Mobile Number" pattern="^([0|\+[0-9]{1,5})?([1-9][0-9]{9})$">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Father's Office Number :</label>
+                <input class="form-control" ng-model ="x['ophone']" type="number" placeholder="Enter Father's Office Number">
+              </div>
+              
+            </fieldset>
+          </div>
+
+          <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace"> Academic Information </legend>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Name of Last Institue : </label>
+                <input class="form-control" ng-model ="x['last_inst']" type="text" placeholder="Enter Name of Last Institute">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Seat Number :</label>
+                <input class="form-control" ng-model ="x['seat_nub']" type="text" placeholder="Enter H.S.C / T.Y Seat number">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Stream :</label>
+                <input class="form-control" ng-model ="x['stream']" type="text" placeholder="Enter Stream">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Name of Board/University :</label>
+                <input class="form-control" ng-model ="x['uni']" type="text" placeholder="Enter Name of Board/University">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Month of Passing :</label>
+                <input class="form-control" ng-model ="x['mop']" type="text" placeholder="Enter Month of Passing">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Year of Passing : </label>
+                <input class="form-control" ng-model ="x['yop']" type="number" placeholder="Enter Year of passing">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Attempt : </label>
+                <input class="form-control" ng-model ="x['attempt']" type="number" placeholder="Enter Number of Attempt">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Total Marks :</label>
+                <input class="form-control" ng-model ="x['total_marks']"  type="number" placeholder="Enter Total Marks">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Marks Obtained :</label>
+                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained">
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace">Photo Upload </legend>
+              <div class="form-group col-sm-12">
+                <div class="col-md-2 col-xs-3 no-padding">
+                  <label class="control-label">Upload Photo :</label>
+                </div>
+                <div class="col-md-3 col-xs-9">
+                  <input type="file" name="photo" id="fileToUpload" file-model="myPhoto" accept="image/*"/>
+                </div>
+
+                <div class="col-md-2 col-xs-3 no-padding">
+                  <label class="control-label">Access Camera : </label>
+                </div>
+
+                <div class="col-md-5 col-xs-9">
+                  <input type="button" class="btn btn-info" ng-click="setup();" value="Access Camera" onClick="$(this).hide().next().show();">
+                  <input type="button" value="Take Snapshot" class="btn btn-success" ng-click="take_snapshot()" ng-show="showcam">
+                </div>
+              </div>
+
+              
+
+              <div class="col-sm-12" ng-show="showcam">
+                <div class="col-sm-6">
+                  <p class="text-info">Capture Image</p>
+                  <div class="col-sm-6 w3-center" id="my_camera">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <p class="text-info">Captured Image</p>
+                  <div class="col-sm-6 w3-center" id="results">
+                  </div>
+                </div>
+              </div>
+
+            </fieldset>
+          </div>
+        <div class="col-md-12 text-center margin-bottom-20">
+          <button class="btn btn-success btn-md" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add Student</button>
+        </div>
+      </form>
+    </div>
+
+
+
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="alert alert-studentadded w3-custom-blue w3-text-white fade in">
+        <span><strong>Success!</strong> Student has been added!</span>
+        <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<script>
+Webcam.set({
+ width: 320,
+ height: 240,
+ image_format: 'jpeg',
+ jpeg_quality: 90
+});
+function setup() {
+ Webcam.attach( '#my_camera' );
+}
+
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+});
+</script>
+
+<style>
+input[type='file'] {
+  color: transparent;
+}
+</style>

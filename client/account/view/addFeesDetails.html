@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12">
+    <div class="well well-md">
+      <h2 class="w3-center letter-spacing-2 tahoma text-primary"><u>Fees and term dates Details</u></h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <form id="addStudent" ng-init="x = {}" ng-submit="addFeesDetails(x)">
+
+         <div class="well well-lg">
+
+          <fieldset>
+            <legend class="font-monospace">Fees Details</legend>
+            
+            <div class="form-group col-sm-12">
+              <label class="control-label">Select Course : </label>
+              <select class="form-control" ng-model="x['course']" ng-options="courses.courseid for courses in courses" ng-change="getSem(x['course'])">
+                <option value="" selected disabled>Select Course</option>
+              </select>
+            </div>
+            
+            <div class="col-sm-12 form-group" ng-show="semester">
+              <label class="control-label">Select Semester : </label>
+              <select class="form-control" ng-model="x['sem']" >
+                <option value="" selected disabled>Select Semester</option>
+                <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-6 form-group">
+              <label class="control-label">Starting Date of Term :</label>
+              <input type="date" class="form-control " ng-model="x['fdate']">
+            </div>
+            <div class="col-sm-6 form-group">
+              <label class="control-label">Ending Date of Term : </label>
+              <input type="date" class="form-control " ng-model="x['tdate']">
+            </div>
+
+            <fieldset>
+
+              <legend class="font-monospace">Fees Structure</legend>
+
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Tution Fees:</label>
+                <input type="number" required  class="form-control " ng-init="x.tution_fees=0" ng-model="x.tution_fees"  placeholder="Tution Fees">
+              </div>
+              
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Saurastra University Development and Sports Fees:</label>
+                <input type="number" required  class="form-control " ng-init="x.su_sports_fees=0" ng-model="x.su_sports_fees" placeholder="Saurastra University Dev. and Sports Fees">
+              </div>
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Saurastra University Enrollment Fees:</label>
+                <input type="number" required  class="form-control " ng-init="x.su_enrollment_fees=0" ng-model="x.su_enrollment_fees" placeholder="Saurastra University Enlistment Fees">
+              </div>
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Saurastra University Enlistment Fees:</label>
+                <input type="number" required  class="form-control " ng-init="x.su_enlistment_fees=0" ng-model="x.su_enlistment_fees" placeholder="Saurastra University Enlistment Fees">
+              </div>
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Saurastra University Exam Fees:</label>
+                <input type="number" required  class="form-control " ng-init="x.su_exam_fees=0"  ng-model="x.su_exam_fees" placeholder="Saurastra University Exam Fees">
+              </div>
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Saurashtra University Exam and Project Fee: </label>
+                <input type="number" required  class="form-control " ng-init="x.su_exam_project_fees=0" ng-model="x.su_exam_project_fees" placeholder="Saurashtra UNiversity Exam and project Fee ">
+              </div>
+              <div class="col-sm-10 col-sm-offset-1 form-group">
+                <label class="control-label">Project Viva charges: </label>
+                <input type="number" required  class="form-control " ng-init="x.viva_project_fees=0" ng-model="x.viva_project_fees" placeholder="Project Viva charges: ">
+
+              </div><div class="col-sm-10 col-sm-offset-1 form-group">
+              <label class="control-label">Saurashtra University Degree Fee: </label>
+              <input type="number" required  class="form-control " ng-init="x.su_degree_fees=0" ng-model="x.su_degree_fees" placeholder="Saurashtra University Degree Fee ">
+            </div>
+            <div class="col-sm-10 col-sm-offset-1 form-group">
+              <label class="control-label">Library, Computer And Infrastructure Maintenance Charges: </label>
+              <input type="number" required  class="form-control " ng-init="x.lib_fees=0" ng-model="x.lib_fees" placeholder="Lib. Com. And Infrastructure maintenance ">
+            </div>
+
+            <div class="col-sm-10 col-sm-offset-1 form-group">
+              <label class="control-label">I-card And Miscellaneous Fees:</label>
+              <input type="number" required  class="form-control " ng-init="x.misc_fees=0" ng-model="x.misc_fees" placeholder="I-card And Misc. Fees">
+            </div>
+
+
+          </fieldset>
+
+        </div>
+
+
+
+
+
+        <div class="col-md-12 text-center margin-bottom-20">
+         <button class="btn btn-success btn-md" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add Fees Structure</button>
+
+       </div>
+     </form>
+   </div>
+ </div>
+</div>
+</div>

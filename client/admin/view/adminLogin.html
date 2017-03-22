@@ -1,0 +1,43 @@
+
+<div class="row margin-bottom-35">
+	<div class="margin-top-20"></div>
+
+	<div class="col-sm-offset-4 col-sm-4 col-xs-12 ">
+
+		<div class="well well-md login w3-white w3-center">
+			
+
+			<div class="w3-container w3-center headerElement">
+				<div class="row alert-login w3-text-custom-red" style="display:none;">
+					<span>Username/Password Incorrect!</span>
+				</div>
+				<h2>Admin Login</h2>
+			</div>
+			<div class="w3-container">
+				<div>
+					<img src="assets/images/logoback.png" class="img-responsive w3-border w3-padding margin-auto">
+				</div>
+
+				<form role="form" id="myForm" ng-init="x={}" ng-submit="doLogin(x)">
+
+					<div class="input-group margin-bottom-sm myFormElement">
+						<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+						<input type="text" class="form-control " placeholder="Enter your username" ng-model="x['username']">
+					</div>
+
+					<div class="input-group margin-bottom-sm myFormElement margin-top-10">
+						<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+						<input type="password" class="form-control " placeholder="Enter your password" ng-model="x['password']">
+					</div>
+
+
+					<button type="submit" class="btn btn-md btn-success form-control margin-top-10" autofocus>
+						<i class="fa fa-sign-in">&nbsp;&nbsp;Login</i>
+					</button>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

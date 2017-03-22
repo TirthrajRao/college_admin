@@ -1,0 +1,320 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12">
+
+    <div class="well well-md">
+      <h2 class="w3-center text-primary"><u>Update Information</u></h2>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-10 col-md-offset-1">
+        <form id="addStudent" ng-submit="doUpdate(student)">
+          <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace">Student Information </legend>
+              <div class="col-sm-6 form-group">
+                <label class="control-label"> Select Course : </label>
+                <select class="form-control" ng-model="student.courseid" required ng-options="courses.courseid for courses in courses" ng-change = "getSem(student.courseid) ">
+                  <option value="" selected disabled> Select Course </option>
+                  <option ng-repeat="x in course" value="{{x}}">{{x}}</option>
+                </select>
+              </div>              
+              <div class="col-sm-6 form-group">
+                <label class="control-label"> Select Semester : </label>
+                <select class="form-control " required ng-model="student.sem">
+                  <option value="" selected disabled>Select Semester</option>
+                  <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+                </select>
+              </div>
+              
+              <div class="col-sm-12 form-group">
+                <label class="control-label"> G.R.NO  : </label>
+                <input class="form-control" type="number" required ng-model="student.grno" type="text" placeholder="G.R.NO">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Student's Name : </label>
+                <input class="form-control" ng-model ="student.name" required type="text" placeholder="Enter Student's Name">
+              </div>
+              
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Mother's Name :</label>
+                <input class="form-control" required ng-modal="student.motherName" type="text" placeholder="Enter Mother's Name">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label"> Select Gender : </label>
+                <select class="form-control" required ng-model="student.gender" >
+                  <option value="" disabled>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Date Of Birth :</label>
+                <input class="form-control"  ng-model ="student.dob" type="text" placeholder="Date of Birth">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Aadhar Card Number : </label>
+                <input class="form-control" required ng-model="student.adharCard" type="text" placeholder="Enter Adhar Card Number">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Student's Address : </label>
+                <textarea rows="4" class="form-control" required ng-model ="student.address" type="text" placeholder="Enter Student's Address"></textarea>
+              </div>
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">City : </label>
+                <input class="form-control" ng-model ="student.city" type="text" placeholder="Enter City">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Taluka : </label>
+                <input class="form-control" ng-model ="student.taluka" type="text" placeholder="Enter Taluka">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">District : </label>
+                <input class="form-control" ng-model ="student.dist" type="text" placeholder="Enter District">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Pincode : </label>
+                <input class="form-control" ng-model ="student.pincode" type="number" placeholder="Enter Pincode">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Select Category : </label>
+                <select class="form-control" ng-model="student.category" >
+                  <option value="" disabled>Select Category</option>
+                  <option value="sc">S.C</option>
+                  <option value="st">S.T</option>
+                  <option value="sebc">S.E.B.C</option>
+                  <option value="open">OPEN</option>
+                </select>
+              </div>
+
+
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Name of Bank :</label>
+                <input class="form-control" ng-modal="student.bankName" type="text" placeholder="Enter Name of Bank">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Bank Account Number :</label>
+                <input class="form-control" ng-modal="student.accountNub" type="text" placeholder="Enter Bank Account Number">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">IFSC Code : </label>
+                <input class="form-control" ng-modal="student.ifscCode" type="text" placeholder="IFSC code of Branch">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Mobile Number : </label>
+                <input class="form-control" ng-model ="student.sphone" type="text" placeholder="Enter Mobile Number" pattern="^([0|\+[0-9]{1,5})?([1-9][0-9]{9})$">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Residence Number : </label>
+                <input class="form-control" ng-model ="student.rphone" type="number" placeholder="Enter Residence Number">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Father's Mobile Number :</label>
+                <input class="form-control" ng-model ="student.fphone" type="text" placeholder="Enter Father's Mobile Number" pattern="^([0|\+[0-9]{1,5})?([1-9][0-9]{9})$">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Father's Office Number :</label>
+                <input class="form-control" ng-model ="student.ophone" type="number" placeholder="Enter Father's Office Number">
+              </div>
+              
+            </fieldset>
+          </div>
+
+          <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace"> Academic Information </legend>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Name of Last Institue : </label>
+                <input class="form-control" ng-model ="student.last_inst" type="text" placeholder="Enter Name of Last Institute">
+              </div>
+
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Seat Number :</label>
+                <input class="form-control" ng-model ="student.seat_nub" type="text" placeholder="Enter H.S.C / T.Y Seat number">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Stream :</label>
+                <input class="form-control" ng-model ="student.stream" type="text" placeholder="Enter Stream">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Name of Board/University :</label>
+                <input class="form-control" ng-model ="student.uni" type="text" placeholder="Enter Name of Board/University">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Month of Passing :</label>
+                <input class="form-control" ng-model ="student.mop" type="text" placeholder="Enter Month of Passing">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="control-label">Year of Passing : </label>
+                <input class="form-control" ng-model ="student.yop" type="number" placeholder="Enter Year of passing">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Attempt : </label>
+                <input class="form-control" ng-model ="student.attempt" type="number" placeholder="Enter Number of Attempt">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Total Marks :</label>
+                <input class="form-control" ng-model ="student.total_marks"  type="number" placeholder="Enter Total Marks">
+              </div>
+              <div class="col-sm-4 form-group">
+                <label class="control-label">Marks Obtained :</label>
+                <input class="form-control" ng-model ="student.obtain_marks" type="number" placeholder="Enter Marks Obtained">
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="alert alert-success w3-custom-blue w3-text-white fade in">
+            <span><strong>Success!</strong> Information is updated.</span>
+            <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+          </div>
+
+          <div class="col-md-12 text-center margin-bottom-20">
+            <button class="btn btn-success btn-md" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update Student</button>
+            <button class="btn btn-success btn-md" ng-click = "getBonafide(student.sid)"><i class="fa fa-file-text-o" aria-hidden="true"></i> Generate Bonafide</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+  $('.close-blue-alert').click(function() {
+
+    $('.w3-custom-blue').hide();
+  })
+  $('.close-red-alert').click(function() {
+
+    $('.w3-custom-red').hide();
+  })
+  
+});
+</script>
+
+<!-- <div class="row full-height">
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h2 class="w3-center">Student Details</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <form id="addStudent"  ng-submit="doUpdate(student)">
+
+			      <div class="well well-lg">
+
+              <fieldset>
+                <legend>Student Information</legend>
+              <select   class="form-control margin-auto margin-top-10" style="margin-left:9px" ng-model="student.courseid" >
+                <option value="" disabled>choose a course</option>
+                <option value="bca">B.SC</option>
+                <option value="bba">B.B.A</option>
+                <option value="bcom">B.COM</option>
+                <option value="llb">L.L.B</option>
+                <option value="med">M.ED</option>
+                <option value="bed">B.ED</option>
+                <option value="mscit">M.SC.IT</option>
+                <option value="bsc">B.SC</option>
+
+              </select>
+
+                <select   class="form-control margin-auto margin-top-10" style="margin-left:9px" ng-model="student.sem" >
+                              <option value="" disabled>choose Semester</option>
+                              <option value="1">Sem 1</option>
+                              <option value="2">sem 2</option>
+                              <option value="3">sem 3</option>
+                              <option value="3">sem 3</option>
+                              <option value="4">sem 4</option>
+                              <option value="5">sem 5</option>
+                              <option value="6">sem 6</option>
+                  </select>
+                <label class="custom-form">G.R.NO:</label>
+                <input class="form-control custom-form" required ng-model="student.grno" type="text" placeholder="G.R.NO">
+                <input class="form-control custom-form" required ng-model="student.name" type="text" placeholder="student name">
+
+          <select   class=" required form-control margin-auto margin-top-10" style="margin-left:9px" ng-model="student.gender" >
+            <option value="" disabled>gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+
+          </select>
+
+				<textarea class="form-control custom-form margin-top-10" required ng-model ="student.address" type="text" placeholder="Enter Student's Address"></textarea>
+
+          <input class="form-control custom-form margin-top-10" ng-model ="student.city" type="text" placeholder="city">
+
+
+  				<input class="form-control custom-form margin-top-10"  ng-model ="student.taluka" type="text" placeholder="taluka">
+          <input class="form-control custom-form margin-top-10"  ng-model ="student.dist" type="text" placeholder="district">
+          <label class="custom-form">pincode:</label>
+          <input class="form-control custom-form margin-top-10"  ng-model ="student.pincode" type="number" placeholder="pin code">
+
+				<select   class="form-control margin-auto margin-top-10" style="margin-left:9px" ng-model="student.category" >
+					<option value="" disabled>Category</option>
+          <option value="sc">S.C</option>
+					<option value="st">S.T</option>
+					<option value="sebc">S.E.B.C</option>
+					<option value="open">OPEN</option>
+				</select>
+        <label class="custom-form">Student Phone :</label>
+				<input class="form-control custom-form margin-top-10" ng-model ="student.sphone" type="number" placeholder="Mobile phone number">
+        <label class="custom-form">Student Residence Number:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.rphone" type="number" placeholder="Residence phone number">
+        <label class="custom-form">Phone Number of Father:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.fphone" type="number" placeholder="Father's Mobile phone number">
+        <label class="custom-form">Phone Number of Father's office:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.ophone" type="number" placeholder="Father's Office phone number">
+
+        <div class="col-md-12">
+          <div class="col-md-3 custom-form">
+            <label>Date Of Birth :</label>
+          </div>
+          <div class="col-md-9">
+            <input class="form-control custom-form margin-top-10"  ng-model ="student.dob" type="text" placeholder="Date of Birth">
+          </div>
+        </div>
+      </fieldset>
+        <fieldset class="margin-top-10">
+          <legend>Academic Information:</legend>
+          <label class="custom-form">Last Institute:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.last_inst" type="text" placeholder="Name of the last institute">
+        <label class="custom-form">Seat number</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.seat_nub" type="text" placeholder="H.S.C / T.Y Seat number">
+        <label class="custom-form">Stream:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.stream" type="text" placeholder="Stream">
+        <label class="custom-form">University:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.uni" type="text" placeholder="Board Or University">
+        <label class="custom-form">Month of passing:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.mop" type="text" placeholder="Month of Passing">
+        <label class="custom-form">year of passing:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.yop" type="number" placeholder="year of passing">
+        <label class="custom-form">attempt:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.attempt" type="number" placeholder="Attempt">
+          <label class="custom-form">Total Marks:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.total_marks"  type="number" placeholder="Total Marks">
+        <label class="custom-form">Obtained Marks:</label>
+        <input class="form-control custom-form margin-top-10" ng-model ="student.obtain_marks" type="number" placeholder="Marks Obtained">
+
+      </fieldset>
+
+    </div>
+	<div class="col-md-12 text-center margin-top-bottom-20">
+			<button class="btn btn-success btn-md" type="submit"><i class="fa fa-pencil" aria-hidden="true"></i> Update Student</button>
+
+      <button class="btn btn-success btn-md" ng-click = "getBonafide(student.id)"><i class="fa fa-file-text-o" aria-hidden="true"></i> Generate Bonafide</button>
+		</div>
+	</form>
+      </div>
+    </div>
+  </div>
+</div>
+ -->

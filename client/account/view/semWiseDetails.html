@@ -1,0 +1,45 @@
+<div class="row full-height">
+  <div class="col-md-12">
+    <div class="well well-lg ">
+        <h1 class="w3-center text-primary">  Payment Details  {{course | uppercase}} Sem {{sem}}</h1>
+    </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <kbd ng-show="record">Account report from Date : {{fromDate}} to Date : {{toDate}}</kbd>
+  <table class="table  margin-top-10 table-hover" ng-show="record">
+  <tr class="w3-theme-l1">
+    <th>seq.no</th>
+
+    <th ng-click = "ol = 'name' ">Name</th>
+
+    <th ng-click = "ol = 'grno' ">G.R.No</th>
+    <th>Paid Fees</th>
+    <th>Pending Fees</th>
+    <th>Pay Mode</th>
+    <th>dd/cheque no</th>
+    <th>Bank name</th>
+    <th>Date</th>
+
+  </tr>
+  <tr ng-repeat='x in record'>
+    <td>{{$index+1}}
+    </td>
+    <td>{{x.name.name}}</td>
+    <td>{{x.grno.grno}}</td>
+    <td >{{x.paid_fees}}</td>
+    <td>{{x.pending_fees}}</td>
+    <td>{{x.payMode}}</td>
+    <td>{{x.ddOrC_Nub}}</td>
+    <td>{{x.bankName}}</td>
+    <td>{{x.date}}</td>
+  </tr>
+  </table>
+</div>
+
+  </div>
+  <div class="col-md-4 col-md-offset-4 w3-center print_hide margin-top-bottom-20" ng-show="record">
+    <button class="btn btn-primary btn-lg" onclick="printRecord()">Print Record</button>
+  </div>
+</div>
+</div>
