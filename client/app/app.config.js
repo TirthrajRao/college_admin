@@ -1,7 +1,6 @@
 angular.module('collegeAdmin')
 .config(['$stateProvider','$urlRouterProvider','$locationProvider','$httpProvider',function($stateProvider,$urlRouterProvider,$locationProvider,$httpProvider){
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-  $httpProvider.interceptors.push('noCacheInterceptor');
 
   $stateProvider
   .state('account',{
