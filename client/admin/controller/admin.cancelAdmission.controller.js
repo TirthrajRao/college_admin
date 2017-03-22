@@ -1,6 +1,6 @@
 
 angular.module('admin')
-.controller('cancleAdmissionCtrl', ['$scope','$state','$rootScope','adminFactory','accountFactory','$timeout',function($scope,$state,$rootScope,adminFactory,accountFactory,$timeout){
+.controller('adminCancelAdmissionCtrl', ['$scope','$state','$rootScope','adminFactory','accountFactory','$timeout',function($scope,$state,$rootScope,adminFactory,accountFactory,$timeout){
 	
 	activate();
 	function activate(){
@@ -55,6 +55,7 @@ angular.module('admin')
   	console.log(x);
   	adminFactory.cancelAdmission(x)
   	.then(function(response){
+      $('.alert-studentRemoved').show();
   		// $state.reload();
   	},function(error){
   		console.log(error);

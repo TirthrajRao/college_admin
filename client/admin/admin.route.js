@@ -86,13 +86,13 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 		controller : 'addStudentCtrl'
 	})
 	.state('admin.generateIdCard',{
-    url : '/generateIdCard',
-    templateUrl : 'admin/view/generateIdCard.html',
-    controller : 'admingenerateIdCardCtrl'
-  	})
-  	.state('admin.cancelAdmission',{
+		url : '/generateIdCard',
+		templateUrl : 'admin/view/generateIdCard.html',
+		controller : 'admingenerateIdCardCtrl'
+	})
+	.state('admin.cancelAdmission',{
 		url : '/cancelAdmission',
 		templateUrl : 'admin/view/cancelAdmission.html',
-		controller : 'cancleAdmissionCtrl'
+		controller : 'adminCancelAdmissionCtrl'
 	})
 }])

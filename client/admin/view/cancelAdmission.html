@@ -1,104 +1,87 @@
-<div class="row">
+<div class="row full-height">
   <div class="col-md-12 col-xs-12 col-sm-12">
 
     <div class="w3-container w3-padding-16 w3-light-grey">
-      <h2 class="w3-center text-primary letter-spacing-2" ><u>Student Admission Cancel</u></h2>
+      <h2 class="w3-center text-primary letter-spacing-2" ><u>Cancel Student Admission</u></h2>
     </div>
+
     <div class="margin-top-bottom-30"></div>
+    
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
 
-          <div class="well well-lg">
-            <fieldset>
-              <legend class="font-monospace">Student Information </legend>
-              <div class="col-sm-6 form-group">
-                <label class="control-label"> Select Course : </label>
-                <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(x['course'])">
-                  <option value="" selected disabled> Select Course </option>
-                </select>
-              </div>              
-              <!-- <div class="col-sm-6 form-group">
-                <label class="control-label"> Select Semester : </label>
-                <select class="form-control " required ng-model="x['sem']">
-                  <option value="" selected disabled>Select Semester</option>
-                  <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
-                </select>
-              </div> -->
-              
-             <auto-complete-textbox ng-show="students" class="col-md-12 col-xs-12 no- padding"
-              placeholdertext="Search by Grno/Name"
+        <div class="well well-lg">
+          <fieldset>
+            <legend class="font-monospace">Student Information </legend>
+            <div class="col-sm-12 form-group">
+              <label class="control-label"> Select Course : </label>
+              <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(x['course'])">
+                <option value="" selected disabled> Select Course </option>
+              </select>
+            </div> 
+
+            <div class="col-sm-12 form-group" ng-show="students">
+              <label class="control-label">G.R.No/Name :</label>
+              <auto-complete-textbox  class="col-md-12 col-xs-12 no-padding"
+              placeholdertext="Search by G.R.No/Name"
               array='students'
               output="student"
               search="searchArray"
               display="showArray"
               callback="getStudentRecord()" >
-             </auto-complete-textbox>
-              
-
-              
-
-            </fieldset>
+            </auto-complete-textbox>
           </div>
+        </fieldset>
+      </div>
+
+      <div class="well well-lg" ng-show="student"> 
         <form id="addStudent" ng-submit="cancelStudent(student)">
-          <div class="row margin-top-10" ng-show="student">
-    <div class="col-md-12 col-xs-12">
+          <div class="row margin-top-10">
+            <div class="col-md-12 col-xs-12">
 
-      <div class="w3-center">
-        <h3 class="text-primary"><u>Student Information</u></h3>
-      </div>
+              <div class="w3-center">
+                <h3 class="text-primary"><u>Student Information</u></h3>
+              </div>
 
-      <div class="col-md-4 col-md-offset-1 col-xs-8 col-xs-offset-2">
-        <div class="student_image" style="padding:2px;">
-          <div class="w3-center" ng-show="student.path.value">
-            <img src="../server/{{student.path}}" alt="{{student.name}}" class="w3-center" style="height:290px; width:240px;">
+
+              <div class="col-md-12 col-xs-12">
+                <div class="col-md-12">
+                  <ul class="list-group ">
+                    <li class="w3-padding list-group-item"><b>  Name :  </b> {{student.name}}</li>
+                    <li class="w3-padding list-group-item"><b>  Course :</b> {{student.courseid}}</li>
+                    <li class="w3-padding list-group-item"><b>  G.R.NO :</b> {{student.grno}}</li>
+                    <li class="w3-padding list-group-item"><b>  Semester : </b> Sem-{{student.sem}}</li>                  
+                    <li class="w3-padding list-group-item"><b>  Enrollment Number : </b>{{student.enrollment}}</li>
+                  </ul>
+
+                  <div class="col-sm-12 form-group">
+                    <label class="control-label">Reason For Change : </label>
+                    <input class="form-control" ng-model ="student['reason']" required type="text" placeholder="Enter the reason for cancelling the Admission">
+                  </div>
+
+                  <div class="col-sm-12 form-group">
+                    <label class="control-label">Transfering to College : </label>
+                    <input class="form-control" ng-model ="student['college']" required type="text" placeholder="Enter College Name">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 text-center margin-bottom-20">
+              <button class="btn btn-danger btn-md" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Cancel Admission</button>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+              <div class="alert alert-studentRemoved w3-custom-blue w3-text-white fade in">
+                <span><strong>Success!</strong> Admission has been Canceled!</span>
+                <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-6 col-xs-12">
-        <div class="col-md-12">
-          <ul class="list-group ">
-            <li class="w3-padding list-group-item"><b>  Name :  </b> {{student.name}}</li>
-            <li class="w3-padding list-group-item"><b>  Course :</b> {{student.courseid}}</li>
-            <li class="w3-padding list-group-item"><b>  G.R.NO :</b> {{student.grno}}</li>
-            <li class="w3-padding list-group-item"><b>  Semester : </b> Sem-{{student.sem}}</li>
-            <li class="w3-padding list-group-item"><b>  Address : </b> {{student.address}}</li>
-            <li class="w3-padding list-group-item"><b>  Enrollment Number : </b>{{student.enrollment}}</li>
-            <li class="w3-padding list-group-item"><b>  Student Contact No : </b>{{student.sphone}}</li>
-            <li class="w3-padding list-group-item"><b>  Parents Contact No : </b>{{student.fphone}}</li>
-          </ul>
-          <div class="col-sm-12 form-group">
-                <label class="control-label">Reason For Change : </label>
-                <input class="form-control" ng-model ="student['reason']" required type="text" placeholder="Enter Student's Surname">
-              </div>
-              <div class="col-sm-12 form-group">
-                <label class="control-label">Transfer College : </label>
-                <input class="form-control" ng-model ="student['college']" required type="text" placeholder="Enter Student's Surname">
-              </div>
-        </div>
-      </div>
-    </div>
-        <div class="col-md-12 text-center margin-bottom-20">
-          <button class="btn btn-success btn-md" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Cancle Student</button>
-        </div>
-      </form>
-    </div>
-
-
-
-    </div>
-    <div class="col-md-10 col-md-offset-1">
-      <div class="alert alert-studentadded w3-custom-blue w3-text-white fade in">
-        <span><strong>Success!</strong> Student has been added!</span>
-        <a class="close-blue-alert w3-right" aria-label="close">&times;</a>
+        </form>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-
 
 <script>
 
