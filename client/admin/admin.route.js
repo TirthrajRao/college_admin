@@ -23,6 +23,13 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 		templateUrl : 'admin/view/trialCertificate.html',
 		controller : 'adminTrialCertificateCtrl'
 	})
+
+	.state('admin.studentInquiry',{
+		url : '/inquiry',
+		templateUrl : 'admin/view/studentInquiry.html',
+		controller : 'adminStudentInquiryCtrl'
+	})
+
 	.state('admin.StudentContactInfo',{
 		url : '/students/contact',
 		templateUrl : 'admin/view/studentContactInfo.html',
