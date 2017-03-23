@@ -25,8 +25,6 @@ angular.module('collegeAdmin')
         controller  : 'logoutCtrl'
       },
 
-
-
       'bottom' : {
         template :'<ui-view></ui-view>',
       }
