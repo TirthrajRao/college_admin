@@ -13,7 +13,7 @@
     
     // $que = "INSERT INTO `cancelStudent`(`student`) VALUES ('$student')";
     // echo $que;
-    mysqli_query($con,"INSERT INTO `cancelStudent`(`student`) VALUES ('$student')")or die(mysqli_error($con));
+    mysqli_query($con,"INSERT INTO `cancelStudent`(`student`,`academicYear`) VALUES ('$student','$academicYear')")or die(mysqli_error($con));
 	
      $last_id = mysqli_insert_id($con);
      echo $sid;

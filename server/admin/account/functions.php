@@ -168,7 +168,7 @@ function getTotalFeesBySem($con,$courseid,$sem){
 
 
 
- function addPendingFees($con,$sid,$rid,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_exam_project_fees,$su_degree_fees,$viva_project_fees,$su_enrollment_fees,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
+ function addPendingFees($con,$name,$sid,$rid,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_exam_project_fees,$su_degree_fees,$viva_project_fees,$su_enrollment_fees,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
 
 	 	$total_fees = getTotalFeesBySem($con,$courseid,$sem);
  	 	$x = $total_fees['total_fees'];
@@ -214,8 +214,8 @@ function getTotalFeesBySem($con,$courseid,$sem){
  			VALUES ('$pending_fees','$sid',$pending_tution,'$pending_exam','$pending_sport','$pending_enlist','$pending_misc','$pending_lib','$pending_degree_fees','$pending_exam_project_fees','$pending_enroll','$pending_viva','$sem','$courseid','$academicYear','$x')") or die(mysqli_error($con));
 
 
-		mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`)
- 		VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid_fees."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."')") or die(mysqli_error($con));
+		mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`,`name`)
+ 		VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid_fees."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."','".$name."')") or die(mysqli_error($con));
  		$last_id = mysqli_insert_id($con);
  		$ara = array();
  		$ara['id'] = $last_id;
@@ -228,8 +228,8 @@ function getTotalFeesBySem($con,$courseid,$sem){
 			
  			mysqli_query($con,"INSERT INTO `full_paid`(`sid`,`paid`,`discount`,`sem`,`academicYear`)
  			VALUES ('$sid','$paid_fees','$discount','$sem','$academicYear')") or die(mysqli_error($con));
- 		mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`)
- 		VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid_fees."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."')") or die(mysqli_error($con));
+ 		mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`,`name`)
+ 		VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid_fees."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."','".$name."')") or die(mysqli_error($con));
  		$last_id = mysqli_insert_id($con);
  		$ara = array();
  		$ara['id'] = $last_id;
@@ -241,7 +241,7 @@ function getTotalFeesBySem($con,$courseid,$sem){
  }
 
 
-function updatePendingFees($con,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
+function updatePendingFees($con,$name,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
 
 			$total_fees = getTotalFeesOfPending($con,$sid,$sem);
  			$x = $total_fees['total_fees'];
@@ -259,12 +259,12 @@ function updatePendingFees($con,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,
 					mysqli_query($con,"INSERT INTO `payment_details` (`sid`,`rid`, `sem`,`courseid`,`payMode`,
 					`paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,
 					`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,
-					`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`)
+					`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`,`name`)
 						VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."',
 					'".$paid."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."',
 					'".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."',
 					'".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."',
-					'".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."')")
+					'".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."','".$name."')")
 					 or die(mysqli_error($con));
 
 					$last_id = mysqli_insert_id($con);
@@ -277,9 +277,9 @@ function updatePendingFees($con,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,
 					echo json_encode($ara);
 			}
 			else{
-				echo "hello1";
-				mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`)
-					VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."')") or die(mysqli_error($con));
+		
+				mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`,`name`)
+					VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."','".$name."')") or die(mysqli_error($con));
 
 				$last_id = mysqli_insert_id($con);
 				$ara = array();
@@ -404,7 +404,7 @@ function getSidByGrno($con,$courseid,$grno){
  }
 
 function getTotolPaymentCourseWiseFromTo($con,$courseid,$sem,$fromdate,$todate){
-	 $result = mysqli_query($con,"select `paid_fees` from payment_details where courseid = '".$courseid."' AND sem = '".$sem."' AND date BETWEEN '$fromdate' AND '$todate'")or die(mysqli_error($con));
+	 $result = mysqli_query($con,"SELECT `paid_fees` FROM `payment_details` WHERE `courseid` like '".$courseid."' AND `sem` like '".$sem."' AND `date` BETWEEN '".$fromdate."' AND '".$todate."'")or die(mysqli_error($con));
 	 $ara = array();
 	 while($x = mysqli_fetch_assoc($result)){
 		 array_push($ara,$x);
