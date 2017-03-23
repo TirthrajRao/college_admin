@@ -96,6 +96,17 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
+	obj.getPastInqueryByYear = function(academicYear){
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/getInqueryStudentsFromYear.php?academicYear="+academicYear)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
 	obj.moveInAdmission = function(){
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/changeInquireStatus?id="+id)

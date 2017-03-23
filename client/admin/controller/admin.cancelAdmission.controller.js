@@ -26,7 +26,7 @@ angular.module('admin')
     console.log($scope.courseid)
     accountFactory.getStudentsByCourse($scope.courseid)
     .then(function(response){
-      $scope.students=response.data
+      $scope.students=response.data;
     },function(error){
       console.log(error);
     });

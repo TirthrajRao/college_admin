@@ -39,13 +39,13 @@
 								</thead>
 
 								<tbody>
-									<tr>
+									<tr ng-repeat="x in pending track by $index">
 										<td>{{$index+1}}</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td>{{x.name}}</td>
+										<td>{{x.courseid}}</td>
+										<td>{{x.date}}</td>
+										<td>{{x.phone}}</td>
+										<td>{{x.city}}</td>
 									</tr>
 								</tbody>
 
@@ -71,10 +71,10 @@
 								</thead>
 
 								<tbody>
-									<tr>
+									<tr ng-repeat="y in admission track by $index">
 										<td>{{$index+1}}</td>
-										<td></td>
-										<td></td>
+										<td>{{y.name}}</td>
+										<td>{{y.courseid}}</td>
 									</tr>
 								</tbody>
 							</table>
