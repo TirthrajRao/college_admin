@@ -4,7 +4,7 @@
 
 	$ara = array();
 	
-	$result = mysqli_query($con,"SELECT * FROM `studentInquiry` Where `status` like '1' ORDER BY `id`")or die(mysqli_error($con));
+	$result = mysqli_query($con,"SELECT * FROM `studentInquiry` Where `status` like '1' AND `academicYear` like '$academicYear' ORDER BY `id`")or die(mysqli_error($con));
 
 
 	while($x = mysqli_fetch_assoc($result)){

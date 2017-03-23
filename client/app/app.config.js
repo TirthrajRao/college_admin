@@ -21,7 +21,7 @@ angular.module('collegeAdmin')
     url : '/admin',
     views:{
       'top' : {
-        templateUrl : 'account/view/menu.html',
+        templateUrl : 'admin/view/menu.html',
         controller  : 'logoutCtrl'
       },
 

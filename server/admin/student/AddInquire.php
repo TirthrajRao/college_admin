@@ -8,12 +8,11 @@ require('config.php');
     {
         ${$key}=$value;
     }
-    
-    $date = date("Y");
-    $currentYear = (int)$date;
-    $lastYear = $currentYear - 1;
-    $data['academicYear'] = $lastYear."-".$date;
+    // $date = date("Y");
+    // $currentYear = (int)$date;
+    // $lastYear = $currentYear - 1;
+    // $data['academicYear'] = $lastYear."-".$date;
     $status = 0;
     $student = json_encode($data);
 
-    mysqli_query($con,"INSERT INTO `studentInquiry`(`studentRecord`,`status`) VALUES ('$student','$status')")or die(mysqli_error($con));
+    mysqli_query($con,"INSERT INTO `studentInquiry`(`studentRecord`,`status`,`academicYear`) VALUES ('$student','$status','$academicYear')")or die(mysqli_error($con));
