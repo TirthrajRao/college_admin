@@ -102,18 +102,15 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 		controller : 'adminViewInquiryCtrl'
 	})
 
-	.state('admin.cancleStudentByYear',{
-		url : '/viewCancleStudentByYear',
+	.state('admin.cancelStudentByYear',{
+		url : '/viewCancelStudentByYear',
 		templateUrl : 'admin/view/getCancelAdmissionByYear.html',
 		controller : 'adminCancelStudentsByYearCtrl'
 	})
 
-	.state('admin.cancleAdmissionCurrent',{
-		url : '/currentYearCancleAdmission',
+	.state('admin.cancelAdmissionCurrent',{
+		url : '/currentYearCancelAdmission',
 		templateUrl : 'admin/view/admissionCancelStudents.html',
 		controller : 'cancelStudentsByCurrentYearCtrl'
 	})
-	
-
-
 }])

@@ -1,1 +1,196 @@
-<h1>Admin Menu</h1>
+<style>
+a:hover{
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+a:focus{
+  text-decoration: none !important;
+}
+
+</style>
+
+<div class="col-md-12 col-xs-12 col-sm-12 hidden-xs" ng-show="user">
+
+  <ul class="list-inline nav-bar w3-white w3-center w3-border row" style="
+  top:fixed top:0px">
+
+  <li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+    <a class="dropdown-toggle" data-toggle="dropdown">Student Details <i class="fa fa-caret-down"></i></a>
+    <ul class="dropdown-menu">
+      <li><a ui-sref="admin.register"><i class="fa fa-user-plus"></i> Student Registration</a></li>
+      <li><a ui-sref="admin.Students"><i class="fa fa-wrench"></i> Update/Delete Student</a></li>
+      <li><a ui-sref="admin.StudentContactInfo"><i class="fa fa-phone-square"></i> Student Contact Info</a></li>
+      <li><a ui-sref="admin.EnterEnrollment"><i class="fa fa-plus"></i> Submit Student Enrollment</a></li>
+      <li><a ui-sref="account.PromoteStudent"><i class="fa fa-check-square"></i> Promote Student</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+    <a class="dropdown-toggle" data-toggle="dropdown">Certificates <i class="fa fa-caret-down"></i></a>
+
+    <ul class="dropdown-menu">
+     <li><a ui-sref="admin.Bonafide"><i class="fa fa-wpforms" aria-hidden="true"></i> Bonafide Certificate</a></li>
+     <li><a ui-sref="admin.TrialCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Trial Certificate</a></li>
+     <li><a ui-sref="admin.CharacterCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Character Certificate</a></li>
+     <li><a ui-sref="admin.TransferCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Transfer Certificate</a></li>
+     <li><a ui-sref="admin.NocCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> N.O.C Certificate</a></li>
+     <li><a ui-sref="admin.CourseFeeStructure"><i class="fa fa-wpforms" aria-hidden="true"></i> Course Fees Structure </a></li>
+   </ul>
+ </li>
+
+ <li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+
+  <a class="dropdown-toggle" data-toggle="dropdown">Fees Structure <i class="fa fa-caret-down"></i></a>
+  <ul class="dropdown-menu">
+    <li><a ui-sref="account.AddFeesByName"><i class="fa fa-credit-card"></i> Pay Fees</a></li>
+    <li><a ui-sref="account.AllPending"><i class="fa fa-exclamation-circle"></i> Pay Pending Fees</a></li>
+    <li><a ui-sref="account.AddFeesDetails"><i class="fa fa-plus-circle"></i> Add Fees Details</a></li>
+    <li><a ui-sref="account.FeesDetails"><i class="fa fa-pencil-square"></i> Modify Fees Structure</a></li>
+  </ul>
+
+</li>
+
+
+
+<li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+  <a class="dropdown-toggle" data-toggle="dropdown">Payment Record <i class="fa fa-caret-down"></i></a>
+
+  <ul class="dropdown-menu">
+    <li><a href="account.SearchReceipt"><i class="fa fa-search"></i> Search Receipt</a></li>
+    <li><a ui-sref="account.PaymentDetails">Current Academic Year</a></li>
+    <li><a ui-sref="account.PaymentDetailsByYear">Past Academic Years</a></li>
+  </ul>
+</li>
+
+
+<li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+  <a class="dropdown-toggle" data-toggle="dropdown">Student Record <i class="fa fa-caret-down"></i></a>
+
+  <ul class="dropdown-menu">
+
+    <li><a href="#!/account/searchRecord"><i class="fa fa-search"></i> Search Record</a></li>
+    <li><a ui-sref="admin.generateIdCard"><i class="fa fa-wpforms" aria-hidden="true"></i> Generate ID Card</a></li>
+    <li><a ui-sref="admin.CategoryChart"><i class="fa fa-users" aria-hidden="true"></i> Category Chart</a></li>
+    <li><a ui-sref="account.DateWiseAdmissionChart"><i class="fa fa-street-view" aria-hidden="true"></i> DateWise Admission Report</a></li>
+
+  </ul>
+</li>
+
+<li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+  <a class="dropdown-toggle" data-toggle="dropdown" >Account Record <i class="fa fa-caret-down"></i></a>
+
+  <ul class="dropdown-menu">
+    <li><a ui-sref="account.DateWiseRecord"><i class="fa fa-search"></i> Date Wise</a></li>
+    <li><a ui-sref="account.FeesDetailsFromTo"><i class="fa fa-search"></i> Total Fees per Date</a></li>
+  </ul>
+</li>
+
+
+
+<li class="w3-padding-16"><button class="btn btn-md btn-success" ng-controller="logoutCtrl" ng-click="removelocal()"><i class="fa fa-sign-out"> Logout</i></button></li>
+
+</ul>
+</div>
+
+
+<div class="row" ng-show="user">
+  <div class="col-xs-12 visible-xs hidden-sm hidden-md hidden-lg no-padding" >
+    <nav class="navbar navbar-default no-margin">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <i class="fa fa-bars"></i>                       
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown"> Student Details <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="admin.register"><i class="fa fa-user-plus"></i> Student Registration</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.Students"><i class="fa fa-wrench"></i> Update/Delete Student</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.StudentContactInfo"><i class="fa fa-phone-square"></i> Student Contact Info</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.EnterEnrollment"><i class="fa fa-user-plus"></i> Submit Student Enrollment</a></li>
+                <li><a class="w3-text-black" ui-sref="account.PromoteStudent"><i class="fa fa-user-plus"></i> Promote Student</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Certificates <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="admin.Bonafide"><i class="fa fa-wpforms" aria-hidden="true"></i> Bonafide Certificate</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.TrialCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Trial Certificate</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.CharacterCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Character Certificate</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.TransferCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> Transfer Certificate</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.NocCertificate"><i class="fa fa-wpforms" aria-hidden="true"></i> N.O.C Certificate</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.CourseFeeStructure"><i class="fa fa-wpforms" aria-hidden="true"></i> Course Fees Structure </a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Fees <i class="fa fa-caret-down"></i> </a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="account.AddFeesByName">
+                 <i class="fa fa-credit-card"></i> Pay Fees</a></li>
+                <li><a class="w3-text-black" ui-sref="account.AllPending"><i class="fa fa-exclamation-circle"></i> Pay Pending Fees</a></li>
+                <li><a class="w3-text-black" ui-sref="account.AddFeesDetails"><i class="fa fa-plus-circle"></i> Add Fees Details</a></li>
+                <li><a class="w3-text-black" ui-sref="account.FeesDetails"><i class="fa fa-pencil-square"></i> Modify Fees Structure</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Payment Record <i class="fa fa-caret-down"></i> </a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="account.SearchReceipt"><i class="fa fa-search"></i> Search Receipt</a></li>
+                <li><a class="w3-text-black" ui-sref="account.PaymentDetails">Current Academic Year</a></li>
+                <li><a class="w3-text-black" ui-sref="account.PaymentDetailsByYear">Past Academic Years</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Fees Structure <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="account.AddFeesDetails">Add Fees Details</a></li>
+                <li><a class="w3-text-black" ui-sref="account.FeesDetails">list Fees Structure</a></li>
+                <li><a class="w3-text-black" ui-sref="account.FeesDetails">Modify Fees Structure</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Student Record <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="account.PaymentDetailsByGrno"><i class="fa fa-search"></i> Search Record</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.generateIdCard"><i class="fa fa-wpforms" aria-hidden="true"></i> Generate ID Card</a></li>
+                <li><a class="w3-text-black" ui-sref="admin.CategoryChart"><i class="fa fa-users" aria-hidden="true"></i> Category Chart</a></li>
+                <li><a class="w3-text-black" ui-sref="account.DateWiseAdmissionChart"><i class="fa fa-street-view" aria-hidden="true"></i> DateWise Admission Report</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle w3-text-black" data-toggle="dropdown">Account Record <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="w3-text-black" ui-sref="account.DateWiseRecord"><i class="fa fa-search"></i> Date Wise</a></li>
+                <li><a class="w3-text-black" ui-sref="account.FeesDetailsFromTo"><i class="fa fa-search"></i>Total Fees per Date</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+angular.module('collegeAdmin')
+.controller('removeLocalCtrl',['$scope','$localStorage',function($scope,$localStorage){
+  $scope.removelocal = function(){
+  alert("hello");
+    $localStorage.$reset();
+  }
+}])
+
+</script>
