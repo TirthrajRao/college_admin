@@ -113,6 +113,12 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 		templateUrl : 'admin/view/admissionCancelStudents.html',
 		controller : 'cancelStudentsByCurrentYearCtrl'
 	})
+
+	.state('admin.InquiryByYear',{
+		url : '/viewInquiryByYear',
+		templateUrl : 'admin/view/viewInquiryByYear.html',
+		controller : 'adminInquiryByYearCtrl'
+	})
 	
 
 
