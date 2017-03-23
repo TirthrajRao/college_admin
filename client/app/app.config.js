@@ -40,6 +40,8 @@ $urlRouterProvider.otherwise('/admin/login');
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
   $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){  
+  if (toState.name.substr(0,7) == $localStorage.user.type || toState.name.substr(0,5) == $localStorage.user.type ) {
+      
     if(toState.name.substr(0,7).localeCompare('account') == 0 || toState.name.substr(0,5).localeCompare('admin')==0)
     {
       if(toState.name.localeCompare("admin.login") == 0 )
@@ -49,11 +51,19 @@ $urlRouterProvider.otherwise('/admin/login');
         console.log($localStorage.adminId);
         if(typeof($localStorage.adminId) == undefined || $localStorage.adminId == null){
           console.log(typeof($localStorage.adminId));
+        
           $state.go('admin.login');
         }
        }
     }
-    console.log(toState.name);
+  }
+  else
+  {
+
+    
+    $state.go('admin.login');
+  }
+   
   });
 
 

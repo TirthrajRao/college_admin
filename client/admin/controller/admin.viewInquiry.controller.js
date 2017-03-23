@@ -11,5 +11,14 @@ angular.module('admin')
 			console.log(error);
 		});
 	}
+	$scope.inquireByYear = function(academicYear){
+		adminFactory.getAllInquires(academicYear)
+		.then(function(response){
+      		$scope.pending=response.data.pending;
+    		$scope.admission = response.data.admission;
+    		},function(error){
+      		console.log(error);
+    	});
+	}
 	viewInquiry();
 }])

@@ -130,10 +130,10 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 	
-	obj.getAllInquires =function(){
+	obj.getAllInquires =function(academicYear){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php")
+		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php?academicYear="+academicYear)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
