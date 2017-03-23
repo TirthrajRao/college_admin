@@ -5,7 +5,7 @@ angular.module('admin')
   function activate(){
   	adminFactory.getAdmissionCancelStudents()
     .then(function(response){
-      $scope.chart = response.data;
+      $scope.students = response.data;
     },function(error){
       console.log(error);
     });
