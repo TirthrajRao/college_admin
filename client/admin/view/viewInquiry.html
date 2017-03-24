@@ -8,6 +8,18 @@
 				<u>Student Inquiry</u>
 			</h2>
 		</div>
+		<div class="well well-lg">
+					<form ng-submit="inquireByYear(academicYear)">
+						<div class="form-group">
+							<label class="control-label">Academic Year :</label>
+							<input type="text" class="form-control" placeholder="Enter Academic Year like (2016-2017)" ng-model="academicYear">
+						</div>
+
+						<div class="w3-center">
+							<button class="btn btn-success" type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
 		<div class="margin-top-bottom-30"></div>
 
 
@@ -39,13 +51,13 @@
 								</thead>
 
 								<tbody>
-									<tr>
+									<tr ng-repeat="x in pending track by $index">
 										<td>{{$index+1}}</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td>{{x.name}}</td>
+										<td>{{x.courseid}}</td>
+										<td>{{x.date}}</td>
+										<td>{{x.phone}}</td>
+										<td>{{x.city}}</td>
 									</tr>
 								</tbody>
 
@@ -71,10 +83,10 @@
 								</thead>
 
 								<tbody>
-									<tr>
+									<tr ng-repeat="y in admission track by $index">
 										<td>{{$index+1}}</td>
-										<td></td>
-										<td></td>
+										<td>{{y.name}}</td>
+										<td>{{y.courseid}}</td>
 									</tr>
 								</tbody>
 							</table>

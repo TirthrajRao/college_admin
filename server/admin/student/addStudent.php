@@ -10,11 +10,13 @@
     }
 
 
+    if($grno == 0){
+      
+      $grno = getLastGrNoByCourseid($con ,$courseid);
+    }
     $pincode = (int)$pincode;
-    $grno = getLastGrNoByCourseid($con ,$courseid);
-    echo $grno;
-
-  mysqli_query($con,"INSERT INTO `student`(
+    
+    mysqli_query($con,"INSERT INTO `student`(
       `name`,
       `motherName`,
       `adharCard`,
@@ -48,7 +50,8 @@
       `grno`,
       `sem`,
       `path`,
-      `year`) VALUES ('".$name."',
+      `year`,
+      `adharImg`) VALUES ('".$name."',
       '".$motherName."',
       '".$adharCard."',
       '".$accountNub."',
@@ -81,7 +84,8 @@
       '".$grno."',
       '".$sem."',
       '".$path."',
-      '".$year."')" )or die(mysqli_error($con));
+      '".$year."',
+      '".$adhar."')" )or die(mysqli_error($con));
       $last_id = mysqli_insert_id($con);
 
       echo $last_id;

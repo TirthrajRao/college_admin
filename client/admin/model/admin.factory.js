@@ -13,7 +13,7 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
-	obj.addStudent =function(x,file){
+	obj.addStudent =function(x,adhar,file){
 
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/addStudent.php",x)
@@ -22,6 +22,8 @@ angular.module('collegeAdmin')
 			var sid = success.data;
 			$http.post($rootScope.serverUrl+"student/addStudentPhoto.php?sid="+sid,file);
 			uploadFile(file,$rootScope.serverUrl+"student/addStudentPhoto.php?sid="+success.data);
+			$http.post($rootScope.serverUrl+"student/addAdharCard.php?sid="+sid,adhar);
+			uploadFile(adhar,$rootScope.serverUrl+"student/addAdharCard.php?sid="+success.data);
 			defer.resolve(success);
 		},function(error){
 			defer.reject(error);
@@ -96,7 +98,18 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
-	obj.moveInAdmission = function(){
+	obj.getPastInqueryByYear = function(academicYear){
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"student/getInqueryStudentsFromYear.php?academicYear="+academicYear)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
+	obj.moveInAdmission = function(id){
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/changeInquireStatus?id="+id)
 		.then(function(response){
@@ -119,10 +132,10 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 	
-	obj.getAllInquires =function(){
+	obj.getAllInquires =function(academicYear){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php")
+		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php?academicYear="+academicYear)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -254,12 +267,12 @@ angular.module('collegeAdmin')
 							transformRequest: angular.identity,
 							headers: {'Content-Type': undefined}
 					 })
-					 .success(function(scs){
-							alert("Photo has been uploaded.");
-					 })
-					 .error(function(){
-							alert("Sorry, the photo couldn't be uploaded")
-					 });
+					 // .success(function(scs){
+						// 	alert("Photo has been uploaded.");
+					 // })
+					 // .error(function(){
+						// 	alert("Sorry, the photo couldn't be uploaded")
+					 // });
 				}
 
 

@@ -141,7 +141,7 @@ function getPendingInquiry($con,$academicYear){
     $result = mysqli_query($con, "SELECT `studentRecord` FROM `studentInquiry` WHERE `status` like '0' AND `academicYear` like '$academicYear' ORDER BY `id` DESC")or die(mysqli_error($con));
     
     while($x = mysqli_fetch_assoc($result)){
-      array_push($ara , $x['studentRecord']);
+      array_push($ara , json_decode($x['studentRecord']));
     }
     return $ara;
   }
@@ -151,7 +151,7 @@ function getPendingInquiry($con,$academicYear){
     $result = mysqli_query($con, "SELECT `studentRecord` FROM `studentInquiry` WHERE `status` like '1' AND `academicYear` like '$academicYear' ORDER BY `id` DESC")or die(mysqli_error($con));
     
     while($x = mysqli_fetch_assoc($result)){
-      array_push($ara , $x['studentRecord']);
+      array_push($ara , json_decode($x['studentRecord']));
     }
     return $ara;
   }
