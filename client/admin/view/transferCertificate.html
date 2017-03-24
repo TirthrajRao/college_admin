@@ -11,7 +11,7 @@
             <option value="" selected disabled>Select Course</option>
           </select>
 
-          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple>
+          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple ng-show="students">
 
           <datalist id="students" >
             <option  value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}}</option>

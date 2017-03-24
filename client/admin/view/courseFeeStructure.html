@@ -2,7 +2,7 @@
   <div class="col-md-12 col-xs-12">
 
     <div class="w3-padding-16 w3-container w3-light-grey print_hide">
-      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Course Fee Structure</u></h2>
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Generate Course Fee Structure</u></h2>
 
       <div class="col-md-6 col-md-offset-3">
         <form ng-submit="getStudentByGrno(grno)" id="bonafiteForm">
@@ -10,7 +10,7 @@
             <option value="" selected disabled>Select Course</option>
           </select>
 
-          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple>
+          <input class="form-control margin-top-10 " list="students" placeholder="Search with G.R.NO of student" ng-model="grno" multiple ng-show="students">
 
           <datalist id="students" >
             <option  value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}} </option>
