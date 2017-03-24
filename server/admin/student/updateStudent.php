@@ -15,12 +15,12 @@ if(isset($sid)){
 	mysqli_query($con,"UPDATE `student`
 		SET
 		`name` 				=		'".$name."',
+        `motherName` = '".$motherName."'
     `address`     =   '".$address."',
     `city`        =   '".$city."',
     `taluka`      =   '".$taluka."',
     `dist`        =   '".$dist."',
     `pincode`     =   '".$pincode."',
-
     `sphone`      =   '".$sphone."',
     `rphone`      =   '".$rphone."',
     `fphone`      =   '".$fphone."',
@@ -41,7 +41,10 @@ if(isset($sid)){
     `obtain_marks`=   '".$obtain_marks."',
     `percent`     =   '".$percent."',
 		`sem`					=		'".$sem."',
-		`grno`			=		'".$grno."'
+		`grno`			=		'".$grno."',
+        `bankName` = '".$bankName."',
+        `accountNub` = '".$accountNub."',
+        `ifscCode` = '".$ifscCode."'
 		where sid = '$sid'")
     or die(mysqli_error($con));
 

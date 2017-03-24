@@ -7,7 +7,7 @@
     <div class="margin-top-bottom-30"></div>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <form id="addStudent" ng-init="x = {}" ng-submit="addStudent(x)">
+        <form id="addStudent" ng-init="x = {}" ng-submit="addStudent(x,adhar)">
 
           <div class="well well-lg">
             <fieldset>
@@ -27,8 +27,8 @@
               </div>
               
               <div class="col-sm-12 form-group">
-                <label ng-show = "x['course']" class="control-label"> G.R.NO  : </label>
-                <input class="form-control" type="number" required ng-model="x['grno']" ng-show ="x['course']" type="text" value="{{lastGr.grno}}" placeholder="G.R.NO">
+                <label class="control-label"> G.R.NO  : </label>
+                <input class="form-control" type="number" ng-model="x['grno']" placeholder="G.R.NO" ng-init="x['grno'] = 0">
               </div>
 
               <div class="col-sm-4 form-group">
@@ -46,7 +46,7 @@
 
               <div class="col-sm-4 form-group">
                 <label class="control-label">Mother's Name :</label>
-                <input class="form-control" required ng-modal="x['motherName']" type="text" placeholder="Enter Mother's Name">
+                <input class="form-control" required ng-model="x['motherName']" type="text" placeholder="Enter Mother's Name">
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label"> Select Gender : </label>
@@ -102,15 +102,15 @@
 
               <div class="col-sm-4 form-group">
                 <label class="control-label">Name of Bank :</label>
-                <input class="form-control" ng-modal="x['bankName']" type="text" placeholder="Enter Name of Bank">
+                <input class="form-control" ng-model="x['bankName']" type="text" placeholder="Enter Name of Bank">
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Bank Account Number :</label>
-                <input class="form-control" ng-modal="x['accountNub']" type="text" placeholder="Enter Bank Account Number">
+                <input class="form-control" ng-model="x['accountNub']" type="text" placeholder="Enter Bank Account Number">
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">IFSC Code : </label>
-                <input class="form-control" ng-modal="x['ifscCode']" type="text" placeholder="IFSC code of Branch">
+                <input class="form-control" ng-model="x['ifscCode']" type="text" placeholder="IFSC code of Branch">
               </div>
 
               <div class="col-sm-6 form-group">
@@ -180,6 +180,17 @@
 
           <div class="well well-lg">
             <fieldset>
+              <div class="form-group col-sm-12">
+                <div class="col-md-2 col-xs-3 no-padding">
+                  <label class="control-label">Upload Adharcard :</label>
+                </div>
+                <div class="col-md-3 col-xs-9">
+                  <input type="file" name="adhar" id="adhar" file-model="adhar" accept="image/*"/>
+                </div>
+
+                
+               
+              </div>
               <legend class="font-monospace">Photo Upload </legend>
               <div class="form-group col-sm-12">
                 <div class="col-md-2 col-xs-3 no-padding">

@@ -12,8 +12,8 @@ $imgData1 = $data['imageData'];
 
 //$output_file = '../../studentPhoto/'.$courseid.'/'.$academicYear;
 //$img = base64_to_jpeg($imagedata, $output_file);
-print_r($img);
-  print_r($_FILES);
+// print_r($img);
+  // print_r($_FILES);
 
 
 
@@ -28,7 +28,7 @@ print_r($img);
   $fname = $fullname[1];
 
   if (!file_exists('../../studentPhoto/'.$courseid.'/'.$academicYear)) {
-    mkdir('../../studentPhoto/'.$courseid.'/'.$academicYear,766, true);
+    exec(mkdir('../../studentPhoto/'.$courseid.'/'.$academicYear,766, true));
 }
   $upath='../../studentPhoto/'.$courseid.'/'.$academicYear.'/';
   $photoPath = 'studentPhoto/'.$courseid.'/'.$academicYear.'/';

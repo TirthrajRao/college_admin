@@ -39,7 +39,7 @@ angular.module('admin')
 			}
 		}
 
-		$scope.addStudent = function(x){
+		$scope.addStudent = function(x,adhar){
 		//	$scope.myPhoto;
 		// $("button[type=submit]").attr('disabled','disabled');
 			x['courseid']=x['course']['courseid'];
@@ -66,9 +66,8 @@ angular.module('admin')
 			x['fphone']=parseInt(x['fphone']);
 			x['rphone']=parseInt(x['rphone']);
 			x['ophone']=parseInt(x['ophone']);
-			x['grno'] = $scope.lastGr;
 			console.log(x);
-			adminFactory.addStudent(x,$scope.myPhoto)
+			adminFactory.addStudent(x,adhar,$scope.myPhoto)
 			.then(function(response){
 				//$scope.x=null;
 			//	console.log($scope.myPhoto);

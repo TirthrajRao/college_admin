@@ -1,6 +1,7 @@
 angular.module('admin')
 	.controller('adminLoginCtrl',['$scope','$localStorage','$state','adminFactory','$rootScope',function($scope,$localStorage,$state,adminFactory,$rootScope){
-		$localStorage.$reset();
+		// $localStorage.$reset();
+
 		$scope.user = $localStorage.user;
 		$scope.doLogin = function(x){
   		 adminFactory.login(x)
