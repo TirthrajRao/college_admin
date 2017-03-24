@@ -27,7 +27,7 @@
 
 				<div class="margin-top-bottom-30"></div>
 
-				<div class="well well-lg" ng-show="academicYear">
+				<div class="well well-lg">
 					<h4 class="no-margin"><kbd>Academic Year {{academicYear}} </kbd></h4>
 					<div class="w3-responsive">
 						<table class="w3-table w3-bordered w3-centered">
@@ -45,11 +45,11 @@
 							<tbody>
 								<tr ng-repeat="x in students track by $index">
 									<td>{{$index+1}}</td>
-									<td>{{x.name}}</td>
-									<td>{{x.courseid}}</td>
+									<td>{{x.name | uppercase}}</td>
+									<td>{{x.courseid | uppercase}}</td>
 									<td>{{x.sem}}</td>
 									<td>{{x.cancelDate}}</td>
-									<td>{{x.phone}}</td>
+									<td>{{x.fphone}}</td>
 								</tr>
 							</tbody>
 						</table>

@@ -5,12 +5,13 @@
 
 		<div class="w3-container w3-padding-16 w3-light-grey">
 			<h2 class="w3-center text-primary letter-spacing-2">
-				<u>List of All Inquiries</u>
+				<u>Student Inquiry</u>
 			</h2>
 		</div>
+		<div class="margin-top-20"></div>
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="well well-lg margin-top-20">
+				<div class="well well-lg">
 					<form ng-submit="inquireByYear(academicYear)">
 						<div class="form-group">
 							<label class="control-label">Academic Year :</label>
@@ -25,7 +26,7 @@
 				<div class="margin-top-bottom-30"></div>
 
 
-				<div ng-show="academicYear">
+				<div>
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" show-tab href="#allInquiry">All Inquiry</a></li>
 						<li><a data-toggle="tab" show-tab class="" href="#admissions">Admissions Confirmed</a></li>
@@ -34,80 +35,71 @@
 
 				<div class="margin-top-20"></div>
 
-				<div class="tab-content" ng-show="academicYear">
+				<div class="tab-content">
 					<div class="tab-pane fad in active" id="allInquiry">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="w3-responsive">
 									<table class="w3-table w3-border w3-centered">
 
-										<div class="tab-content">
-											<div class="tab-pane fad in active" id="allInquiry">
-												<div class="row">
-													<div class="col-sm-12">
-														<div class="w3-responsive">
-															<table class="w3-table w3-border w3-centered">
+										<thead>
+											<tr class="w3-theme-l2">
+												<th>Seq. No.</th>
+												<th>Name</th>
+												<th>Course</th>
+												<th>Date</th>
+												<th>Phone No.</th>
+												<th>City</th>
+												<th>Admission</th>							
+											</tr>
+										</thead>
 
-																<thead>
-																	<tr class="w3-theme-l2">
-																		<th>Seq. No.</th>
-																		<th>Name</th>
-																		<th>Course</th>
-																		<th>Date</th>
-																		<th>Phone No.</th>
-																		<th>City</th>
-																		<th>Admission</th>							
-																	</tr>
-																</thead>
-
-																<tbody>
-																	<tr ng-repeat="x in pending track by $index">
-																		<td>{{$index+1}}</td>
-																		<td>{{x.student.name}}</td>
-																		<td class="text-capitalize	">{{x.student.courseid}}</td>
-																		<td>{{x.student.date}}</td>
-																		<td>{{x.student.phone}}</td>
-																		<td>{{x.id}}</td>
-																		<td><button class="btn btn-primary" ng-click>Confirm Admission</button></td>
-																	</tr>
-																</tbody>
-
-
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="margin-top-20"></div>
-
-											<div class="tab-pane fade" id="admissions">
-												<div class="row">
-													<div class="col-sm-12">
-														<div class="w3-responsive">
-															<table class="w3-table w3-border w3-centered">
-																<thead>
-																	<tr class="w3-theme-l2">
-																		<th>Seq. No.</th>
-																		<th>Name </th>
-																		<th>Course</th>
-																	</tr>
-																</thead>
-
-																<tbody>
-																	<tr ng-repeat="y in admission track by $index">
-																		<td>{{$index+1}}</td>
-																		<td>{{y.name}}</td>
-																		<td>{{y.courseid}}</td>
-																	</tr>
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>		
-									</div>
+										<tbody>
+											<tr ng-repeat="x in pending track by $index">
+												<td>{{$index+1}}</td>
+												<td class="text-capitalize">{{x.student.name | uppercase}}</td>
+												<td class="text-capitalize">{{x.student.courseid | uppercase}}</td>
+												<td>{{x.student.date}}</td>
+												<td>{{x.student.phone}}</td>
+												<td class="text-capitalize">{{x.student.city | uppercase}}</td>
+												<td><button class="btn btn-primary" ng-click="moveInAdmission(x.id)">Confirm Admission</button></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
+					</div>
+
+					<div class="margin-top-20"></div>
+
+					<div class="tab-pane fade" id="admissions">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="w3-responsive">
+									<table class="w3-table w3-border w3-centered">
+										<thead>
+											<tr class="w3-theme-l2">
+												<th>Seq. No.</th>
+												<th>Name </th>
+												<th>Course</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr ng-repeat="y in admission track by $index">
+												<td>{{$index+1}}</td>
+												<td class="text-capitalize">{{y.name | uppercase}}</td>
+												<td class="text-capitalize">{{y.courseid | uppercase}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div>
