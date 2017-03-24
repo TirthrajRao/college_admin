@@ -46,18 +46,20 @@
 										<th>Course</th>
 										<th>Date</th>
 										<th>Phone No.</th>
-										<th>City</th>							
+										<th>City</th>
+										<th>Admission</th>							
 									</tr>
 								</thead>
 
 								<tbody>
 									<tr ng-repeat="x in pending track by $index">
 										<td>{{$index+1}}</td>
-										<td>{{x.name}}</td>
-										<td>{{x.courseid}}</td>
-										<td>{{x.date}}</td>
-										<td>{{x.phone}}</td>
-										<td>{{x.city}}</td>
+										<td>{{x.student.name}}</td>
+										<td>{{x.student.courseid}}</td>
+										<td>{{x.student.date}}</td>
+										<td>{{x.student.phone}}</td>
+										<td>{{x.id}}</td>
+										<td><button class="btn btn-success" ng-click>Got Admission</button></td>
 									</tr>
 								</tbody>
 

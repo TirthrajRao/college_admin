@@ -20,5 +20,13 @@ angular.module('admin')
       		console.log(error);
     	});
 	}
+	$scope.moveInAdmission = function(id){
+		adminFactory.moveInAdmission(id)
+		.then(function(response){
+			viewInquiry();
+		},function(error){
+			console.log(error);
+		});
+	}
 	viewInquiry();
 }])
