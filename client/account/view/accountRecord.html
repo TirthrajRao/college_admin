@@ -1,124 +1,122 @@
 <div class="row full-height">
-  <div class="col-md-12 w3-light-grey">
+  <div class="col-sm-12">
 
     <div class="w3-padding-16 w3-container w3-light-grey">
-      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Student Details</u></h2>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 margin-top-10" >
-        <select class="form-control" ng-model="course" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(course.courseid)">
-          <option value="" selected disabled>Select Course</option>
-        </select>
-        <auto-complete-textbox ng-show="students" class="col-md-12 col-xs-12 no-padding"
-        placeholdertext="Search by Grno/Name"
-        array='students'
-        output="student"
-        search="searchArray"
-        display="showArray"
-        callback="getAccountRecord()">
-      </auto-complete-textbox>
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Search Record</u></h2>
 
-    </div>
-  </div>
+      <div>
+        <div class="col-md-6 col-md-offset-3 margin-top-10" >
+          <select class="form-control" ng-model="course" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(course.courseid)">
+            <option value="" selected disabled>Select Course</option>
+          </select>
+          <auto-complete-textbox ng-show="students" class="col-md-12 col-xs-12 no-padding"
+          placeholdertext="Search by Grno/Name"
+          array='students'
+          output="student"
+          search="searchArray"
+          display="showArray"
+          callback="getAccountRecord()" style="z-index:1">
+        </auto-complete-textbox>
 
-  <div class="row margin-top-10" ng-show="student">
-    <div class="col-md-12 col-xs-12">
-
-      <div class="w3-center">
-        <h3 class="text-primary"><u>Student Information</u></h3>
       </div>
+    </div>
 
-      <div class="col-md-4 col-md-offset-1 col-xs-8 col-xs-offset-2">
-        <div class="student_image" style="padding:2px;">
-          <div class="w3-center">
-            <img src="../server/{{student.path}}" alt="{{student.name}}" class="w3-center" style="height:290px; width:240px;">
+    <div class="row margin-top-10" ng-show="student">
+      <div class="col-md-12 col-xs-12">
+
+        <div class="w3-center">
+          <h3 class="text-primary">Student Information</h3>
+        </div>
+
+        <div class="col-md-4 col-md-offset-1 col-xs-8 col-xs-offset-2">
+          <div class="student_image" style="padding:2px;">
+            <div class="w3-center">
+              <img src="../server/{{student.path}}" alt="{{student.name}}" class="w3-center" style="height:290px; width:240px;">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 col-xs-12">
+          <div class="col-md-12">
+            <ul class="list-group ">
+              <li class="w3-padding list-group-item"><b>  Name :  </b> {{student.name}}</li>
+              <li class="w3-padding list-group-item"><b>  Course :</b> {{student.courseid}}</li>
+              <li class="w3-padding list-group-item"><b>  G.R.NO :</b> {{student.grno}}</li>
+              <li class="w3-padding list-group-item"><b>  Semester : </b> Sem-{{student.sem}}</li>
+              <li class="w3-padding list-group-item"><b>  Address : </b> {{student.address}}</li>
+              <li class="w3-padding list-group-item"><b>  Enrollment Number : </b>{{student.enrollment}}</li>
+              <li class="w3-padding list-group-item"><b>  Student Contact No : </b>{{student.sphone}}</li>
+              <li class="w3-padding list-group-item"><b>  Parents Contact No : </b>{{student.fphone}}</li>
+            </ul>
           </div>
         </div>
       </div>
 
 
-      <div class="col-md-6 col-xs-12">
-        <div class="col-md-12">
-          <ul class="list-group ">
-            <li class="w3-padding list-group-item"><b>  Name :  </b> {{student.name}}</li>
-            <li class="w3-padding list-group-item"><b>  Course :</b> {{student.courseid}}</li>
-            <li class="w3-padding list-group-item"><b>  G.R.NO :</b> {{student.grno}}</li>
-            <li class="w3-padding list-group-item"><b>  Semester : </b> Sem-{{student.sem}}</li>
-            <li class="w3-padding list-group-item"><b>  Address : </b> {{student.address}}</li>
-            <li class="w3-padding list-group-item"><b>  Enrollment Number : </b>{{student.enrollment}}</li>
-            <li class="w3-padding list-group-item"><b>  Student Contact No : </b>{{student.sphone}}</li>
-            <li class="w3-padding list-group-item"><b>  Parents Contact No : </b>{{student.fphone}}</li>
-          </ul>
+      <div class="row margin-top-10">
+        <div class="col-md-12 col-xs-12">
+
+          <div class="w3-center">
+            <h3 class="text-primary tahoma letter-spacing-2">Fee Receipt</h3>
+          </div>
+
+          <div class="w3-responsive">
+
+            <table class="w3-table w3-bordered w3-centered ng-animate-disabled">
+              <tr ng-show="record.receipt.length">
+                <th>Receipt No.</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Issue Date</th>
+                <th>Sem</th>
+                <th>Pending Amount</th>
+              </tr>
+
+              <tr ng-repeat="x in record.receipt" ng-click="printReceipt(x.id)" ng-show="record.receipt.length">
+                <td>{{x.rid}} </td>
+                <td>{{student.name}} </td>
+                <td><i class="fa fa-inr"></i> {{x.paid_fees}} </td>
+                <td>{{x.date}} </td>
+                <td>{{x.sem}}</td>
+                <td><i class="fa fa-inr"></i> {{x.pending_fees}}</td>
+              </tr>
+
+              <tr ng-hide="record.receipt.length">
+                <td colspan="6" class="text-danger w3-center" style="font-size:20">Fees Not Paid</td>
+              </tr>
+
+            </table>
+          </div>
         </div>
       </div>
-    </div>
 
+      <div class="row"  ng-show="record.certificates.length > 0">
+        <div class="col-md-12 col-xs-12">
+          <div class="w3-center">
+            <h3 class="text-primary tahoma letter-spacing-2"><u>Issued Certificates</u></h3>
+          </div>
+          <div class="w3-responsive">
+            <table class="w3-table w3-bordered w3-centered ng-animate-disabled" >
+              <tr class="w3-theme-l4">
+                <th>Seq. No.</th>
+                <th>Name</th>
+                <th>Certificates</th>
+                <th>Issue Date</th>
+                <th>Issuer</th>
+              </tr>
 
-    <div class="row margin-top-10">
-      <div class="col-md-12 col-xs-12">
-
-        <div class="w3-center">
-          <h3 class="text-primary tahoma letter-spacing-2"><u>Fee Receipt</u></h3>
-        </div>
-
-        <div class="w3-responsive">
-
-          <table class="w3-table w3-bordered w3-centered ng-animate-disabled">
-            <tr ng-show="record.receipt.length">
-              <th>Receipt No.</th>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Issue Date</th>
-              <th>Sem</th>
-              <th>Pending Amount</th>
-            </tr>
-
-            <tr ng-repeat="x in record.receipt" ng-click="printReceipt(x.id)" ng-show="record.receipt.length">
-              <td>{{x.rid}} </td>
-              <td>{{student.name}} </td>
-              <td>{{x.paid_fees}} </td>
-              <td>{{x.date}} </td>
-              <td>{{x.sem}}</td>
-              <td>{{x.pending_fees}}</td>
-            </tr>
-
-            <tr ng-hide="record.receipt.length">
-              <td colspan="6" class="text-danger w3-center" style="font-size:20">Fees Not Paid</td>
-            </tr>
-
-          </table>
+              <tr ng-repeat="x in record.certificates"  class="w3-theme-l4">
+                <td>{{x.cid}} </td>
+                <td>{{student.name}} </td>
+                <td>{{x.type}} </td>
+                <td>{{x.date}} </td>
+                <td>{{x.issuer}} </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
+
     </div>
-
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="w3-center">
-          <h3 class="text-primary tahoma letter-spacing-2"><u>Issued Certificates</u></h3>
-        </div>
-        <div class="w3-responsive">
-          <table class="w3-table w3-bordered w3-centered ng-animate-disabled" >
-            <tr ng-show="record.certificates.length" class="w3-theme-l4">
-              <th>Cert No.</th>
-              <th>Name</th>
-              <th>Certificates</th>
-              <th>Issue Date</th>
-              <th>Issuer</th>
-            </tr>
-
-            <tr ng-repeat="x in record.certificates"  ng-show="record.certificates.length" class="w3-theme-l4">
-              <td>{{x.cid}} </td>
-              <td>{{student.name}} </td>
-              <td>{{x.type}} </td>
-              <td>{{x.date}} </td>
-              <td>{{x.issuer}} </td>
-            </tr>
-          </table>
-
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
