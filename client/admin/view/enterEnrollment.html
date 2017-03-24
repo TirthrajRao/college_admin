@@ -14,7 +14,7 @@
         </select>
       </div>
 
-      <div class="row">
+      <div class="row " ng-show="students.length>0">
         <div class="col-sm-12 col-md-12 col-xs-12">
           <div class="w3-responsive margin-top-20">
             <table class="w3-table w3-bordered w3-centered">
@@ -24,7 +24,7 @@
                 <th>Enrollment</th>
                 <th>Submit</th>
               </tr>
-              <tr ng-show="students" ng-repeat="x in students">
+              <tr  ng-repeat="x in students">
                 <td>{{$index + 1}}</td>
                 <td>{{x.name}}(grno - {{x.grno}})</td>
                 <td ng-hide="x.enrollment.length"><input type="text" class="form-control" ng-model="enrollment" placeholder="Enter Enrollment Number"></td>

@@ -5,10 +5,12 @@
 
 		<div class="w3-container w3-padding-16 w3-light-grey">
 			<h2 class="w3-center text-primary letter-spacing-2">
-				<u>Student Inquiry</u>
+				<u>List of All Inquiries</u>
 			</h2>
 		</div>
-		<div class="well well-lg">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="well well-lg margin-top-20">
 					<form ng-submit="inquireByYear(academicYear)">
 						<div class="form-group">
 							<label class="control-label">Academic Year :</label>
@@ -20,81 +22,83 @@
 						</div>
 					</form>
 				</div>
-		<div class="margin-top-bottom-30"></div>
+				<div class="margin-top-bottom-30"></div>
 
 
-		<div>
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" show-tab href="#allInquiry">All Inquiry</a></li>
-				<li><a data-toggle="tab" show-tab class="" href="#admissions">Admissions Confirmed</a></li>
-			</ul>
+				<div ng-show="academicYear">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" show-tab href="#allInquiry">All Inquiry</a></li>
+						<li><a data-toggle="tab" show-tab class="" href="#admissions">Admissions Confirmed</a></li>
+					</ul>
+				</div>
+
+				<div class="margin-top-20"></div>
+
+				<div class="tab-content" ng-show="academicYear">
+					<div class="tab-pane fad in active" id="allInquiry">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="w3-responsive">
+									<table class="w3-table w3-border w3-centered">
+
+										<thead>
+											<tr class="w3-theme-l2">
+												<th>Seq. No.</th>
+												<th>Name</th>
+												<th>Course</th>
+												<th>Date</th>
+												<th>Phone No.</th>
+												<th>City</th>							
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr ng-repeat="x in pending track by $index">
+												<td>{{$index+1}}</td>
+												<td>{{x.name}}</td>
+												<td>{{x.courseid}}</td>
+												<td>{{x.date}}</td>
+												<td>{{x.phone}}</td>
+												<td>{{x.city}}</td>
+											</tr>
+										</tbody>
+
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="margin-top-20"></div>
+
+					<div class="tab-pane fade" id="admissions">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="w3-responsive">
+									<table class="w3-table w3-border w3-centered">
+										<thead>
+											<tr class="w3-theme-l2">
+												<th>Seq. No.</th>
+												<th>Name </th>
+												<th>Course</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr ng-repeat="y in admission track by $index">
+												<td>{{$index+1}}</td>
+												<td>{{y.name}}</td>
+												<td>{{y.courseid}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>		
+			</div>
 		</div>
-
-		<div class="margin-top-20"></div>
-
-		<div class="tab-content">
-			<div class="tab-pane fad in active" id="allInquiry">
-				<div class="row">
-					<div class="col-sm-10 col-sm-offset-1">
-						<div class="w3-responsive">
-							<table class="w3-table w3-border w3-centered">
-								
-								<thead>
-									<tr class="w3-theme-l2">
-										<th>Seq. No.</th>
-										<th>Name</th>
-										<th>Course</th>
-										<th>Date</th>
-										<th>Phone No.</th>
-										<th>City</th>							
-									</tr>
-								</thead>
-
-								<tbody>
-									<tr ng-repeat="x in pending track by $index">
-										<td>{{$index+1}}</td>
-										<td>{{x.name}}</td>
-										<td>{{x.courseid}}</td>
-										<td>{{x.date}}</td>
-										<td>{{x.phone}}</td>
-										<td>{{x.city}}</td>
-									</tr>
-								</tbody>
-
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="margin-top-20"></div>
-
-			<div class="tab-pane fade" id="admissions">
-				<div class="row">
-					<div class="col-sm-10 col-sm-offset-1">
-						<div class="w3-responsive">
-							<table class="w3-table w3-border w3-centered">
-								<thead>
-									<tr class="w3-theme-l2">
-										<th>Seq. No.</th>
-										<th>Name </th>
-										<th>Course</th>
-									</tr>
-								</thead>
-
-								<tbody>
-									<tr ng-repeat="y in admission track by $index">
-										<td>{{$index+1}}</td>
-										<td>{{y.name}}</td>
-										<td>{{y.courseid}}</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>		
 	</div>
 </div>

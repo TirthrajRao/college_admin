@@ -2,7 +2,7 @@
   <div class="col-md-12 col-xs-12">
 
     <div class="w3-light-grey w3-padding-16 w3-container">
-      <h2 class="w3-center letterspacing-2 text-primary tahoma"><u>Generate ID-Card <span ng-show="selectedSem">of {{courseid| uppercase}} Sem - {{selectedSem}} </span></u></h2>
+      <h2 class="w3-center letterspacing-2 text-primary tahoma"><u>Generate ID-Card</u></h2>
 
       <div class="col-md-6 col-md-offset-3 margin-top-10" ng-hide="receipt">
         <select class="form-control" ng-model="x.course" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x.course)">
@@ -15,7 +15,7 @@
       </div>
 
       <div class="col-md-6 col-md-offset-3">
-        <auto-complete-textbox ng-show="students" class="col-md-12  col-xs-12 no-padding"
+        <auto-complete-textbox ng-show="students.length > 0" class="col-md-12  col-xs-12 no-padding"
         placeholdertext="Search By Grno/Name"
         array='students'
         output="student"

@@ -3,12 +3,12 @@
 	<div class="col-md-12 col-xs-12">
 <div class="margin-top-10"></div>
 		<div class="w3-padding-16 w3-container w3-light-grey img-rounded">
-			<h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Trial Certificate<u></h2>
+			<h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Trial Certificate</u></h2>
 
 			<div class="row course_selector">
 				<div class="col-md-6 col-md-offset-3 margin-top-10" >
 					<select class="form-control" ng-model="course" required ng-options="courses.courseid for courses in courses" ng-change="getStudentsByCourse(course.courseid)">
-						<option value="" selected disabled>Select course</option>
+						<option value="" selected disabled>Select Course</option>
 					</select>
 					<auto-complete-textbox ng-show="students" 
 					placeholdertext="Search by Grno/Name"
@@ -56,8 +56,8 @@
 			</div>
 
 		</div>
-		<div class="col-md-4 col-md-offset-4 w3-center print_hide margin-top-bottom-20" ng-show="student">
-			<button class="btn btn-primary btn-lg" onclick="printRecord()">Print Trial certificate of {{name}}</button>
+		<div class="col-md-4 col-md-offset-4 w3-center print_hide margin-bottom-20" ng-show="student">
+			<button class="btn btn-primary" onclick="printRecord()">Print Trial certificate of {{student.name}}</button>
 		</div>
 	</div>
 </div>
