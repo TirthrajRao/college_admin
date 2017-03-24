@@ -63,7 +63,7 @@
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Aadhar Card Number : </label>
-                <input class="form-control" required ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number" min="12" max="12">
+                <input class="form-control" required ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number" >
               </div>
 
               <div class="col-sm-12 form-group">
@@ -173,7 +173,7 @@
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Marks Obtained :</label>
-                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained">
+                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained" max="x['total_marks']">
               </div>
             </fieldset>
           </div>
