@@ -23,6 +23,7 @@ $imgData1 = $data['imageData'];
   $courseid = getCourseFromSid($con,$sid);
   $name = getNameFromSid($con,$sid);
   $dob = getDobFromSid($con,$sid);
+ 
   $fullname = explode(" ", $name);
   $lname = $fullname[0];
   $fname = $fullname[1];
@@ -33,21 +34,22 @@ $imgData1 = $data['imageData'];
   $upath='../../studentPhoto/'.$courseid.'/'.$academicYear.'/';
   $photoPath = 'studentPhoto/'.$courseid.'/'.$academicYear.'/';
   $name = $_FILES['file']['name'];
-  $newName = $lname.'_'.$fname.'_'.$dob.'.jpg';
+  $newName = $lname.'_'.$fname.'_'.$sid.'.jpg';
   $target = $upath.$name;
-  echo $target;
   if($imgData1 != ''){
     $imgData1 = substr($imgData1, strrpos($imgData1, ','));
       file_put_contents($upath.$newName, base64_decode($imgData1));
       echo "webcame image";
-      mysqli_query($con,"UPDATE `student` set path='$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
+      mysqli_query($con,"UPDATE `student` set `path`='$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
 
 
   }
   if(move_uploaded_file($_FILES['file']['tmp_name'],$target)){
-    rename($upath.$name,$upath.$newName);
-   echo $_FILES['file']['name']." Uploaded.";
-   mysqli_query($con,"UPDATE `student` set path='$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
+    $result = exec(rename($upath.$name,$upath.$newName));
+    chmod($target, 0777);
+   
+   mysqli_query($con,"UPDATE `student` set `path` = '$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
+    echo "Success";
   }
   else{
    echo "Failed to upload.";

@@ -8,10 +8,8 @@ require('config.php');
     {
         ${$key}=$value;
     }
-    // $date = date("Y");
-    // $currentYear = (int)$date;
-    // $lastYear = $currentYear - 1;
-    // $data['academicYear'] = $lastYear."-".$date;
+    $date = date("Y-m-d");
+    $data['date'] = $date;
     $status = 0;
     $student = json_encode($data);
 
