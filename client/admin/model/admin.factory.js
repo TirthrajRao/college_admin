@@ -111,7 +111,7 @@ angular.module('collegeAdmin')
 
 	obj.moveInAdmission = function(id){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/changeInquireStatus?id="+id)
+		$http.post($rootScope.serverUrl+"student/changeInquireStatus.php?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){

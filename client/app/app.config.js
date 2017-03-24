@@ -32,7 +32,7 @@ angular.module('collegeAdmin')
   });
 
 //    $locationProvider.html5Mode(true);
-$urlRouterProvider.otherwise('/admin/login');
+$urlRouterProvider.otherwise('/admin/students');
 
 }])
 .run(['$rootScope','$localStorage','$state','$stateParams',function($rootScope,$localStorage,$state,$stateParams){
