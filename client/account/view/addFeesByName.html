@@ -118,12 +118,12 @@
                       <input type="radio"name="payment" ng-model="y.payMode" value="cheque">Cheque
                     </label>
                   </div>
-                  <span class="" ng-show ="y.payMode != 'cash'">Enter Cheque or D.D serial Num:</span>
+                  <span class="" ng-show ="y.payMode == 'dd' || y.payMode == 'cheque'">Enter Cheque or D.D serial Num:</span>
 
-                  <input type="text" class="form-control inputField" ng-show="y.payMode != 'cash' "  ng-model="y.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
-                  <span class="" ng-show ="y.payMode != 'cash' ">Enter Name of the bank:</span>
+                  <input type="text" class="form-control inputField" ng-show="y.payMode == 'dd' || y.payMode == 'cheque'"  ng-model="y.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
+                  <span class="" ng-show ="y.payMode == 'dd' || y.payMode == 'cheque'">Enter Name of the bank:</span>
 
-                  <input type="text" class="form-control inputField" ng-show="y.payMode != 'cash'"  ng-model="y.bankName" placeholder="Must be in full letters ">
+                  <input type="text" class="form-control inputField" ng-show="y.payMode == 'dd' || y.payMode == 'cheque'"  ng-model="y.bankName" placeholder="Must be in full letters ">
                   <div class="w3-center margin-top-10" ng-hide="receipt">
                     <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
 

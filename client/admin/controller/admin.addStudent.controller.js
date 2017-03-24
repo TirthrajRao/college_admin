@@ -73,6 +73,7 @@ angular.module('admin')
 			//	console.log($scope.myPhoto);
 			 $("button[type=submit]").removeAttr('disabled');
 				$('.alert-studentadded').show();
+				$state.reload();
 			},function(error){
 				console.log(error);
 				console.error(error);

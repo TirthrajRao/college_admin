@@ -46,7 +46,7 @@
 
               <div class="col-sm-4 form-group">
                 <label class="control-label">Mother's Name :</label>
-                <input class="form-control" required ng-model="x['motherName']" type="text" placeholder="Enter Mother's Name">
+                <input class="form-control" ng-model="x['motherName']" type="text" placeholder="Enter Mother's Name">
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label"> Select Gender : </label>
@@ -63,9 +63,8 @@
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Aadhar Card Number : </label>
-                <input class="form-control" required ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number" min="12" max="12">
+                <input class="form-control" required ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number" pattern="^[2-9]{1}[0-9]{11}$">
               </div>
-
               <div class="col-sm-12 form-group">
                 <label class="control-label">Student's Address : </label>
                 <textarea rows="4" class="form-control" required ng-model ="x['address']" type="text" placeholder="Enter Student's Address"></textarea>
@@ -173,7 +172,7 @@
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Marks Obtained :</label>
-                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained">
+                <input class="form-control" ng-model ="x['obtain_marks']" type="number" max="x.total_marks" placeholder="Enter Marks Obtained">
               </div>
             </fieldset>
           </div>
