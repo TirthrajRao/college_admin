@@ -41,64 +41,73 @@
 								<div class="w3-responsive">
 									<table class="w3-table w3-border w3-centered">
 
-										<thead>
-											<tr class="w3-theme-l2">
-												<th>Seq. No.</th>
-												<th>Name</th>
-												<th>Course</th>
-												<th>Date</th>
-												<th>Phone No.</th>
-												<th>City</th>							
-											</tr>
-										</thead>
+										<div class="tab-content">
+											<div class="tab-pane fad in active" id="allInquiry">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="w3-responsive">
+															<table class="w3-table w3-border w3-centered">
 
-										<tbody>
-											<tr ng-repeat="x in pending track by $index">
-												<td>{{$index+1}}</td>
-												<td>{{x.name}}</td>
-												<td>{{x.courseid}}</td>
-												<td>{{x.date}}</td>
-												<td>{{x.phone}}</td>
-												<td>{{x.city}}</td>
-											</tr>
-										</tbody>
+																<thead>
+																	<tr class="w3-theme-l2">
+																		<th>Seq. No.</th>
+																		<th>Name</th>
+																		<th>Course</th>
+																		<th>Date</th>
+																		<th>Phone No.</th>
+																		<th>City</th>
+																		<th>Admission</th>							
+																	</tr>
+																</thead>
 
-									</table>
+																<tbody>
+																	<tr ng-repeat="x in pending track by $index">
+																		<td>{{$index+1}}</td>
+																		<td>{{x.student.name}}</td>
+																		<td class="text-capitalize">{{x.student.courseid}}</td>
+																		<td>{{x.student.date}}</td>
+																		<td>{{x.student.phone}}</td>
+																		<td>{{x.id}}</td>
+																		<td><button class="btn btn-primary" ng-click>Confirm Admission</button></td>
+																	</tr>
+																</tbody>
+
+
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="margin-top-20"></div>
+
+											<div class="tab-pane fade" id="admissions">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="w3-responsive">
+															<table class="w3-table w3-border w3-centered">
+																<thead>
+																	<tr class="w3-theme-l2">
+																		<th>Seq. No.</th>
+																		<th>Name </th>
+																		<th>Course</th>
+																	</tr>
+																</thead>
+
+																<tbody>
+																	<tr ng-repeat="y in admission track by $index">
+																		<td>{{$index+1}}</td>
+																		<td>{{y.name}}</td>
+																		<td>{{y.courseid}}</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>		
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="margin-top-20"></div>
-
-					<div class="tab-pane fade" id="admissions">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="w3-responsive">
-									<table class="w3-table w3-border w3-centered">
-										<thead>
-											<tr class="w3-theme-l2">
-												<th>Seq. No.</th>
-												<th>Name </th>
-												<th>Course</th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<tr ng-repeat="y in admission track by $index">
-												<td>{{$index+1}}</td>
-												<td>{{y.name}}</td>
-												<td>{{y.courseid}}</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>		
-			</div>
-		</div>
-	</div>
-</div>
