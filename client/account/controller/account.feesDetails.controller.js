@@ -20,4 +20,17 @@ angular.module('account')
       });
     }
 
+
+    $scope.deleteFees = function(id){
+
+      accountFactory.deleteFeesStructure(id)
+      .then(function(response){
+        // $scope.fees=response.data;
+        activate();
+      },function(error){
+        console.log(error);
+      });
+    }
+
+
   }])

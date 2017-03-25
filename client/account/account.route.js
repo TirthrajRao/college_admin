@@ -91,5 +91,10 @@ angular.module('account',['ui.router','ngStorage','ngAnimate'])
     templateUrl : 'account/view/promoteStudent.html',
     controller : 'accountPromoteStudentCtrl'
   })
+  .state('account.notPaid',{
+    url : '/notPaid',
+    templateUrl : 'account/view/notPaidListOfStudents.html',
+    controller : 'accountNotPaidCtrl'
+  })
   
   }])

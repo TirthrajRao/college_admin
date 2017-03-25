@@ -1,9 +1,9 @@
 <div class="row full-height">
   <div class="col-md-12 col-xs-12" >
     <div class="w3-padding-16 w3-container w3-light-grey">
-      <h2 class="text-primary w3-center letter-spacing-2"><u>Generate Category Chart  {{courseid |uppercase}}</u></h2>
+      <h2 class="text-primary w3-center letter-spacing-2 print_hide"><u>Generate Category Chart  {{courseid |uppercase}}</u></h2>
 
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3 print_hide">
         <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getCategoryChart(x['course']['courseid'])">
           <option value="" selected disabled> Select Course</option>
         </select>
@@ -12,6 +12,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-12 col-sm-12">
           <div class="w3-responsive margin-top-20" ng-show="chart">
+            <h4 class="no-margin"><kbd>Category Chart of {{courseid | uppercase}}</kbd></h4>
             <table class="w3-table w3-bordered w3-centered">
               <tr class="w3-theme-l4" ng-click="showTable()">
                 <th class="w3-center">{{courseid | uppercase}}</th>
