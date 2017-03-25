@@ -32,7 +32,7 @@ angular.module('admin')
 		var result = ((myValue/totalValue)*100)
 		return Math.round(result, 2);
 	}
-	$scope.doUpdate= function(student){
+	$scope.doUpdate= function(student,adhar,photo){
 		$("button[type=submit]").attr('disabled','disabled');
 		student['sphone']=parseInt(student['sphone']);
 		student['fphone']=parseInt(student['fphone']);
@@ -45,7 +45,7 @@ angular.module('admin')
 		student['obtain_marks'] = parseInt(student['obtain_marks']);
 		student['percent']= $scope.roundedPercentage(student['obtain_marks'],student['total_marks']);
 		console.log(student);
-		adminFactory.updateStudent(student)
+		adminFactory.updateStudent(student,adhar,photo)
 		.then(function(response){
 			$('.alert-success').show();
 			$("button[type=submit]").removeAttr('disabled');

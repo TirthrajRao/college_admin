@@ -45,7 +45,7 @@ if(isset($sid)){
         `bankName` = '".$bankName."',
         `accountNub` = '".$accountNub."',
         `ifscCode` = '".$ifscCode."'
-		where sid = '$sid'")
+		where sid = '".$sid."'")
     or die(mysqli_error($con));
-
+    echo $sid;
 }

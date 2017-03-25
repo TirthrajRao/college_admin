@@ -8,7 +8,7 @@
     <div class="row">
 
       <div class="col-md-10 col-md-offset-1">
-        <form id="addStudent" ng-submit="doUpdate(student)">
+        <form id="addStudent" ng-submit="doUpdate(student,adhar,photo)">
           <div class="well well-lg">
             <fieldset>
               <legend class="font-monospace">Student Information </legend>
@@ -168,6 +168,28 @@
                 <label class="control-label">Marks Obtained :</label>
                 <input class="form-control" ng-model ="student.obtain_marks" type="number" placeholder="Enter Marks Obtained">
               </div>
+            </fieldset>
+          </div>
+                    <div class="well well-lg">
+            <fieldset>
+              <legend class="font-monospace">Photo Upload </legend>
+              <div class="form-group col-sm-12">
+                <div class="col-md-2 col-xs-3 no-padding">
+                  <label class="control-label">Upload Adharcard :</label>
+                </div>
+                <div class="col-md-4 col-xs-9">
+                  <input type="file" name="adhar" id="adhar" file-model="adhar" accept="image/*"/>
+                </div>
+                <div class="col-md-2 col-xs-3 no-padding">
+                  <label class="control-label">Upload Photo :</label>
+                </div>
+
+                <div class="col-md-4 col-xs-9">
+                  <input type="file" name="photo" id="fileToUpload" file-model="photo" accept="image/*"/>
+                </div>
+              </div>
+              
+
             </fieldset>
           </div>
 

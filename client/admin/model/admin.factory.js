@@ -179,10 +179,15 @@ angular.module('collegeAdmin')
 		});
 		return defer.promise;
 	}
-	obj.updateStudent =function(x){
+	obj.updateStudent =function(x,adhar,file){
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/updateStudent.php",x)
 		.then(function(response){
+			var sid = success.data;
+			$http.post($rootScope.serverUrl+"student/addStudentPhoto.php?sid="+sid,file);
+			uploadFile(file,$rootScope.serverUrl+"student/addStudentPhoto.php?sid="+success.data);
+			$http.post($rootScope.serverUrl+"student/addAdharCard.php?sid="+sid,adhar);
+			uploadFile(adhar,$rootScope.serverUrl+"student/addAdharCard.php?sid="+success.data);
 			defer.resolve(response);
 		},function(error){
 			defer.reject(error);
@@ -267,12 +272,6 @@ angular.module('collegeAdmin')
 							transformRequest: angular.identity,
 							headers: {'Content-Type': undefined}
 					 })
-					 // .success(function(scs){
-						// 	alert("Photo has been uploaded.");
-					 // })
-					 // .error(function(){
-						// 	alert("Sorry, the photo couldn't be uploaded")
-					 // });
 				}
 
 
