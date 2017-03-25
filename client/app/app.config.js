@@ -37,6 +37,7 @@ $urlRouterProvider.otherwise('/admin/students');
 }])
 .run(['$rootScope','$localStorage','$state','$stateParams',function($rootScope,$localStorage,$state,$stateParams){
   $rootScope.serverUrl = 'http://132.140.160.109/college/collegeAdminNew/server/admin/';
+  $rootScope.serverImage = 'http://132.140.160.109/college/collegeAdminNew/server/';
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
   $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){  

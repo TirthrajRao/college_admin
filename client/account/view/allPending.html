@@ -18,13 +18,13 @@
 
 
       <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12" ng-show="allPending">
+        <div class="col-md-12 col-sm-12 col-xs-12" ng-show="allPending.length > 0">
           <div class="w3-responsive margin-top-20" >
             <table class="w3-table w3-bordered w3-centered" >
               <tr class="w3-theme-l4" >
                 <th>Seq. No.</th>
-                <th ng-click = "ol = 'name' ">Name</th>
-                <th ng-click = "ol = 'grno' ">G.R.No</th>
+                <th ng-click = "ol = 'name'"> Name</th>
+                <th ng-click = "ol = 'grno'"> G.R.No</th>
                 <th>Paid Fees</th>
                 <th>Pending Fees</th>
                 <th>Phone</th>
@@ -34,8 +34,8 @@
                 </td>
                 <td>{{x.name}}</td>
                 <td>{{x.grno}}</td>
-                <td >{{x.paid_fees['paid_fees']}}</td>
-                <td>{{x.pending_fees['pending_fees']}}</td>
+                <td><i class="fa fa-inr"></i> {{x.paid_fees['paid_fees']}}</td>
+                <td><i class="fa fa-inr"></i> {{x.pending_fees['pending_fees']}}</td>
                 <td>{{x.phone['sphone']}}</td>
               </tr>
             </table>

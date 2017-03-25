@@ -23,7 +23,7 @@ $result = mysqli_query($con,"SELECT MAX(rid) as `newid`  from `payment_details` 
 $oldrid = mysqli_fetch_assoc($result);
 $rid = $oldrid['newid'] + 1;
 
-updatePendingFees($con,$name,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear);
+updatePendingFees($con,$name[0],$sid,$rid,$pending_fees,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear);
 
 	mysqli_query($con,"UPDATE paid_fees set
 	`paid_fees` = '".$paid_fees."',
