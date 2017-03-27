@@ -7,7 +7,7 @@
 
         <div class="col-md-6 col-md-offset-3 margin-top-10">
           <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x['course'])">
-            <option value="" selected disabled>Select course</option>
+            <option value="" selected disabled>Select Course</option>
           </select>
           <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change = "getPaymentDetails(selectedSem)" >
             <option value="" selected disabled>Select Semester</option>
@@ -19,7 +19,7 @@
       </div>
       
       <div class="w3-responsive margin-top-20">
-        <table class="w3-table w3-bordered w3-centered" ng-show="pDetails">
+        <table class="w3-table w3-bordered w3-centered" ng-show="pDetails.length > 0">
           <tr class="w3-theme-l4">
             <th>Seq. No</th>
 
@@ -39,8 +39,8 @@
             </td>
             <td>{{x.name.name}}</td>
             <td>{{x.grno.grno}}</td>
-            <td >{{x.paid_fees}}</td>
-            <td>{{x.pending_fees}}</td>
+            <td><i class="fa fa-inr"></i> {{x.paid_fees}}</td>
+            <td><i class="fa fa-inr"></i> {{x.pending_fees}}</td>
             <td>{{x.payMode}}</td>
             <td>{{x.ddOrC_Nub}}</td>
             <td>{{x.bankName}}</td>

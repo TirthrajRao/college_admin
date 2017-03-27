@@ -33,7 +33,7 @@ print_r($img);
   $upath='../../studentPhoto/'.$courseid.'/'.$academicYear.'/';
   $photoPath = 'studentPhoto/'.$courseid.'/'.$academicYear.'/';
   $name = $_FILES['file']['name'];
-  $newName = $lname.'_'.$fname.'_adhar'.'.jpg';
+  $newName = $lname.'_'.$fname.$sid.'_adhar'.'.jpg';
   $target = $upath.$name;
   echo $target;
 

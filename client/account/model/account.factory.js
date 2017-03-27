@@ -37,6 +37,18 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
+	obj.deleteFeesStructure =function(id){
+
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"account/deleteFeesStructure.php?id="+id)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
 	obj.updateFees =function(x){
 
 		var defer = $q.defer();

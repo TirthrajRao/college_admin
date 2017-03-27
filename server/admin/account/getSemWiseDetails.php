@@ -22,7 +22,7 @@ foreach($ara1 as $value){
   array_push($ara2,$value);
 
 }
-echo "functions";
+// echo "functions";
 
 echo json_encode($ara2);
  ?>

@@ -27,10 +27,20 @@ a:focus{
 
   <a class="dropdown-toggle" data-toggle="dropdown">Fees Structure <i class="fa fa-caret-down"></i></a>
   <ul class="dropdown-menu">
-    <li><a ui-sref="account.AddFeesByName"><i class="fa fa-credit-card"></i> Pay Fees</a></li>
-    <li><a ui-sref="account.AllPending"><i class="fa fa-exclamation-circle"></i> Pay Pending Fees</a></li>
     <li><a ui-sref="account.AddFeesDetails"><i class="fa fa-plus-circle"></i> Add Fees Details</a></li>
     <li><a ui-sref="account.FeesDetails"><i class="fa fa-pencil-square"></i> Modify Fees Structure</a></li>
+  </ul>
+
+</li>
+
+
+<li class="dropdown w3-padding-16" style="padding-right:15px; padding-left:15px;">
+
+  <a class="dropdown-toggle" data-toggle="dropdown">Fees Payment <i class="fa fa-caret-down"></i></a>
+  <ul class="dropdown-menu">
+    <li><a ui-sref="account.AddFeesByName"><i class="fa fa-credit-card"></i> Pay Fees</a></li>
+    <li><a ui-sref="account.AllPending"><i class="fa fa-exclamation-circle"></i> Pay Pending Fees</a></li>
+    <li><a ui-sref="account.notPaid"><i class="fa fa-plus-circle"></i> Unpaid Students</a></li>
   </ul>
 
 </li>

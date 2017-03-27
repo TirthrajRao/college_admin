@@ -345,18 +345,22 @@ function getSidOfPendingStudents($con,$courseid,$sem){
 }
 
  function getSidOfAllNewPending($con,$courseid,$sem){
+
 	 	$allSid = getSidOfAllStudentBySem($con,$courseid,$sem);
 	 	$pendingSid = getSidFromPendingFees($con,$sem);
  		$fullPaid = getSidFromFullPaid($con,$sem);
  		$new = array();
 	 	$allNew = array();
 	 	foreach($allSid as $x){
-		 	if(!in_array($x,$pendingSid))
+		 	if(!in_array($x,$pendingSid)){
 				array_push($allNew,$x);
+			}
 	 	}
-	 foreach($allSid as $x){
+	 foreach($allNew as $x){
 			if(!in_array($x,$fullPaid))
+			{
 				array_push($new,$x);
+	 		}
 	 }
 	 return $new;
  }

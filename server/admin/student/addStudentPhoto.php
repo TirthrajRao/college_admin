@@ -29,7 +29,22 @@ $lname = $fullname[0];
 $fname = $fullname[1];
 
 if (!file_exists('../../studentPhoto/'.$courseid.'/'.$academicYear)) {
-  exec(mkdir('../../studentPhoto/'.$courseid.'/'.$academicYear,0777, true));
+  var_dump(mkdir('../../studentPhoto/'.$courseid.'/'.$academicYear,777, true));
+  chmod("('../../studentPhoto/'.$courseid.'/'.$academicYear)", 0777);
+
+
+  if(!file_exists('../QuestionAnswer/'.$qid)){
+    exec(mkdir('../QuestionAnswer/'.$qid,0777));
+    }
+    else{
+      if (!file_exists('../QuestionAnswer/'.$qid.'/'.$que_id)) {
+      exec(mkdir('../QuestionAnswer/'.$qid.'/'.$que_id,0777));
+    }
+    $path = "../QuestionAnswer/'.$qid.'/'.$que_id";
+    chmod($path, 0777);
+  }
+
+
 }
 $upath='../../studentPhoto/'.$courseid.'/'.$academicYear.'/';
 $photoPath = 'studentPhoto/'.$courseid.'/'.$academicYear.'/';
@@ -40,14 +55,13 @@ if($imgData1 != ''){
   $imgData1 = substr($imgData1, strrpos($imgData1, ','));
   file_put_contents($upath.$newName, base64_decode($imgData1));
   echo "webcame image";
-  chmod($upath.$newName, 0777);
   mysqli_query($con,"UPDATE `student` set `path`='$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
 
 
 }
 if(move_uploaded_file($_FILES['file']['tmp_name'],$target)){
   $result = exec(rename($upath.$name,$upath.$newName));
-  chmod($upath.$newName, 0777);
+  chmod($target, 0777);
 
   mysqli_query($con,"UPDATE `student` set `path` = '$photoPath$newName' where sid = '$sid'") or die(mysqli_error($con));
   echo "Success";

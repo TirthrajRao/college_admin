@@ -29,7 +29,7 @@
 
 
       <div class=" col-md-6 col-md-offset-3 margin-top-bottom-20 w3-center" style="margin-top:50px" ng-show="selectedSem < semester.length ">
-        <div ng-show="courseid">
+        <div ng-show="selectedSem">
           <button class="btn btn-success btn-lg" ng-click="promoteToNextSem(selectedSem)">Promote Student of  Sem-{{selectedSem|number }}  {{courseid | uppercase}} to Next Sem  </button>
         </div>
       </div>

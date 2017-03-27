@@ -1,6 +1,7 @@
 angular.module('account')
   .controller('accountSemWiseDetailsCtrl',['$scope','$rootScope','$state','$stateParams','accountFactory',function($scope,$rootScope,$state,$stateParams,accountFactory){
 var str = $stateParams.course;
+console.log(str);
 var pos = str.search("sem");
 $scope.course = str.slice(0,pos-1);
 var a = pos + 3;
