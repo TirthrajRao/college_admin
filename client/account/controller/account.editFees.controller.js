@@ -34,8 +34,7 @@ angular.module('account')
       $("button[type=submit]").removeAttr('disabled');
     },function(error){
       $('.alert-error').show();
-    }
-    )
+    })
   }
 
 }])

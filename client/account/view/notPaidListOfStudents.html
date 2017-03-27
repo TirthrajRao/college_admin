@@ -2,7 +2,7 @@
   <div class="col-md-12 col-xs-12">
     <div class="w3-padding-16 w3-container w3-light-grey">
 
-      <h2 class="w3-center text-primary letter-spacing-2 tahoma"> <span class="underline">Pending Fees List </span> <span ng-show="selectedSem"> <span class="underline"> of </span> <span class="w3-text-black"> {{courseid| uppercase}} Sem-{{selectedSem}}</span> <br> </h2>
+      <h2 class="w3-center text-primary letter-spacing-2 tahoma"> <span class="underline">Fees Unpaid Students List </span> <span ng-show="selectedSem"> <span class="underline"> of </span> <span class="w3-text-black"> {{courseid| uppercase}} Sem-{{selectedSem}}</span> <br> </h2>
 
       <div class="col-md-6 col-md-offset-3 margin-top-10">
         <select class="form-control" ng-model="x['course']" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x['course'])">
@@ -12,8 +12,6 @@
           <option value="" selected disabled>Select Semester</option>
           <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
         </select>
-
-
       </div>
 
 
@@ -29,12 +27,11 @@
                 <th>Student Phone No</th>
               </tr>
               <tr ng-repeat='x in record'>
-                <td>{{$index+1}}
-                </td>
+                <td>{{$index+1}}</td>
                 <td>{{x.name}}</td>
                 <td>{{x.grno}}</td>
-                <td><i class="fa fa-inr"></i> {{x.fphone}}</td>
-                <td><i class="fa fa-inr"></i> {{x.sphone}}</td>
+                <td>{{x.fphone}}</td>
+                <td>{{x.sphone}}</td>
               </tr>
             </table>
           </div>

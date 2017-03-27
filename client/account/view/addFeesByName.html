@@ -45,8 +45,9 @@
                   <h3>  Payable Amount : <i class="fa fa-inr"></i> {{totalFees.total_fees}}</h3>
 
 
-                  <h3>  Total Paid : <i class="fa fa-inr"></i> {{y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees}}</h3>
-                  <h3>  Total Pending : <i class="fa fa-inr"></i> {{totalFees.total_fees - (y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees + y.su_enrollment_fees + y.su_degree_fees + y.su_exam_project_fees + y.su_enrollment_fees + y.viva_project_fees  + y.discount)}}</h3>
+                  <h3>  Total Paid : <i class="fa fa-inr"></i> {{y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees + y.su_enrollment_fees + y.su_degree_fees + y.su_exam_project_fees +  + y.viva_project_fees}}</h3>
+
+                  <h3>  Total Pending : <i class="fa fa-inr"></i> {{totalFees.total_fees - (y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees + y.su_enrollment_fees + y.su_degree_fees + y.su_exam_project_fees +  + y.viva_project_fees  + y.discount)}}</h3>
                 </div>
 
 
@@ -101,7 +102,7 @@
                     <input type="number" class="form-control inputField"  required  ng-init="y.lib_fees= 0" ng-model="y.lib_fees" ng-value="0" placeholder="Library Charges"/>
                   </div>
 
-                  <label class="  checkbox-inline"><input type="checkbox"  ng-model="selectDiscount" value="" margin-top-10>Discount</label>
+                  <label class="  checkbox-inline"><input type="checkbox"  ng-model="selectDiscount" value="" class="margin-top-10">Discount</label>
                   <span class="" ng-show="selectDiscount">Discount Amount:</span>
 
                   <input id= "discount" type="number" ng-show="selectDiscount" required class="form-control margin-top-10" ng-init="y.discount= 0" ng-model="y.discount" placeholder="Enter 0 if no discount allocated to this student"  >
