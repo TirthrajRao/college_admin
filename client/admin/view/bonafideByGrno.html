@@ -16,7 +16,7 @@
             <option value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}}</option>
           </datalist>
 
-          <div class="w3-center margin-top-10 ">
+          <div class="w3-center margin-top-10 " ng-show="x.course">
             <button class="btn btn-success" type="submit"><i class="fa fa-file-text-o"></i> Generate Bonafide</button>
           </div>
         </form>

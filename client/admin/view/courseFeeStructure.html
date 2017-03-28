@@ -15,14 +15,14 @@
           <datalist id="students" >
             <option  value="{{x.grno}}"  ng-repeat="x in students">{{x.name}} - {{x.courseid}}-sem-{{x.sem}} </option>
           </datalist>
-          <div class="w3-center margin-top-10 ">
+          <div class="w3-center margin-top-10 " ng-show="grno">
             <button class="btn btn-success" type="submit"><i class="fa fa-file-text-o"></i> Generate Fee Structure</button>
           </div>
         </form>
       </div>
     </div>
 
-    <div>
+    <div ng-show ="student">
       <div class="container" contenteditable="true">
 
         <div class="w3-center">
