@@ -2,10 +2,10 @@
   <div class="col-md-12">
     <div class="w3-container w3-padding-16 w3-light-grey">
       <h2 class="w3-center text-primary tahoma letter-spacing-2"><u> Pay Pending Fees of {{student.name}}</u></h2>
-    
+      
 
-    
-     
+      
+      
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="alert alert-successful w3-custom-blue w3-text-white fade in">
@@ -22,13 +22,13 @@
 
               <h3> Student Discount : <i class="fa fa-inr"></i> {{student.discount.discount + x.discount_}}</h3>
 
-              <h3>Pending Fees :  <i class="fa fa-inr"></i> {{student.pending_fees['pending_fees']}}</h3>
+              <h3>Pending Fees :  <i class="fa fa-inr"></i> {{student.pending_fees['pending_fees'] - (x.tution_fees + x.su_exam_fees + x.su_sports_fees + x.su_enlistment_fees + x.misc_fees + x.lib_fees + x.su_enrollment_fees + x.su_degree_fees + x.su_exam_project_fees +  + x.viva_project_fees  + x.discount)}} </h3>
               <div class="w3-center">
-              <button class="w3-btn w3-center w3-border w3-blue" ng-show="receipt" ng-click="printReceipt(receipt.id)" >Print Fee printReceipteceipt</button>
-            </div>
+                <button class="w3-btn w3-center w3-border w3-blue" ng-show="receipt" ng-click="printReceipt(receipt.id)" >Print Fee printReceipteceipt</button>
+              </div>
               <div class="col-md-12">
                 <div ng-show="student.pending_fees.tution_fees > '0'">
-                  <span class=" margin-bottom-10">Tution Fees : <i class="fa fa-inr"></i> {{student.pending_fees.tution_fees}} (<i class="fa fa-inr"></i> {{student.pending_fees.tution_fees - x.tution_fees}})</span>
+                  <span class=" margin-bottom-10">Tution Fees : <i class="fa fa-inr"></i> {{student.pending_fees.tution_fees - student.discount.discount}} (<i class="fa fa-inr"></i> {{(student.pending_fees.tution_fees - student.discount.discount) - x.tution_fees }})</span>
                   <input type="number" class="form-control inputField"  required  ng-init="x.tution_fees=0" ng-model="x.tution_fees"  placeholder="Tution Fees" ng-value="{{zero}}" />
                 </div>
                 <div ng-show="student.pending_fees.su_exam_fees > '0'">
@@ -75,9 +75,13 @@
                   <input type="number" class="form-control inputField"  required  ng-init="x.lib_fees=0" ng-model="x.lib_fees"  placeholder="Library Charges"/>
                 </div>
 
-                <label class="  checkbox-inline"><input type="checkbox"  ng-model="selectDiscount" value="" class="margin-top-10"> Discount</label>
-                <span class="" ng-show="selectDiscount">Total Discount Amount: {{student.discount.discount + x.discount_}} </span>
-                <input id= "discount" type="number" ng-show="selectDiscount" required class="form-control margin-top-10" ng-init="x.discount_=0" ng-model="x.discount_" placeholder="Enter 0 if no discount allocated to this student"  >
+
+                <label class="checkbox-inline"><input type="checkbox" name="isOther" id="isOther" ng-model="selectDiscount" class="" > Discount (Total Discount Amount: {{student.discount.discount + x.discount}})</label>
+                
+                <input id= "discount" type="number" required class="form-control margin-top-10" ng-init="x.discount= 0" ng-model="x.discount" placeholder="Enter 0 if no discount allocated to this student"  disabled/>
+
+
+
                 <span class="">Mode of Payment:</span>
 
                 <div class="border-square">
@@ -131,5 +135,16 @@ $(document).ready(function(){
     $('.w3-custom-red').hide();
   })
   
+});
+
+$('input[name=isOther]').change(function(){
+
+  if($(this).is(':checked')) {
+    $("#discount").removeAttr('disabled');
+  }
+  else{
+   $("#discount").attr('disabled','disabled');
+ }
+
 });
 </script>

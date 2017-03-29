@@ -26,8 +26,8 @@ function getStudentByGrno($con,$grno){
 			return NULL;
 		}
 
-function getPaidFeesBySid($con,$sid){
-		$result = mysqli_query($con,"SELECT `paid_fees` FROM paid_fees where `sid` = '$sid'");
+function getPaidFeesBySid($con,$sid,$sem){
+		$result = mysqli_query($con,"SELECT `paid_fees` FROM paid_fees where `sid` = '$sid' and `sem` like '$sem'");
 		$ara = array();
 		while($x = mysqli_fetch_assoc($result)){
 		return $x;
@@ -239,16 +239,114 @@ function getTotalFeesBySem($con,$courseid,$sem){
  		echo json_encode($ara);
  				}
  }
+ function getPendingTutionFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `tution_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['tution_fees'];
+ 	}
+ }
 
+ function getPendingSuExamFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_exam_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_exam_fees'];
+ 	}
+ }
 
-function updatePendingFees($con,$name,$sid,$rid,$pending_fees,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
+ function getPendingSuSportsFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_sports_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_sports_fees'];
+ 	}
+ }
+
+ function getPendingSuEnlistmentFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_enlistment_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_enlistment_fees'];
+ 	}
+ }
+
+ function getPendingMiscFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `misc_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['misc_fees'];
+ 	}
+ }
+
+ function getPendingLibFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `lib_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['lib_fees'];
+ 	}
+ }
+
+ function getPendingSuDegreeFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_degree_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_degree_fees'];
+ 	}
+ }
+
+ function getPendingExamProjectFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_exam_project_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_exam_project_fees'];
+ 	}
+ }
+
+function getPendingSuEnrollmentFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `su_enrollment_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['su_enrollment_fees'];
+ 	}
+ }
+
+ function getPendingVivaProjectFees($con,$sid,$sem){
+	$result = mysqli_query($con,"SELECT `viva_project_fees` FROM `pending_fees` where `sid` like '$sid' AND `sem` like '$sem'")or die(mysqli_error($con)); 		
+ 	while( $x = mysqli_fetch_assoc($result)){
+ 		return $x['viva_project_fees'];
+ 	}
+ } 
+function updatePendingFees($con,$name,$sid,$rid,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_degree_fees,$su_enrollment_fees,$su_exam_project_fees,$viva_project_fees,$paid,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
 
 			$total_fees = getTotalFeesOfPending($con,$sid,$sem);
  			$x = $total_fees['total_fees'];
- 		 //	$pending = $x - ($paid_fees + $discount);
-		 	mysqli_query($con,"UPDATE pending_fees set
- 			`pending_fees` = '".$pending_fees."'
-      	WHERE `sid` = '".$sid."' ") or die(mysqli_error($con));
+ 		 	$pending_tution_fees = getPendingTutionFees($con,$sid,$sem);
+ 		 	$pending_su_exam_fees = getPendingSuExamFees($con,$sid,$sem);
+ 		 	$pending_su_sports_fees	= getPendingSuSportsFees($con,$sid,$sem);
+ 		 	$pending_su_enlistment_fees = getPendingSuEnlistmentFees($con,$sid,$sem);
+ 		 	$pending_misc_fees = getPendingMiscFees($con,$sid,$sem);
+ 		 	$pending_lib_fees = getPendingLibFees($con,$sid,$sem);
+ 		 	$pending_su_degree_fees = getPendingSuDegreeFees($con,$sid,$sem);
+ 		 	$pending_exam_project_fees = getPendingExamProjectFees($con,$sid,$sem);
+ 		 	$pending_enrollment_fees = getPendingSuEnrollmentFees($con,$sid,$sem); 
+ 		 	$pending_viva_projects_fees = getPendingVivaProjectFees($con,$sid,$sem);
+
+ 		 	$pen_tution_fees =  $pending_tution_fees - $tution_fees;
+			$pen_su_exam_fees = $pending_su_exam_fees - $su_exam_fees;
+			$pen_su_sports_fees = $pending_su_sports_fees - $su_sports_fees;
+			$pen_su_enlistment_fees = $pending_su_enlistment_fees - $su_enlistment_fees;
+			$pen_misc_fees = $pending_misc_fees - $misc_fees;
+			$pen_lib_fees = $pending_lib_fees - $lib_fees;
+			$pen_su_degree_fees = $pending_su_degree_fees - $su_degree_fees;
+			$pen_exam_project_fees = $pending_exam_project_fees - $su_exam_project_fees;
+			$pen_enrollment_fees = $pending_enrollment_fees - $su_enrollment_fees;
+			$pen_viva_projects_fees = $pending_viva_projects_fees - $viva_project_fees;
+
+ 		 	$pending_fees = $x - ($paid_fees + $discount);
+
+
+
+		 	mysqli_query($con,"UPDATE `pending_fees` SET `pending_fees`='$pending_fees',
+      	`tution_fees`='$pen_tution_fees',`su_exam_fees`='$pen_su_exam_fees',
+      	`su_sports_fees`='$pen_su_sports_fees',`su_enlistment_fees`='$pen_su_enlistment_fees'
+      	,`misc_fees`='$pen_misc_fees',`lib_fees`='$pen_lib_fees',`su_degree_fees`='$pen_su_degree_fees',
+      	`su_exam_project_fees`='$pen_exam_project_fees',`su_enrollment_fees`='$pen_enrollment_fees',
+      	`viva_project_fees`='$pen_viva_projects_fees',`courseid`='$courseid',`academicYear`='$academicYear' WHERE `sid` like '$sid' And `sem` like '$sem'") or die(mysqli_error($con));
+
+
+
    			if($pending_fees <= 0) {
 
 						mysqli_query($con,"INSERT INTO full_paid (`sid`,`paid`,`discount`,`sem`,`academicYear`)
@@ -280,6 +378,10 @@ function updatePendingFees($con,$name,$sid,$rid,$pending_fees,$paid_fees,$tution
 		
 				mysqli_query($con,"INSERT INTO `payment_details`(`sid`,`rid`, `sem`,`courseid`, `payMode`, `paid_fees`,`tution_fees`,`su_exam_fees`,`su_sports_fees`,`su_enlistment_fees`,`misc_fees`,`lib_fees`,`su_degree_fees`,`su_exam_project_fees`,`su_enrollment_fees`,`viva_project_fees`,`pending_fees`, `ddOrC_Nub`, `bankName`, `date`,`academicYear`,`name`)
 					VALUES ('".$sid."','".$rid."','".$sem."','".$courseid."','".$payMode."','".$paid."','".$tution_fees."','".$su_exam_fees."','".$su_sports_fees."','".$su_enlistment_fees."','".$misc_fees."','".$lib_fees."','".$su_degree_fees."','".$su_exam_project_fees."','".$su_enrollment_fees."','".$viva_project_fees."','".$pending_fees."','".$ddOrC_Nub."','".$bankName."','".$date."','".$academicYear."','".$name."')") or die(mysqli_error($con));
+
+
+
+
 
 				$last_id = mysqli_insert_id($con);
 				$ara = array();
@@ -345,7 +447,6 @@ function getSidOfPendingStudents($con,$courseid,$sem){
 }
 
  function getSidOfAllNewPending($con,$courseid,$sem){
-
 	 	$allSid = getSidOfAllStudentBySem($con,$courseid,$sem);
 	 	$pendingSid = getSidFromPendingFees($con,$sem);
  		$fullPaid = getSidFromFullPaid($con,$sem);
@@ -419,4 +520,6 @@ function getTotolPaymentCourseWiseFromTo($con,$courseid,$sem,$fromdate,$todate){
 	 }
 	 return $total;
  }
+
+
 ?>

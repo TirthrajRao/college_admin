@@ -39,8 +39,8 @@ $urlRouterProvider.otherwise('/admin/login');
   $rootScope.serverImage = 'http://132.140.160.109/college/collegeAdminNew/server/';
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
-  $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){  
-  if(toState.name.substr(0,7) == $localStorage.user.type || toState.name.substr(0,5) == $localStorage.user.type ) 
+  $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){
+  if($localStorage.atype != undefined || toState.name.substr(0,7) == $localStorage.user.type || toState.name.substr(0,5) == $localStorage.user.type ) 
   {
     if(toState.name.substr(0,7).localeCompare('account') == 0 || toState.name.substr(0,5).localeCompare('admin')==0)
     {
@@ -48,8 +48,7 @@ $urlRouterProvider.otherwise('/admin/login');
       {
       }       
       else{
-        if(typeof($localStorage.adminId) == undefined || $localStorage.adminId == null){
-          console.log(typeof($localStorage.adminId));    
+        if(typeof($localStorage.adminId) == undefined || $localStorage.adminId == null){  
           $state.go('admin.login');
         }
        }

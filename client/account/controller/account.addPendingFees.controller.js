@@ -38,16 +38,16 @@ angular.module('account')
      console.log($scope.receipt);
      $('.alert-successful').show();
      $("button[type=submit]").removeAttr('disabled');
-    //$scope.x = null;
+    $state.go('account.PrintReceipt',{ 'id' : $scope.receipt.id });
     getStudent(id);
   },function(error){
     console.log(error);
-    if(error.status == 409){
+    /*if(error.status == 409){
         alert("You have already paid fess.");
       }
       else{
         alert("Couldn't paid fees right now.  try again later.")
-      }
+      }*/
   });
 
   }

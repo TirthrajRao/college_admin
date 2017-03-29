@@ -24,7 +24,7 @@ $a = $allPending[$i];
 
 }
 foreach($ara as $value){
-  $value['paid_fees'] = getPaidFeesBySid($con,$value['sid']);
+  $value['paid_fees'] = getPaidFeesBySid($con,$value['sid'],$sem);
   array_push($araPaid,$value);
 
 }

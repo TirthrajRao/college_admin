@@ -9,6 +9,7 @@ angular.module('admin')
 				 $localStorage.user = response.data;
 				 $localStorage.adminId = $localStorage.user.id; 
 				 $rootScope.user = 	$localStorage.user;
+				 $localStorage.atype = $localStorage.user.type;
 				 if($localStorage.user.type == 'admin'){
 				 	$state.go('admin.Students');
 				 }
