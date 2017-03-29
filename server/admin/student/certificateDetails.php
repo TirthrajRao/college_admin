@@ -10,7 +10,7 @@ foreach ($data as $key=>$value)
 }
 
 $date = date('y-m-d');
-mysqli_query($con,"INSERT INTO `certificatedetails`(`cid`, `sid`, `type`, `purpose`, `issuer`, `date`) VALUES ('$cid','$sid','$type','$purpose','$issuer','$date') ")or die(mysql_error($con));
+mysqli_query($con,"INSERT INTO `certificatedetails`(`cid`, `sid`, `type`, `purpose`, `issuer`, `date`) VALUES ('$cid','$sid','$type','$purpose','$issuer','$date') ")or die(mysqli_error($con));
 
 
 ?>
