@@ -16,8 +16,8 @@ angular.module('account')
 		x['id'] = $localStorage.adminId;
 
 		if(x.newPassword == x.confirmPassword){
-			if(x.newPassword != x.currentPassword ){
-				accountFactory.changeAdminPassword(x.currentPassword,x.id,x.newPassword)
+			if(x.newPassword != x.current ){
+				accountFactory.changeAdminPassword(x)
 		    	.then(function(response){
 		      	$scope.std=response.data;
 		      	if($scope.std == 'true')

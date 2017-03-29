@@ -264,6 +264,17 @@ angular.module('collegeAdmin')
 		});
 		return defer.promise;
 	}
+	obj.changeAdminPassword =function(x){
+
+		var defer = $q.defer();
+		$http.post($rootScope.serverUrl+"account/changeAdminPassword.php",x)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
 	function uploadFile (file, uploadUrl){
 
 					 var fd = new FormData();
