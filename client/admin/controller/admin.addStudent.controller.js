@@ -5,6 +5,7 @@
 			var result = ((myValue/totalValue)*100)
 			return Math.round(result, 4);
 		}
+		$scope.highest = 
 		activate();
 		function activate(){
 			adminFactory.getCourses()
