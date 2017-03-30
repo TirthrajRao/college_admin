@@ -42,8 +42,6 @@
 			$scope.addStudent = function(x,adhar){
 			//	$scope.myPhoto;
 			// $("button[type=submit]").attr('disabled','disabled');
-				// if(x['adhar'].length == 12)
-				if (x['adharCard'].length == 12) {
 				x['courseid']=x['course']['courseid'];
 				x['percent']= $scope.roundedPercentage(x['obtain_marks'],x['total_marks']);
 				x['name'] = x['lname']+' '+x['fname']+' '+x['mname'];
@@ -76,14 +74,9 @@
 				 $("button[type=submit]").removeAttr('disabled');
 					$('.alert-studentadded').show();
 					$state.reload();
-
 				},function(error){
 					console.log(error);
 					console.error(error);
 				});
-			 }
-			 else{ 
-				alert("AdharCard No lenght 12 must required");
-			 }
 			}
 		}]);

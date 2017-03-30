@@ -28,7 +28,7 @@
               
               <div class="col-sm-12 form-group">
                 <label class="control-label"> G.R.NO  : </label>
-                <input class="form-control" type="number" ng-model="x['grno']" placeholder="G.R.NO" ng-init="x['grno'] = 0">
+                <input class="form-control" type="number" ng-model="x['grno']" placeholder="G.R.NO" ng-init="x['grno'] = 0" required>
               </div>
 
               <div class="col-sm-4 form-group">
@@ -63,7 +63,7 @@
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Aadhar Card Number : </label>
-                <input class="form-control" required ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number">
+                <input class="form-control" ng-model="x['adharCard']" type="number" placeholder="Enter Adhar Card Number">
 
               </div>
               <div class="col-sm-12 form-group">
@@ -73,15 +73,15 @@
 
               <div class="col-sm-4 form-group">
                 <label class="control-label">City : </label>
-                <input class="form-control" ng-model ="x['city']" type="text" placeholder="Enter City">
+                <input class="form-control" ng-model ="x['city']" type="text" placeholder="Enter City" required>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Taluka : </label>
-                <input class="form-control" ng-model ="x['taluka']" type="text" placeholder="Enter Taluka">
+                <input class="form-control" ng-model ="x['taluka']" type="text" placeholder="Enter Taluka" required>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">District : </label>
-                <input class="form-control" ng-model ="x['dist']" type="text" placeholder="Enter District">
+                <input class="form-control" ng-model ="x['dist']" type="text" placeholder="Enter District" required>
               </div>
 
               <div class="col-sm-6 form-group">
@@ -90,7 +90,7 @@
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Select Category : </label>
-                <select class="form-control" ng-model="x['category']" >
+                <select class="form-control" ng-model="x['category']" required>
                   <option value="" disabled>Select Category</option>
                   <option value="sc">S.C</option>
                   <option value="st">S.T</option>
@@ -139,29 +139,29 @@
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Name of Last Institue : </label>
-                <input class="form-control" ng-model ="x['last_inst']" type="text" placeholder="Enter Name of Last Institute">
+                <input class="form-control" ng-model ="x['last_inst']" type="text" placeholder="Enter Name of Last Institute" required>
               </div>
 
               <div class="col-sm-6 form-group">
                 <label class="control-label">Seat Number :</label>
-                <input class="form-control" ng-model ="x['seat_nub']" type="text" placeholder="Enter H.S.C / T.Y Seat number">
+                <input class="form-control" ng-model ="x['seat_nub']" type="text" placeholder="Enter H.S.C / T.Y Seat number" required>
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Stream :</label>
-                <input class="form-control" ng-model ="x['stream']" type="text" placeholder="Enter Stream">
+                <input class="form-control" ng-model ="x['stream']" type="text" placeholder="Enter Stream" required>
               </div>
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Name of Board/University :</label>
-                <input class="form-control" ng-model ="x['uni']" type="text" placeholder="Enter Name of Board/University">
+                <input class="form-control" ng-model ="x['uni']" type="text" placeholder="Enter Name of Board/University" required>
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Month of Passing :</label>
-                <input class="form-control" ng-model ="x['mop']" type="text" placeholder="Enter Month of Passing">
+                <input class="form-control" ng-model ="x['mop']" type="text" placeholder="Enter Month of Passing" required>
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Year of Passing : </label>
-                <input class="form-control" ng-model ="x['yop']" type="number" placeholder="Enter Year of passing">
+                <input class="form-control" ng-model ="x['yop']" type="number" placeholder="Enter Year of passing" required>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Attempt : </label>
@@ -169,12 +169,12 @@
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Total Marks :</label>
-                <input class="form-control" ng-model ="x['total_marks']"  type="number" placeholder="Enter Total Marks">
+                <input class="form-control" ng-model ="x['total_marks']"  type="number" placeholder="Enter Total Marks" required>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Marks Obtained :</label>
 
-                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained" max="x['total_marks']">
+                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained" max="x['total_marks']" required>
 
               </div>
             </fieldset>
