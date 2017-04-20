@@ -85,41 +85,39 @@
                 <span class="">Mode of Payment:</span>
 
                 <div class="border-square">
-              <!-- <label class="radio-inline">
-              <input type="radio" name="payment" ng-model="x.payMode" value="cash">Cash
-            </label> -->
-            <label class="radio-inline">
-              <input type="radio"name="payment" ng-model="x.payMode" value="cash">Cash
-            </label>
-            <label class="radio-inline">
-              <input type="radio"name="payment" ng-model="x.payMode" value="dd">Demand draft
-            </label>
-            <label class="radio-inline">
-              <input type="radio"name="payment" ng-model="x.payMode" value="cheque">Cheque
-            </label>
-          </div>
-          <span class="" ng-show ="x.payMode == 'dd' || x.payMode == 'cheque'">Enter Cheque or D.D serial Num:</span>
+                  
+                  <label class="radio-inline">
+                    <input type="radio"name="payment" ng-model="x.payMode" value="cash">Cash
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio"name="payment" ng-model="x.payMode" value="dd">Demand draft
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio"name="payment" ng-model="x.payMode" value="cheque">Cheque
+                  </label>
+                </div>
+                <span class="" ng-show ="x.payMode == 'dd' || x.payMode == 'cheque'">Enter Cheque or D.D serial Num:</span>
 
-          <input type="text" class="form-control inputField" ng-show="x.payMode == 'dd' || x.payMode == 'cheque'"  ng-model="x.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
-          <span class="" ng-show ="x.payMode == 'dd' || x.payMode == 'cheque'">Enter Name of the bank:</span>
+                <input type="text" class="form-control inputField" ng-show="x.payMode == 'dd' || x.payMode == 'cheque'"  ng-model="x.ddOrC_Nub" placeholder="appropriate as per mode of payment ">
+                <span class="" ng-show ="x.payMode == 'dd' || x.payMode == 'cheque'">Enter Name of the bank:</span>
 
-          <input type="text" class="form-control inputField" ng-show="x.payMode == 'dd' || x.payMode == 'cheque'"  ng-model="x.bankName" placeholder="Must be in full letters ">
-          <div class="w3-center margin-top-10" ng-hide="receipt">
-            <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
+                <input type="text" class="form-control inputField" ng-show="x.payMode == 'dd' || x.payMode == 'cheque'"  ng-model="x.bankName" placeholder="Must be in full letters ">
+                <div class="w3-center margin-top-10" ng-hide="receipt">
+                  <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
 
-          </div>
+                </div>
 
-        </div>
+              </div>
 
 
+            </div>
+
+          </fieldset>
+        </form>
       </div>
+    </div>
 
-    </fieldset>
-  </form>
-</div>
-</div>
-
-</div>
+  </div>
 </div>
 
 

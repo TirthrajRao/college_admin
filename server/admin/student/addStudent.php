@@ -15,7 +15,7 @@
       $grno = getLastGrNoByCourseid($con ,$courseid);
     }
     $pincode = (int)$pincode;
-    
+    $attempt = (int)$attempt;
     mysqli_query($con,"INSERT INTO `student`(
       `name`,
       `motherName`,

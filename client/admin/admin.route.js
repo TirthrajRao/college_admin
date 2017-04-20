@@ -5,9 +5,9 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 	.state('admin.login',{
 		url : '/login',
 		templateUrl : 'admin/view/adminLogin.html',
-		controller : 'adminLoginCtrl'	
+		controller : 'adminLoginCtrl'
 	})
-	
+
 	.state('admin.Students',{
 		url : '/students',
 		templateUrl : 'admin/view/students.html',
@@ -108,5 +108,5 @@ angular.module('admin',['ui.router','ngStorage','ngAnimate'])
 		controller : 'adminCancelStudentsByYearCtrl'
 	})
 
-	
+
 }])
