@@ -1,96 +1,93 @@
 <div class="row full-height">
-  <div class="col-md-12 print_hide">
-    <h2 class="page-header text-info margin-left-50">Master Table</h2>
-  </div>
+ <div class="w3-padding-16 w3-container w3-light-grey">
+  <h2 class="text-primary w3-center letter-spacing-2 print_hide"><u>Master Table</u></h2>
   <div class="col-md-6 col-md-offset-3 print_hide">
     <select class="form-control" ng-model="x.course" ng-options="courses.courseid for courses in courses" ng-change="getSem(x.course);getStudentsByCourse(x.course.courseid)">
-    <option value="" selected disabled>Select course</option>
+      <option value="" selected disabled>Select Course</option>
     </select>
     <select class="form-control margin-top-10"  ng-show="semester" ng-model="x.sem" ng-click="getStudentsBySem(x.sem)" >
-    <option value="" selected disabled>Select Semester</option>
-    <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
+      <option value="" selected disabled>Select Semester</option>
+      <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
     </select>
-
   </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="col-md-9 col-md-offset-1 w3-border print_hide margin-top-10" id="checklist">
-    <form>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="name" ng-init="name =true">Name
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="sphone" ng-init="sphone =true">Student Phone
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="fphone">Parent's Phone
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="rphone" >Residence Phone
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="address" >Address
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" checked ng-model="grno" ng-init="grno =true">GR.No
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="mothername"/>Mother's name
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="enrollment"/>Enrollment Nub
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="adharcard"/>Adharcard
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="dob"/>D.O.B
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="category"/>Category
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="bankname"/>Bank Name
-    </label>
-    <label class ="checkbox-inline">
-      <input type="checkbox" ng-model="accountnub"/>A/C nub
-    </label>
-  </form>
-</div>
-    <!-- <div class="col-md-6 col-md-offset-3 w3-center text-primary">
-      <h3>{{x.course.courseid | uppercase}} {{x.sem}}</h3>
-    </div> -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-10 col-md-offset-1 w3-border print_hide margin-top-10" id="checklist">
+        <form>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="name" ng-init="name =true">Name
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="grno" ng-init="grno =true">G.R.No
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="sphone" ng-init="sphone =true">Student Phone
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="dob"/>D.O.B
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="address">Address
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="enrollment"/>Enrollment Num
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="mothername"/>Mother's name
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="fphone">Parent's Phone
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" checked ng-model="rphone">Residence Phone
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="adharcard"/>Adharcard
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="category"/>Category
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="bankname"/>Bank Name
+          </label>
+          <label class ="checkbox-inline">
+            <input type="checkbox" ng-model="accountnub"/>A/C Num
+          </label>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="margin-top-bottom-30"></div>
+  <div class="row">
     <div class="col-md-12 " style="overflow: auto;  display: block;">
-      <table  class="table w3-border" style="overflow-x: auto;">
-        <thead class="w3-blue-grey ">
-        <tr id="tableheader">
-          <th style="width:15px;">Seq</th>
-          <th ng-show="name">Name</th>
-          <th ng-show="mothername">Mother's name</th>
-          <th ng-show="gender">Gender</th>
-          <th ng-show="grno">GR.No</th>
-          <th ng-show="course">Course</th>
-          <th ng-show="sem">Sem</th>
-          <th ng-show="enrollment">Enrollment</th>
-          <th ng-show="adharcard">Adharcard</th>
-          <th ng-show="dob">D.O.B</th>
-          <th ng-show="category">Category</th>
-          <th ng-show="bankname">bank name</th>
-          <th ng-show="accountnub">Bank a/c Nub</th>
-          <th ng-show="sphone">Student Phone</th>
-          <th ng-show="fphone">parent phone</th>
-          <th ng-show="rphone">Residence Phone</th>
-          <th ng-show="ophone">office phone</th>
-          <th ng-show="address">Address</th>
-        </tr>
+      <table class="w3-table w3-centered w3-border" style="overflow-x: auto;">
+        <thead>
+          <tr class="w3-theme-l4">
+            <th class="w3-theme-l4">Sr. No</th>
+            <th class="w3-theme-l4" ng-show="name">Name</th>
+            <th class="w3-theme-l4" ng-show="grno">G.R.No</th>
+            <th class="w3-theme-l4" ng-show="sphone">Student Phone</th>
+            <th class="w3-theme-l4" ng-show="dob">D.O.B</th>
+            <th class="w3-theme-l4" ng-show="address">Address</th>
+            <th class="w3-theme-l4" ng-show="enrollment">Enrollment Num</th>
+            <th class="w3-theme-l4" ng-show="mothername">Mother's name</th>
+            <th class="w3-theme-l4" ng-show="fphone">Parent's phone</th>
+            <th class="w3-theme-l4" ng-show="rphone">Residence Phone</th>
+            <th class="w3-theme-l4" ng-show="adharcard">Adharcard</th>
+            <th class="w3-theme-l4" ng-show="category">Category</th>
+            <th class="w3-theme-l4" ng-show="bankname">Bank name</th>
+            <th class="w3-theme-l4" ng-show="accountnub">Bank A/C Num</th>
+            
+          </tr>
 
         </thead>
         <tbody>
           <tr ng-repeat="x in students" >
-            <td style="width:15px;">{{$index+1}}</td>
-            <td ng-show="name">{{x.name}}</td>
-            <td ng-show="mothername">{{x.motherName}}</td>
-            <td ng-show="gender">{{x.gender}}</td>
+            <td>{{$index+1}}</td>
+            <td class="text-capitalize" ng-show="name">{{x.name}}</td>
+            <td class="text-capitalize" ng-show="mothername">{{x.motherName}}</td>
+            <td class="text-capitalize" ng-show="gender">{{x.gender}}</td>
             <td ng-show="grno">{{x.grno}}</td>
             <td ng-show="course">{{x.courseid}}</td>
             <td ng-show="sem">{{x.sem}}</td>
@@ -98,19 +95,19 @@
             <td ng-show="adharcard">{{x.adharCard}}</td>
             <td ng-show="dob">{{x.dob}}</td>
             <td ng-show="category">{{x.category}}</td>
-            <td ng-show="bankname">{{x.bankName}}</td>
+            <td class="text-capitalize" ng-show="bankname">{{x.bankName}}</td>
             <td ng-show="accountnub">{{x.accountNub}}</td>
             <td ng-show="sphone">{{x.sphone}}</td>
             <td ng-show="fphone">{{x.fphone}}</td>
             <td ng-show="rphone">{{x.rphone}}</td>
             <td ng-show="ophone">{{x.ophone}}</td>
-            <td ng-show="address">{{x.address}}</td>
+            <td class="text-capitalize" ng-show="address">{{x.address}}</td>
 
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
-</div>
 </div>
 </div>
 <script>

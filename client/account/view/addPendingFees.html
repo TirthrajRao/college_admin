@@ -1,10 +1,8 @@
 <div class="row full-height">
   <div class="col-md-12">
     <div class="w3-container w3-padding-16 w3-light-grey">
-      <h2 class="w3-center text-primary tahoma letter-spacing-2"><u> Pay Pending Fees of {{student.name}}</u></h2>
-      
-
-      
+      <h2 class="w3-center text-primary tahoma letter-spacing-2"><u> Pay Pending Fees of {{student.name | uppercase}}</u></h2>
+            
       
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -28,7 +26,7 @@
               </div>
               <div class="col-md-12">
                 <div ng-show="student.pending_fees.tution_fees > '0'">
-                  <span class=" margin-bottom-10">Tution Fees : <i class="fa fa-inr"></i> {{student.pending_fees.tution_fees - student.discount.discount}} (<i class="fa fa-inr"></i> {{(student.pending_fees.tution_fees - student.discount.discount) - x.tution_fees }})</span>
+                  <span class=" margin-bottom-10">Tution Fees : <i class="fa fa-inr"></i> {{student.pending_fees.tution_fees - student.discount.discount}} (<i class="fa fa-inr"></i> {{(student.pending_fees.tution_fees - student.discount.discount) - x.tution_fees - x.discount }})</span>
                   <input type="number" class="form-control inputField"  required  ng-init="x.tution_fees=0" ng-model="x.tution_fees"  placeholder="Tution Fees" ng-value="{{zero}}" />
                 </div>
                 <div ng-show="student.pending_fees.su_exam_fees > '0'">

@@ -37,7 +37,7 @@
         <div class="col-md-10 col-md-offset-1 ">
           <form ng-submit="addFees(y)" ng-init="y = {} " id="addFees">
             <fieldset>
-              <legend><b>{{student.name}} </b>(G.R. No: {{student.grno}})</legend>
+              <legend><b> <span class="text-capitalize">{{student.name}} </span> </b>(G.R. No: {{student.grno}})</legend>
 
               <div class="col-md-12">
 
@@ -57,7 +57,7 @@
               <div class="col-md-12">
 
                 <div ng-hide="totalFees.tution_fees == '0' " class="margin-top-10">
-                  <span class=" margin-bottom-20 ">Tution Fees: <i class="fa fa-inr"></i> {{totalFees.tution_fees}}  (<i class="fa fa-inr"></i> {{totalFees.tution_fees - y.tution_fees}})</span>
+                  <span class=" margin-bottom-20 ">Tution Fees: <i class="fa fa-inr"></i> {{totalFees.tution_fees}}  (<i class="fa fa-inr"></i> {{totalFees.tution_fees - y.tution_fees - y.discount}})</span>
                   <input type="number" class="form-control inputField"  required  ng-model="y.tution_fees"  placeholder="Tution Fees" ng-init="y.tution_fees = 0" />
                 </div>
 

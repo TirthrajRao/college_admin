@@ -19,14 +19,14 @@
           <div class="w3-responsive margin-top-20">
             <table class="w3-table w3-bordered w3-centered">
               <tr class="w3-theme-l4">
-                <th>Seq. No.</th>
+                <th>Sr. No.</th>
                 <th>Name (G.R.No.)</th>
                 <th>Enrollment</th>
                 <th>Submit</th>
               </tr>
               <tr  ng-repeat="x in students">
                 <td>{{$index + 1}}</td>
-                <td>{{x.name}}(grno - {{x.grno}})</td>
+                <td class="text-capitalize">{{x.name}}(grno - {{x.grno}})</td>
                 <td ng-hide="x.enrollment.length"><input type="text" class="form-control" ng-model="enrollment" placeholder="Enter Enrollment Number"></td>
                 <td ng-show="x.enrollment.length" class="text-danger">{{x.enrollment}}</td>
                 <td ><button class="btn btn-success" ng-hide="x.enrollment" ng-click="submitEntrollment(x.sid,enrollment)"> Submit </button></td>

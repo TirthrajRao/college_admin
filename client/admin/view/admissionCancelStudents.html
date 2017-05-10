@@ -19,7 +19,7 @@
 						<table class="w3-table w3-bordered w3-centered">
 							<thead>
 								<tr class="w3-theme-l2">
-									<th>Seq. No.</th>
+									<th>Sr. No.</th>
 									<th>Name</th>
 									<th>Course</th>
 									<th>Semester</th>
@@ -31,7 +31,7 @@
 							<tbody>
 								<tr ng-repeat="x in students track by $index">
 									<td>{{$index+1}}</td>
-									<td>{{x.name}}</td>
+									<td class="text-capitalize">{{x.name}}</td>
 									<td>{{x.courseid}}</td>
 									<td>{{x.sem}}</td>
 									<td>{{x.cancelDate}}</td>

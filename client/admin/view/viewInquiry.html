@@ -57,11 +57,11 @@
 										<tbody>
 											<tr ng-repeat="x in pending track by $index">
 												<td>{{$index+1}}</td>
-												<td class="text-capitalize">{{x.student.name | uppercase}}</td>
-												<td class="text-capitalize">{{x.student.courseid | uppercase}}</td>
+												<td class="text-capitalize">{{x.student.name}}</td>
+												<td class="text-capitalize">{{x.student.courseid}}</td>
 												<td>{{x.student.date}}</td>
 												<td>{{x.student.phone}}</td>
-												<td class="text-capitalize">{{x.student.city | uppercase}}</td>
+												<td class="text-capitalize">{{x.student.city}}</td>
 												<td><button class="btn btn-primary" ng-click="moveInAdmission(x.id)">Confirm Admission</button></td>
 											</tr>
 										</tbody>

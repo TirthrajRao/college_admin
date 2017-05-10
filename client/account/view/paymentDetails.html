@@ -21,7 +21,7 @@
       <div class="w3-responsive margin-top-20">
         <table class="w3-table w3-bordered w3-centered" ng-show="pDetails.length > 0">
           <tr class="w3-theme-l4">
-            <th>Seq. No</th>
+            <th>Sr. No</th>
 
             <th ng-click = "ol = 'name' ">Name</th>
 
@@ -37,7 +37,7 @@
           <tr ng-repeat='x in pDetails'>
             <td>{{$index+1}}
             </td>
-            <td>{{x.name.name}}</td>
+            <td class="text-capitalize">{{x.name.name}}</td>
             <td>{{x.grno.grno}}</td>
             <td><i class="fa fa-inr"></i> {{x.paid_fees}}</td>
             <td><i class="fa fa-inr"></i> {{x.pending_fees}}</td>

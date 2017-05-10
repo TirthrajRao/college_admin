@@ -8,16 +8,13 @@
         <table  class="w3-table w3-bordered sortable w3-centered" ng-init="olfy = 'courseid'" >
 
           <tr class = "w3-theme-l4 ">
-            <th>Seq. No</th>
-
+            <th>Sr. No</th>
             <th ng-click="olfy = 'courseid'">Course </th>
-
             <th>Semester</th>
             <th>Term Start</th>
             <th>Term Ends</th>
             <th>Fees</th>
             <th>Update/Delete</th>
-
           </tr>
 
           <tbody>
@@ -28,9 +25,7 @@
               </tr>
               <tr ng-repeat='x in fees | orderBy : olfy' ng-show="fees" >
                 <td>{{$index+1}} </td>
-
                 <td>{{x.courseid}} </td>
-
                 <td>{{x.sem}}</td>
                 <td>{{x.sdate}}</td>
                 <td>{{x.edate}}</td>

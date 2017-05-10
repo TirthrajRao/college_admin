@@ -39,7 +39,7 @@
                   <tr ng-repeat='x in students | orderBy : olfy' ng-show="students" ng-click = "editStudent(x.sid)" >
                     <td>{{$index+1}} </td>
 
-                    <td>{{x.name}} </td>
+                    <td class="text-capitalize">{{x.name}} </td>
                     <td>{{x.courseid}}</td>
                     <td>{{x.sem}}</td>
                     <td>{{x.grno}}</td>

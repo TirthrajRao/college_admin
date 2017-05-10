@@ -31,14 +31,14 @@
 						<div class="col-sm-12 form-group">
 							<label class="control-label">Course : </label>
 							<select class="form-control" ng-model="x['courseid']" required ng-change="getStudentsByCourse(x['courseid'])">
-                  				<option value="" selected disabled> Select Course </option>
-                  				<option ng-repeat="y in courses track by $index" ng-value="y.courseid">{{y.courseid}}</option>
-                			</select>
+								<option value="" selected disabled> Select Course </option>
+								<option ng-repeat="y in courses track by $index" ng-value="y.courseid">{{y.courseid}}</option>
+							</select>
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> City : </label>
-							<input type="text" class="form-control" ng-model="x.city" placeholder="Enter your City" required>
+							<input type="text" class="form-control" ng-model="x.city" placeholder="Enter your City">
 						</div>
 
 						<div class="col-sm-6 form-group">
@@ -48,17 +48,17 @@
 
 						<div class="col-sm-12 form-group">
 							<label class="control-label"> School/College :  </label>
-							<input type="text" class="form-control" ng-model="x.school" placeholder="Enter your previous School/College" required>
+							<input type="text" class="form-control" ng-model="x.school" placeholder="Enter your previous School/College">
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> Result (%) :  </label>
-							<input type="number" class="form-control" ng-model="x.result" placeholder="Enter your Result (in percentage)" required>
+							<input type="number" class="form-control" ng-model="x.result" placeholder="Enter your Result (in percentage)">
 						</div>
 
 						<div class="col-sm-6 form-group">
 							<label class="control-label"> Category : </label>
-							<select class="form-control" ng-model="x.category" required>
+							<select class="form-control" ng-model="x.category">
 								<option value="" disabled>Select Category</option>
 								<option value="open">OPEN</option>
 								<option value="obc">O.B.C</option>

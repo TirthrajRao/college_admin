@@ -23,9 +23,8 @@
 
   </tr>
   <tr ng-repeat='x in record track by $index'>
-    <td>{{$index+1}}
-    </td>
-    <td>{{x.name.name}}</td>
+    <td>{{$index+1}}</td>
+    <td class="text-capitalize">{{x.name.name}}</td>
     <td>{{x.grno.grno}}</td>
     <td >{{x.paid_fees}}</td>
     <td>{{x.pending_fees}}</td>
