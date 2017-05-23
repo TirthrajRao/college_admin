@@ -4,10 +4,7 @@ include("config.php");
 $data = file_get_contents("php://input");
 $data = json_decode($data,true);
 
-foreach ($data as $key=>$value)
-{
-		${$key}=$value;
-}
+foreach ($data as $key=>$value) ${$key} = mysqli_real_escape_string($con,trim($value));
 
 
 if(isset($sid)){

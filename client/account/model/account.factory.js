@@ -311,6 +311,18 @@ angular.module('collegeAdmin')
 		});
 		return defer.promise;
 	}
-	return obj;
+    obj.cancelReceipt =function(id){
+
+        var defer = $q.defer();
+        $http.post($rootScope.serverUrl+"account/cancelReceipt.php?id="+id)
+            .then(function(response){
+                defer.resolve(response);
+            },function(error){
+                defer.reject(error);
+            });
+        return defer.promise;
+    }
+
+    return obj;
 
 }])

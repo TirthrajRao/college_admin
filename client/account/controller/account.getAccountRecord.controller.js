@@ -57,5 +57,13 @@ $scope.getAccountRecord($scope.student);
 
     }
 
+$scope.cancelReceipt = function(id){
+    accountFactory.cancelReceipt(id)
+        .then(function(response){
+          alert("successfully cancled");
+        },function(error){
+          console.log(error);
+        })
 
+}
 }])
