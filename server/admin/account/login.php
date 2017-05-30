@@ -9,8 +9,11 @@ $password = $data['password'];
 
 $result = mysqli_query($con," SELECT `username`,`id`,`type` FROM logindetails where BINARY `username` = '$username' AND BINARY `password`= '$password' ") or die(mysqli_error($con));
 if(mysqli_num_rows($result) == 1){
+	session_start();
+
 
 	 while($x = mysqli_fetch_assoc($result)){
+         $_SESSION['username'] = $x['username'];
 	 	echo json_encode($x);
 	 }
 }

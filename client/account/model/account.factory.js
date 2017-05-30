@@ -322,6 +322,16 @@ angular.module('collegeAdmin')
             });
         return defer.promise;
     }
+    obj.logout = function(){
+    	var defer = $q.defer();
+    	$http.post($rootScope.serverUrl+"account/logout.php")
+			.then(function(response){
+    		defer.resolve(response);
+		},function(error){
+				defer.reject(error);
+		});
+    	return defer.promise;
+	}
 
     return obj;
 

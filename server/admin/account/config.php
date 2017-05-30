@@ -10,10 +10,32 @@ header('Access-Control-Allow-Origin: *');
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 error_reporting(1);
+$reqfile = $_SERVER['SCRIPT_NAME'];
+$reqfile =  explode('/',$reqfile);
 
-$host = "localhost";
-$username = "root";
-$password = "password";
-$con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
-mysqli_set_charset($con,"utf8");
+$file = end($reqfile);
+
+if($file == 'login.php'){
+    $host = "localhost";
+    $username = "root";
+    $password = "password";
+    $con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
+    mysqli_set_charset($con,"utf8");
+
+}
+else{
+    session_start();
+
+    if(isset($_SESSION['username'])){
+        $host = "localhost";
+        $username = "root";
+        $password = "password";
+        $con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
+        mysqli_set_charset($con,"utf8");
+    }
+    else {
+        header("HTTP/1.1 401 Unauthorized");
+    }
+}
+
 ?>

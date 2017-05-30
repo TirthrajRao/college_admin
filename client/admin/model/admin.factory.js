@@ -54,7 +54,7 @@ angular.module('collegeAdmin')
 
 	obj.getStudent =function(id){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getStudent.php?id="+id)
+		$http.get($rootScope.serverUrl+"student/getStudent.php?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -89,7 +89,7 @@ angular.module('collegeAdmin')
 
 	obj.getAdmissionCancelByYear = function(academicYear){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getAdmissionCancelStudentsFromYear.php?academicYear="+academicYear)
+		$http.get($rootScope.serverUrl+"student/getAdmissionCancelStudentsFromYear.php?academicYear="+academicYear)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -100,7 +100,7 @@ angular.module('collegeAdmin')
 
 	obj.getPastInqueryByYear = function(academicYear){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getInqueryStudentsFromYear.php?academicYear="+academicYear)
+		$http.get($rootScope.serverUrl+"student/getInqueryStudentsFromYear.php?academicYear="+academicYear)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
