@@ -31,9 +31,20 @@ else{
         $password = "password";
         $con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
         mysqli_set_charset($con,"utf8");
-    }
-    else {
-        header("HTTP/1.1 401 Unauthorized");
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // echo "post";
+            $data = file_get_contents("php://input");
+            $data = json_decode($data,true);
+            $data = json_encode($data);        
+            if(isset($data)){
+                $date = date("Y-m-d");
+                mysqli_query($con,"INSERT INTO `log`(`data`, `user`, `date`,`file`) VALUES ('".$data."','".$_SESSION['username']."','".$date."','".$file."')")or die(mysqli_error($con));
+            }
+        }
+        else {
+            header("HTTP/1.1 401 Unauthorized");
+        }
     }
 }
 
