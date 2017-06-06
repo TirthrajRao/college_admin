@@ -78,7 +78,7 @@ angular.module('collegeAdmin')
 	obj.getAdmissionCancelStudents =function(){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getListAdmissionCancel.php")
+		$http.get($rootScope.serverUrl+"student/getListAdmissionCancel.php")
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -135,7 +135,7 @@ angular.module('collegeAdmin')
 	obj.getAllInquires =function(academicYear){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php?academicYear="+academicYear)
+		$http.get($rootScope.serverUrl+"student/getInquiryStudentsIncollege.php?academicYear="+academicYear)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -147,7 +147,7 @@ angular.module('collegeAdmin')
 
 	obj.getStudentByName =function(name){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getStudentByName.php?name="+name)
+		$http.get($rootScope.serverUrl+"student/getStudentByName.php?name="+name)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -159,7 +159,7 @@ angular.module('collegeAdmin')
 
 	obj.getStudentByGrno =function(grno){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getStudentByGrno.php?grno="+grno)
+		$http.get($rootScope.serverUrl+"student/getStudentByGrno.php?grno="+grno)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -171,7 +171,7 @@ angular.module('collegeAdmin')
 	obj.getCourses =function(){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getCourses.php")
+		$http.get($rootScope.serverUrl+"account/getCourses.php")
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -196,7 +196,7 @@ angular.module('collegeAdmin')
 	}
 	obj.getStudentsByCourse =function(courseid){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getStudentsByCourse.php?courseid="+courseid)
+		$http.get($rootScope.serverUrl+"account/getStudentsByCourse.php?courseid="+courseid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -206,7 +206,7 @@ angular.module('collegeAdmin')
 	}
 	obj.getLastGrno = function(courseid){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/getLastGrno.php?courseid="+courseid)
+		$http.get($rootScope.serverUrl+"student/getLastGrno.php?courseid="+courseid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -226,7 +226,7 @@ angular.module('collegeAdmin')
 	}
 	obj.getCategoryChart = function(courseid){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/categoryChart.php?courseid="+courseid)
+		$http.get($rootScope.serverUrl+"student/categoryChart.php?courseid="+courseid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -256,7 +256,7 @@ angular.module('collegeAdmin')
 	}
 	obj.checkCertificates = function(sid,type){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/checkCertificates.php?sid="+sid+"&type="+type)
+		$http.get($rootScope.serverUrl+"student/checkCertificates.php?sid="+sid+"&type="+type)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){

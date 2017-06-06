@@ -17,7 +17,7 @@ angular.module('collegeAdmin')
 	obj.getFeesDetails =function(){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getFeesDetails.php")
+		$http.get($rootScope.serverUrl+"account/getFeesDetails.php")
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -28,7 +28,7 @@ angular.module('collegeAdmin')
 	obj.getFeeDetails =function(id){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getFeeDetails.php?id="+id)
+		$http.get($rootScope.serverUrl+"account/getFeeDetails.php?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -65,7 +65,7 @@ angular.module('collegeAdmin')
 	obj.getCourses =function(){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getCourses.php")
+		$http.get($rootScope.serverUrl+"account/getCourses.php")
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -77,7 +77,7 @@ angular.module('collegeAdmin')
 	obj.getStudentsAccountRecord =function(courseid,sem){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getStudentsAccountRecord.php?courseid="+courseid+"&sem="+sem)
+		$http.get($rootScope.serverUrl+"account/getStudentsAccountRecord.php?courseid="+courseid+"&sem="+sem)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -88,7 +88,7 @@ angular.module('collegeAdmin')
 
 	obj.getStudentByName =function(courseid,sem,name){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getStudentByName.php?courseid="+courseid+"&sem="+sem+"&name="+name)
+		$http.get($rootScope.serverUrl+"account/getStudentByName.php?courseid="+courseid+"&sem="+sem+"&name="+name)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -109,7 +109,7 @@ angular.module('collegeAdmin')
 	}
 	obj.allPending =function(courseid,sem){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/allPending.php?courseid="+courseid+"&sem="+sem)
+		$http.get($rootScope.serverUrl+"account/allPending.php?courseid="+courseid+"&sem="+sem)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -139,7 +139,7 @@ angular.module('collegeAdmin')
 	}
 	obj.getCourseFeesDetails =function(courseid,sem){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getCourseFeesDetails.php?courseid="+courseid+"&sem="+sem)
+		$http.get($rootScope.serverUrl+"account/getCourseFeesDetails.php?courseid="+courseid+"&sem="+sem)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -160,7 +160,7 @@ angular.module('collegeAdmin')
 
 	obj.getPaymentDetails =function(courseid,sem){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getPaymentDetailsRecord.php?courseid="+courseid+"&sem="+sem)
+		$http.get($rootScope.serverUrl+"account/getPaymentDetailsRecord.php?courseid="+courseid+"&sem="+sem)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -171,7 +171,7 @@ angular.module('collegeAdmin')
 
 	obj.getPaymentDetailsByYear =function(x){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getPaymentDetailsByYear.php",x)
+		$http.get($rootScope.serverUrl+"account/getPaymentDetailsByYear.php",x)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -182,7 +182,7 @@ angular.module('collegeAdmin')
 
 	obj.getStudentsByCourse =function(courseid){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getStudentsByCourse.php?courseid="+courseid)
+		$http.get($rootScope.serverUrl+"account/getStudentsByCourse.php?courseid="+courseid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -193,7 +193,7 @@ angular.module('collegeAdmin')
 	obj.getReceiptsBySid =function(sid){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getReceiptsBySid.php?sid="+sid)
+		$http.get($rootScope.serverUrl+"account/getReceiptsBySid.php?sid="+sid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -204,7 +204,7 @@ angular.module('collegeAdmin')
 	obj.getAccountRecord =function(x){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getAccountRecord.php	",x)
+		$http.get($rootScope.serverUrl+"account/getAccountRecord.php	",x)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -215,7 +215,7 @@ angular.module('collegeAdmin')
 	obj.getReceipt =function(id){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getReceipt.php?id="+id)
+		$http.get($rootScope.serverUrl+"account/getReceipt.php?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -226,7 +226,7 @@ angular.module('collegeAdmin')
 	obj.getReceiptByCourse =function(courseid,rid){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getReceiptByCourse.php?courseid="+courseid+"&rid="+rid)
+		$http.get($rootScope.serverUrl+"account/getReceiptByCourse.php?courseid="+courseid+"&rid="+rid)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -237,7 +237,7 @@ angular.module('collegeAdmin')
 	obj.getDateWiseRecord =function(date){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getDateWiseRecord.php?date="+date)
+		$http.get($rootScope.serverUrl+"account/getDateWiseRecord.php?date="+date)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -248,7 +248,7 @@ angular.module('collegeAdmin')
 	obj.getDateWiseAdmissionRecord =function(date){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/dateWiseAdmission.php?date="+date)
+		$http.get($rootScope.serverUrl+"account/dateWiseAdmission.php?date="+date)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -259,7 +259,7 @@ angular.module('collegeAdmin')
 	obj.getFeesReportFromTo =function(fromdate,todate){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/generateFeesReportFromTo.php?fromdate="+fromdate+"&todate="+todate)
+		$http.get($rootScope.serverUrl+"account/generateFeesReportFromTo.php?fromdate="+fromdate+"&todate="+todate)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -270,7 +270,7 @@ angular.module('collegeAdmin')
 	obj.getSemWiseDetails =function(course,sem,fromdate,todate){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/getSemWiseDetails.php?course="+course+"&sem="+sem+"&fromdate="+fromdate+"&todate="+todate)
+		$http.get($rootScope.serverUrl+"account/getSemWiseDetails.php?course="+course+"&sem="+sem+"&fromdate="+fromdate+"&todate="+todate)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
