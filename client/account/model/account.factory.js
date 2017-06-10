@@ -201,6 +201,17 @@ angular.module('collegeAdmin')
 		});
 		return defer.promise;
 	}
+	obj.getPendingFeesBySid =function(sid){
+
+		var defer = $q.defer();
+		$http.get($rootScope.serverUrl+"account/getPendingFeesBySid.php?sid="+sid)
+		.then(function(response){
+			defer.resolve(response);
+		},function(error){
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
 	obj.getAccountRecord =function(x){
 
 		var defer = $q.defer();

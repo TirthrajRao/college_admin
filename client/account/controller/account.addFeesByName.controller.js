@@ -63,7 +63,8 @@ $scope.getStudentByName = function(name){
   .then(function(response){
     $scope.student=response.data[0];
     $scope.studentname = $scope.student.name;
-    console.log($scope.student);
+    console.log($scope.student.sid);
+    getPendingFeesBySid($scope.student.sid);
   },function(error){
     console.log(error);
   });
@@ -125,5 +126,14 @@ function yearFromSem (receipt){
 $scope.printReceipt = function(x){
   $state.go('account.PrintReceipt',{ 'id' : x });
 
+}
+
+function getPendingFeesBySid(sid){
+  accountFactory.getPendingFeesBySid(sid)
+  .then(function(response){
+    $scope.feesData = response.data;
+  },function(error){
+    console.log(error);
+  })
 }
 }])

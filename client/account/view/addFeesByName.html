@@ -40,10 +40,9 @@
               <legend><b> <span class="text-capitalize">{{student.name}} </span> </b>(G.R. No: {{student.grno}})</legend>
 
               <div class="col-md-12">
+                
+              <div class="col-md-6">
 
-                <h3>{{student.courseid | uppercase}} Sem-{{student.sem}}
-                  <button type="button" class="btn btn-primary w3-right" data-toggle="modal" data-target="#myModal" ng-show="selectedSem" >Fees Structure for {{student.courseid | uppercase}} Sem- {{student.sem}} </button> 
-                </h3>
 
                 <h3>  Payable Amount : <i class="fa fa-inr"></i> {{totalFees.total_fees}}</h3>
 
@@ -52,7 +51,13 @@
                 <h3>  Total Pending : <i class="fa fa-inr"></i> {{totalFees.total_fees - (y.tution_fees + y.su_exam_fees + y.su_sports_fees + y.su_enlistment_fees + y.misc_fees + y.lib_fees + y.su_enrollment_fees + y.su_degree_fees + y.su_exam_project_fees +  + y.viva_project_fees  + y.discount)}}</h3>
 
               </div>
-
+              <div  class="col-md-6">
+                <h3>{{student.courseid | uppercase}} Sem-{{student.sem}}
+                  <button type="button" class="btn btn-primary w3-right" data-toggle="modal" data-target="#myModal" ng-show="selectedSem" >Fees Structure for {{student.courseid | uppercase}} Sem- {{student.sem}} </button> 
+                </h3>
+                <h3 ng-repeat = "z in feesData track by $index">Sem-{{z.sem}} : <i class="fa fa-inr"></i> {{z.pending_fees}}</h3>
+              </div>
+              </div>
 
               <div class="col-md-12">
 
