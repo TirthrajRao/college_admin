@@ -1,6 +1,6 @@
 <div class="row full-height">
   <div class="col-sm-12">
-
+    
     <div class="w3-padding-16 w3-container w3-light-grey">
       <h2 class="w3-center text-primary letter-spacing-2 tahoma"><u>Search Record</u></h2>
 
@@ -73,15 +73,18 @@
                 <th>Issue Date</th>
                 <th>Sem</th>
                 <th>Pending Amount</th>
+                <th>Cancle</th>
               </tr>
 
-              <tr ng-repeat="x in record.receipt" ng-click="printReceipt(x.id)" ng-show="record.receipt.length">
-                <td>{{x.rid}} </td>
-                <td class="text-capitalize">{{student.name}} </td>
-                <td><i class="fa fa-inr"></i> {{x.paid_fees}} </td>
-                <td>{{x.date}} </td>
-                <td>{{x.sem}}</td>
-                <td><i class="fa fa-inr"></i> {{x.pending_fees}}</td>
+              <tr ng-repeat="x in record.receipt"  ng-show="record.receipt.length">
+                <td ng-click="printReceipt(x.id)">{{x.rid}} </td>
+                <td ng-click="printReceipt(x.id)" class="text-capitalize">{{student.name}} </td>
+                <td ng-click="printReceipt(x.id)"><i class="fa fa-inr"></i> {{x.paid_fees}} </td>
+                <td ng-click="printReceipt(x.id)">{{x.date}} </td>
+                <td ng-click="printReceipt(x.id)">{{x.sem}}</td>
+                <td ng-click="printReceipt(x.id)"><i class="fa fa-inr"></i> {{x.pending_fees}}</td>
+
+                <td ng-click="cancelReceipt(x.id)"><i class="fa fa-ban"></i></td>
               </tr>
 
               <tr ng-hide="record.receipt.length">
@@ -95,11 +98,11 @@
 
       <div class="row margin-top-10" >
         <div class="col-md-12 col-xs-12">
-          
+
           <div class="w3-center">
             <h3 class="text-primary tahoma letter-spacing-2">Issued Certificates</h3>
           </div>
-          
+
           <div class="w3-responsive">
             <table class="w3-table w3-bordered w3-centered ng-animate-disabled" >
 

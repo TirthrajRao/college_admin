@@ -8,7 +8,8 @@ angular.module('account')
     delete $localStorage.adminId;
     $rootScope.user = $localStorage.user;
     $state.go('admin.login');
-
+	accountFactory.logout()
+		.then(function(res){},function(err){console.log(err)})
   }
 
   $scope.changePassword = function(x){

@@ -3,13 +3,7 @@ include("config.php");
 include ("functions.php");
 mysqli_set_charset($con,"utf8");
 
-$data = file_get_contents("php://input");
-$data = json_decode($data,true);
-
-foreach ($data as $key=>$value)
-{
-		${$key}=$value;
-}
+$sid = $_GET['sid'];
 $date = date("Y/m/d");
 
 
@@ -24,7 +18,7 @@ $month = date("m");
 
 $ara = array();
 $certificate = mysqli_query($con,"SELECT * from certificatedetails where `sid` = '$sid'")or die(mysqli_error($con));
-$result = mysqli_query($con,"SELECT * FROM payment_details WHERE `sid` = '$sid' AND `academicYear` = '$academicYear' ")or die(mysqli_error($con));
+$result = mysqli_query($con,"SELECT * FROM payment_details WHERE `sid` = '$sid'  ")or die(mysqli_error($con));
 while($x = mysqli_fetch_assoc($result)){
   array_push($ara,$x);
 }

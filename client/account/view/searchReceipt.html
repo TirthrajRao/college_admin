@@ -25,22 +25,23 @@
       <div ng-show="receipt">
         <style>
         table{
-          font-size: 18px;
+          font-size: 14px;
           font-family: "Times New Roman", Georgia, Serif;
         }
-
-        td{
-          padding: 12px;
+        text-receipt.{
+          font-size: 14px;
+          font-family: "Times New Roman", Georgia, Serif;
         }
-        tr:hover{
-         font-size: 18px;
-       }
+        td{
+          padding: 2px;
+        }
+
 
        .margin-left{
-        margin-left: 10px;
+        margin-left: 8px;
       }
       </style>
-      <table class="table_fees" cellpadding="10"  ng-show="receipt">
+      <table class="table_fees" cellpadding="10"  ng-show="receipt" style="margin-top: 1.8cm">
         <tr>
           <td><b>Receipt No : </b>{{receipt.rid}}</td>
           <td><b>Year : {{receipt.academicYear}}
@@ -48,7 +49,7 @@
           </tr>
 
           <tr>
-            <td colspan="2"><b>Name : </b><span class="text-capitalize">{{receipt.name.name}}</span></td>
+            <td colspan="2"><b>Name : </b><span class="text-capitalize">{{receipt.name.name | uppercase}}</span></td>
             <td><b>Course :</b> {{receipt.courseid | uppercase}} - {{receipt.year | uppercase}}</td>
           </tr>
 
@@ -57,16 +58,16 @@
             <td><b>Amount</b></td>
           </tr>
 
-          <tr ng-show="receipt.tution_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">TUITION FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.tution_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_exam_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. EXAM FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_exam_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_sports_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. DEV. & SPORTS FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_sports_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_enlistment_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. ENLISTMENT FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_enlistment_fees}}</div></td></tr>
-          <tr ng-show="receipt.misc_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">I CARD & MISC. FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.misc_fees}}</div></td></tr>
-          <tr ng-show="receipt.lib_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">LIB. COM. & INFRA. MAIN. FEES</div></td><td style="padding:2px;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.lib_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_exam_project_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. EXAM PROJECT & PRAC. FEES</div></td><td style="padding:2px;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.su_exam_project_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_degree_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. DEGREE FEES</div></td><td style="padding:2px;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_degree_fees}}</div></td></tr>
-          <tr ng-show="receipt.su_enrollment_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. ENROLLMENT FEES</div></td><td style="padding:2px;"><div class="margin-left">  <i class="fa fa-inr"></i> {{receipt.su_enrollment_fees}}</div></td></tr>
-          <tr ng-show="receipt.viva_project_fees > '0' "><td colspan="2" style="padding:2px"><div class="margin-left">SAU. UNI. VIVA/PROJECT FEES</div></td><td style="padding:2px;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.viva_project_fees}}</div></td></tr>
+          <tr ng-show="receipt.tution_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">TUITION FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.tution_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_exam_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. EXAM FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_exam_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_sports_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. DEV. & SPORTS FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_sports_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_enlistment_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. ENLISTMENT FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_enlistment_fees}}</div></td></tr>
+          <tr ng-show="receipt.misc_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">I CARD & MISC. FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.misc_fees}}</div></td></tr>
+          <tr ng-show="receipt.lib_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">LIB. COM. & INFRA. MAIN. FEES</div></td><td style="padding:;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.lib_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_exam_project_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. EXAM PROJECT & PRAC. FEES</div></td><td style="padding:;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.su_exam_project_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_degree_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. DEGREE FEES</div></td><td style="padding:;"><div class="margin-left"><i class="fa fa-inr"></i> {{receipt.su_degree_fees}}</div></td></tr>
+          <tr ng-show="receipt.su_enrollment_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. ENROLLMENT FEES</div></td><td style="padding:;"><div class="margin-left">  <i class="fa fa-inr"></i> {{receipt.su_enrollment_fees}}</div></td></tr>
+          <tr ng-show="receipt.viva_project_fees > '0' "><td colspan="2" style="padding:"><div class="margin-left">SAU. UNI. VIVA/PROJECT FEES</div></td><td style="padding:;"><div class="margin-left"> <i class="fa fa-inr"></i> {{receipt.viva_project_fees}}</div></td></tr>
 
 
           <tr class="border_row">
@@ -83,14 +84,14 @@
           </tr>
 
           <tr>
-            <td colspan="2"><b>Amount in Word : {{receipt.amountString}}</b> </td>
+            <td colspan="2" style="text-transform: capitalize;"><b>Amount in Word : {{receipt.amountString}}</b> </td>
             <td><b>Signature</b></td>
           </tr>
 
         </table>
 
-        <p ng-hide="totalFees">*Cheque/Draft (Subject to realisation) *This payment is not refundable.</p>
-        <p ng-hide="totalFees">*If you leave the college in the midst of year, you will have to pay the fee for the year.</p>
+        <p ng-hide="totalFees" style="font-size: 13px">*Cheque/Draft (Subject to realisation) *This payment is not refundable.</p>
+        <p ng-hide="totalFees" style="font-size: 13px">*If you leave the college in the midst of year, you will have to pay the fee for the year.</p>
 
       </div>
       <div class="w3-center print_hide margin-top-10" ng-show="receipt">
