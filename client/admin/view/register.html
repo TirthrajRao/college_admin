@@ -59,6 +59,7 @@
               <div class="col-sm-4 form-group">
                 <label class="control-label">Date Of Birth :</label>
                 <input class="form-control"  ng-model ="x['fdate']" type="date" placeholder="Date of Birth">
+                
               </div>
 
               <div class="col-sm-12 form-group">
@@ -139,29 +140,29 @@
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Name of Last Institue : </label>
-                <input class="form-control" ng-model ="x['last_inst']" type="text" placeholder="Enter Name of Last Institute" required>
+                <input class="form-control" ng-model ="x['last_inst']" type="text" placeholder="Enter Name of Last Institute">
               </div>
 
               <div class="col-sm-6 form-group">
                 <label class="control-label">Seat Number :</label>
-                <input class="form-control" ng-model ="x['seat_nub']" type="text" placeholder="Enter H.S.C / T.Y Seat number" required>
+                <input class="form-control" ng-model ="x['seat_nub']" type="text" placeholder="Enter H.S.C / T.Y Seat number" >
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Stream :</label>
-                <input class="form-control" ng-model ="x['stream']" type="text" placeholder="Enter Stream" required>
+                <input class="form-control" ng-model ="x['stream']" type="text" placeholder="Enter Stream">
               </div>
 
               <div class="col-sm-12 form-group">
                 <label class="control-label">Name of Board/University :</label>
-                <input class="form-control" ng-model ="x['uni']" type="text" placeholder="Enter Name of Board/University" required>
+                <input class="form-control" ng-model ="x['uni']" type="text" placeholder="Enter Name of Board/University" >
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Month of Passing :</label>
-                <input class="form-control" ng-model ="x['mop']" type="text" placeholder="Enter Month of Passing" required>
+                <input class="form-control" ng-model ="x['mop']" type="text" placeholder="Enter Month of Passing">
               </div>
               <div class="col-sm-6 form-group">
                 <label class="control-label">Year of Passing : </label>
-                <input class="form-control" ng-model ="x['yop']" type="number" placeholder="Enter Year of passing" required>
+                <input class="form-control" ng-model ="x['yop']" type="number" placeholder="Enter Year of passing" >
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Attempt : </label>
@@ -169,12 +170,12 @@
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Total Marks :</label>
-                <input class="form-control" ng-model ="x['total_marks']"  type="number" placeholder="Enter Total Marks" required>
+                <input class="form-control" ng-model ="x['total_marks']"  type="number" placeholder="Enter Total Marks" >
               </div>
               <div class="col-sm-4 form-group">
                 <label class="control-label">Marks Obtained :</label>
 
-                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained" max="x['total_marks']" required>
+                <input class="form-control" ng-model ="x['obtain_marks']" type="number" placeholder="Enter Marks Obtained" max="x['total_marks']">
 
               </div>
             </fieldset>
@@ -200,7 +201,7 @@
               </div>
 
               <div class="form-group col-sm-12">
-                
+
 
                 <div class="col-md-2 col-xs-3 no-padding">
                   <label class="control-label">Access Camera : </label>
@@ -273,4 +274,12 @@ $(document).ready(function(){
   })
   
 });
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+ });
+
+ // $('.datepicker').datepicker({
+ //    format: 'dd/mm/yyyy'
+ // });
+
 </script>

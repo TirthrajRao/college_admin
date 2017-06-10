@@ -2,19 +2,20 @@
 include("config.php");
 
 $data = file_get_contents("php://input");
-$data = json_decode($data,true);
+print_r($data);
+// $data = json_decode($data,true);
 
 foreach ($data as $key=>$value)
 {
 		${$key}=$value;
 }
-
+// echo $address;
 
 if(isset($sid)){
 
 	mysqli_query($con,"UPDATE `student`
 		SET
-		`name` 				=		'".$name."',
+		`name` ='".$name."',
         `motherName` = '".$motherName."'
     `address`     =   '".$address."',
     `city`        =   '".$city."',
