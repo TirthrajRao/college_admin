@@ -246,7 +246,7 @@ angular.module('collegeAdmin')
 	}
 	obj.generateCid = function(type){
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"student/generateCid.php?type="+type)
+		$http.get($rootScope.serverUrl+"student/generateCid.php?type="+type)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
