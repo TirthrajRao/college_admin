@@ -40,7 +40,7 @@ angular.module('collegeAdmin')
 	obj.deleteFeesStructure =function(id){
 
 		var defer = $q.defer();
-		$http.post($rootScope.serverUrl+"account/deleteFeesStructure.php?id="+id)
+		$http.get($rootScope.serverUrl+"account/deleteFeesStructure.php?id="+id)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -171,7 +171,7 @@ angular.module('collegeAdmin')
 
 	obj.getPaymentDetailsByYear =function(x){
 		var defer = $q.defer();
-		$http.get($rootScope.serverUrl+"account/getPaymentDetailsByYear.php",x)
+		$http.grt($rootScope.serverUrl+"account/getPaymentDetailsByYear.php?courseid="+x['courseid']+"&sem="+x['sem'])
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -215,7 +215,7 @@ angular.module('collegeAdmin')
 	obj.getAccountRecord =function(x){
 
 		var defer = $q.defer();
-		$http.get($rootScope.serverUrl+"account/getAccountRecord.php	",x)
+		$http.get($rootScope.serverUrl+"account/getAccountRecord.php?sid="+x)
 		.then(function(response){
 			defer.resolve(response);
 		},function(error){
@@ -335,7 +335,7 @@ angular.module('collegeAdmin')
     }
     obj.logout = function(){
     	var defer = $q.defer();
-    	$http.post($rootScope.serverUrl+"account/logout.php")
+    	$http.get($rootScope.serverUrl+"account/logout.php")
 			.then(function(response){
     		defer.resolve(response);
 		},function(error){

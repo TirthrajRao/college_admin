@@ -1,4 +1,4 @@
-<div class="row full-height">
+<div class="row full-height w3-light-grey">
   <div class="col-md-12 col-xs-12">
 
     <div class="w3-container w3-padding-16 w3-light-grey margin-top-10">
@@ -8,7 +8,7 @@
         <select class="form-control margin-top-10" ng-model="x.course" required ng-options="courses.courseid for courses in courses" ng-change="getSem(x.course)">
           <option value="" selected disabled>Select Course</option>
         </select>
-        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-click="getStudentsAccountRecord(selectedSem)">
+        <select class="form-control margin-top-10"  ng-show="semester" ng-model="selectedSem" ng-change="getStudentsAccountRecord(selectedSem)">
           <option value="" selected disabled>Select Semester</option>
           <option ng-repeat="x in semester" value="{{x}}">{{x}}</option>
         </select>
@@ -52,10 +52,11 @@
 
               </div>
               <div  class="col-md-6">
-                <h3>{{student.courseid | uppercase}} Sem-{{student.sem}}
+                
                   <button type="button" class="btn btn-primary w3-right" data-toggle="modal" data-target="#myModal" ng-show="selectedSem" >Fees Structure for {{student.courseid | uppercase}} Sem- {{student.sem}} </button> 
                 </h3>
-                <h3 ng-repeat = "z in feesData track by $index">Sem-{{z.sem}} : <i class="fa fa-inr"></i> {{z.pending_fees}}</h3>
+                <h3 class="text-info" ng-show="pendingFeesData.length>0">Pending Fees</h3>
+                <h3 ng-repeat = "z in pendingFeesData track by $index">Sem-{{z.sem}} : <i class="fa fa-inr"></i> {{z.pending_fees}}</h3>
               </div>
               </div>
 
@@ -135,10 +136,10 @@
 
                 <input type="text" class="form-control inputField" ng-show="y.payMode == 'dd' || y.payMode == 'cheque'"  ng-model="y.bankName" placeholder="Must be in full letters ">
                 <div class="w3-center margin-top-10" ng-hide="receipt">
-                  <button class="btn btn-success btn-lg" type="submit">Pay Fees </button>
+                  <button class="btn btn-success btn-lg" type="submit">Pay Fees of {{student.name}}</button>
                 </div>
                 <div class="w3-center margin-top-10" ng-show="receipt">
-                  <button class="w3-btn w3-border w3-blue" ng-show="y.sem" ng-click="printReceipt(receipt.id)">Print fee receipt of {{student.name}}</button>
+                  <button class="w3-btn w3-border w3-blue" ng-show="y.sem" ng-click="printReceipt(receipt.rid)">Print fee receipt of {{student.name}}</button>
                 </div>
               </div>                
 

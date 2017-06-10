@@ -169,7 +169,6 @@ function getTotalFeesBySem($con,$courseid,$sem){
 
 
  function addPendingFees($con,$name,$sid,$rid,$paid_fees,$tution_fees,$su_exam_fees,$su_sports_fees,$su_enlistment_fees,$misc_fees,$lib_fees,$su_exam_project_fees,$su_degree_fees,$viva_project_fees,$su_enrollment_fees,$discount,$courseid,$sem,$payMode,$ddOrC_Nub,$bankName,$date,$academicYear){
- 	echo $discount;
 	 	$total_fees = getTotalFeesBySem($con,$courseid,$sem);
  	 	$x = $total_fees['total_fees'];
  	$enlistFees = getEnlistmentFeesBySem($con,$courseid,$sem);

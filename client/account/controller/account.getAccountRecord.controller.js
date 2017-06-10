@@ -39,7 +39,7 @@ $scope.getAccountRecord = function(){
   $localStorage.student=$scope.student;
   $scope.student = $localStorage.student;
       $scope.$apply();
-      accountFactory.getAccountRecord($scope.student)
+      accountFactory.getAccountRecord($scope.student.sid)
       .then(function(response){
         $scope.record=response.data;
         console.log($scope.record);
