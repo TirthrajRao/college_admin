@@ -18,8 +18,8 @@ $file = end($reqfile);
 if($file == 'login.php'){
     $host = "localhost";
     $username = "root";
-    $password = "";
-    $con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
+    $password = "password";
+    $con = mysqli_connect($host,$username,$password,"college_admin") or die ("Could not connect");
     mysqli_set_charset($con,"utf8");
 
 }
@@ -29,8 +29,8 @@ else{
     if(isset($_SESSION['username'])){
         $host = "localhost";
         $username = "root";
-        $password = "";
-        $con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
+        $password = "password";
+        $con = mysqli_connect($host,$username,$password,"college_admin") or die ("Could not connect");
         mysqli_set_charset($con,"utf8");
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = file_get_contents("php://input");

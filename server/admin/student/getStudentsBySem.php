@@ -2,7 +2,6 @@
 include("config.php");
 include ("functions.php");
 mysqli_set_charset($con,"utf8");
-
  $courseid = $_GET['courseid'];
  $sem = $_GET['sem'];
 

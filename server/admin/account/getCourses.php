@@ -9,6 +9,4 @@ while($x = mysqli_fetch_assoc($result)){
 		array_push($ara,$x);
 	}
 	echo json_encode($ara);
-
-
 ?>

@@ -14,7 +14,7 @@ angular.module('collegeAdmin')
 	}
 
 	obj.addStudent =function(x,adhar,file){
-
+		console.log("student detailsss", x,adhar,file);
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/addStudent.php",x)
 
@@ -42,9 +42,11 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 	obj.getStudentsBySem =function(x,y){
+		console.log("passes courseId and sem",x,y);
 		var defer = $q.defer();
 		$http.get($rootScope.serverUrl+"student/getStudentsBySem.php?courseid="+x+"&sem="+y)
 		.then(function(response){
+			console.log("response of selected sem",response);
 			defer.resolve(response);
 		},function(error){
 			defer.reject(error);
@@ -168,11 +170,13 @@ angular.module('collegeAdmin')
 		return defer.promise;
 	}
 
-	obj.getCourses =function(){
+	obj.getCourses =function(course){
+		console.log("course details",course);
 
 		var defer = $q.defer();
 		$http.get($rootScope.serverUrl+"account/getCourses.php")
 		.then(function(response){
+			console.log("response of courses details",response);
 			defer.resolve(response);
 		},function(error){
 			defer.reject(error);
@@ -183,11 +187,12 @@ angular.module('collegeAdmin')
 		var defer = $q.defer();
 		$http.post($rootScope.serverUrl+"student/updateStudent.php",x)
 		.then(function(response){
-			var sid = success.data;
-			$http.post($rootScope.serverUrl+"student/addStudentPhoto.php?sid="+sid,file);
-			uploadFile(file,$rootScope.serverUrl+"student/addStudentPhoto.php?sid="+success.data);
-			$http.post($rootScope.serverUrl+"student/addAdharCard.php?sid="+sid,adhar);
-			uploadFile(adhar,$rootScope.serverUrl+"student/addAdharCard.php?sid="+success.data);
+			console.log("updated student when no changes",response);
+			// var sid = response.data;
+			// $http.post($rootScope.serverUrl+"student/addStudentPhoto.php?sid="+sid,file);
+			// uploadFile(file,$rootScope.serverUrl+"student/addStudentPhoto.php?sid="+success.data);
+			// $http.post($rootScope.serverUrl+"student/addAdharCard.php?sid="+sid,adhar);
+			// uploadFile(adhar,$rootScope.serverUrl+"student/addAdharCard.php?sid="+success.data);
 			defer.resolve(response);
 		},function(error){
 			defer.reject(error);

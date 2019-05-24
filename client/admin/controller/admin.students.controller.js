@@ -21,9 +21,11 @@ angular.module('admin')
     $state.go('admin.EditStudent',{ 'id' : x });
     console.log(x);
   }
-  $scope.getStudents = function(sem){
-    adminFactory.getStudentsBySem($scope.courseid,sem)
+  $scope.getStudents = function(x){
+    console.log("sem jay che ke nai",x);
+    adminFactory.getStudentsBySem($scope.courseid,x)
     .then(function(response){
+      console.log("students details when sem select",response);
       $scope.students=response.data;
       console.log($scope.students);
     },function(error){

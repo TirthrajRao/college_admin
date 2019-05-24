@@ -35,8 +35,10 @@ $urlRouterProvider.otherwise('/admin/login');
 
 }])
 .run(['$rootScope','$localStorage','$state','$stateParams',function($rootScope,$localStorage,$state,$stateParams){
-  $rootScope.serverUrl = 'http://132.140.160.112/collegeAdmin-1.1/server/admin/';
-  $rootScope.serverImage = 'http://132.140.160.112/collegeAdmin-1.1/server/';
+  // $rootScope.serverUrl = 'http://132.140.160.112/collegeAdmin-1.1/server/admin/';
+  // $rootScope.serverImage = 'http://132.140.160.112/collegeAdmin-1.1/server/';
+  $rootScope.serverUrl = 'http://localhost/Hosting_Websites/College_admin/server/admin/';
+  $rootScope.serverImage = 'http://localhost/Hosting_Websites/College_admin/server';
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
   $rootScope.$on('$stateChangeSuccess',function(event , toState ,fromState){

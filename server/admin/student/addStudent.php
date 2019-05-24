@@ -1,8 +1,9 @@
 <?php
-    require('config.php');
+    include('config.php');
     include("functions.php");
     $data = file_get_contents("php://input");
     $data = json_decode($data,true);
+      var_dump($data);
 
     foreach ($data as $key=>$value)
     {
@@ -20,6 +21,7 @@
       `name`,
       `motherName`,
       `adharCard`,
+      `int`,
       `accountNub`,
       `bankName`,
       `ifscCode`,
@@ -54,6 +56,7 @@
       `adharImg`) VALUES ('".$name."',
       '".$motherName."',
       '".$adharCard."',
+      '".$int."',
       '".$accountNub."',
       '".$bankName."',
       '".$ifscCode."',
@@ -87,6 +90,7 @@
       '".$year."',
       '".$adhar."')" )or die(mysqli_error($con));
       $last_id = mysqli_insert_id($con);
+
 
       echo $last_id;
       ?>

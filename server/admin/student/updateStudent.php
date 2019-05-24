@@ -15,7 +15,7 @@ if(isset($sid)){
 	mysqli_query($con,"UPDATE `student`
 		SET
 		`name` ='".$name."',
-        `motherName` = '".$motherName."'
+        `motherName` = '".$motherName."',
     `address`     =   '".$address."',
     `city`        =   '".$city."',
     `taluka`      =   '".$taluka."',
@@ -47,5 +47,5 @@ if(isset($sid)){
         `ifscCode` = '".$ifscCode."'
 		where sid = '".$sid."'")
     or die(mysqli_error($con));
-    echo $sid;
 }
+?>

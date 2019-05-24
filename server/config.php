@@ -14,7 +14,7 @@ $host = "localhost";
 $username = "root";
 $password = "password";
 
-$con = mysqli_connect($host,$username,$password,"tnrao1") or die ("Could not connect");
+$con = mysqli_connect($host,$username,$password,"college_admin") or die ("Could not connect");
 mysqli_set_charset($con,"utf8");
 
 ?>

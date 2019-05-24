@@ -47,9 +47,10 @@ angular.module('admin')
 		console.log(student);
 		adminFactory.updateStudent(student,adhar,photo)
 		.then(function(response){
+			console.log("response of updated student",response);
 			$('.alert-success').show();
 			$("button[type=submit]").removeAttr('disabled');
-			//	$state.go('admin.home');
+				// $state.go('admin.home');
 		},function(error){
 			console.log(error);
 		});
